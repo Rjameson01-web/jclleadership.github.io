@@ -40,14 +40,15 @@
   /* HEADER */
   header {
     position: relative; z-index: 10;
-    padding: 2rem 4rem;
+    padding: 1.6rem 4rem;
     display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
     border-bottom: 1px solid var(--rule);
   }
 
-  .logo-img { height: 75px; width: auto; display: block; }
+  .logo-img { height: 75px; width: auto; display: block; max-width: 100%; }
 
-  nav { display: flex; }
+  nav { display: flex; flex-wrap: wrap; justify-content: flex-end; }
 
   .nav-btn {
     background: none; border: none; cursor: pointer;
@@ -57,11 +58,12 @@
     color: var(--text-muted);
     padding: 0.5rem 1.4rem;
     position: relative; transition: color 0.3s;
+    white-space: nowrap;
   }
 
   .nav-btn::after {
     content: '';
-    position: absolute; bottom: -2rem; left: 50%;
+    position: absolute; bottom: -0.5rem; left: 50%;
     transform: translateX(-50%) scaleX(0);
     width: 100%; height: 2px;
     background: var(--gold);
@@ -501,7 +503,7 @@
 
   /* RESPONSIVE */
   @media (max-width: 960px) {
-    header { padding: 1.6rem 2rem; }
+    header { padding: 1.4rem 2rem; }
     .hero { padding: 3.5rem 2rem 2.5rem; }
     .tab-content { padding: 0 2rem 4rem; }
     .about-top { flex-direction: column; gap: 2rem; }
@@ -514,9 +516,15 @@
   }
 
   @media (max-width: 600px) {
-    .hero h1 { font-size: 2.6rem; }
-    .nav-btn { padding: 0.4rem 0.8rem; font-size: 0.6rem; }
+    header { padding: 1.2rem 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .logo-img { height: 54px; }
+    nav { width: 100%; justify-content: flex-start; }
+    .nav-btn { padding: 0.4rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.14em; }
+    .hero { padding: 2.5rem 1.2rem 2rem; }
+    .tab-content { padding: 0 1.2rem 3rem; }
+    .hero h1 { font-size: 2.4rem; }
     .hero-ctas { flex-direction: column; }
+    footer { flex-direction: column; gap: 0.3rem; padding: 1rem 1.2rem; }
   }
 </style>
 </head>
@@ -745,7 +753,7 @@
           </div>
           <div>
             <div class="link-label">Email</div>
-            <div class="link-value">randy@jclleadership.com</div>
+            <div class="link-value"><span class="__cf_email__" data-cfemail="582a39363c2118323b34343d393c3d2a2b303128763b3735">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
@@ -779,7 +787,7 @@
   <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showTab(tab, btn) {
 
   // Hide all tabs
@@ -797,16 +805,4 @@ function showTab(tab, btn) {
   } else {
     document.querySelectorAll('.nav-btn').forEach(b => {
       if (b.innerText.toLowerCase().includes(tab)) {
-        b.classList.add('active');
-      }
-    });
-  }
-
-  // Show/hide hero
-  const hero = document.getElementById('hero');
-  hero.style.display = (tab === 'about') ? 'block' : 'none';
-}
-</script>
-
-</body>
-</html>
+        
