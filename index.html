@@ -760,7 +760,7 @@
           </div>
           <div>
             <div class="link-label">Email</div>
-            <div class="link-value"><span class="__cf_email__" data-cfemail="9eecfff0fae7def4fdf2f2fbfffafbecedf6f7eeb0fdf1f3">[email&#160;protected]</span></div>
+            <div class="link-value">randy&#64;jclleadership&#46;com</div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
@@ -812,4 +812,15 @@ function showTab(tab, btn) {
   } else {
     document.querySelectorAll('.nav-btn').forEach(b => {
       if (b.innerText.toLowerCase().includes(tab)) {
-        
+        b.classList.add('active');
+      }
+    });
+  }
+
+  // Show/hide hero
+  var hero = document.getElementById('hero');
+  hero.style.display = (tab === 'about') ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
