@@ -753,7 +753,7 @@
           </div>
           <div>
             <div class="link-label">Email</div>
-            <div class="link-value"><span class="__cf_email__" data-cfemail="582a39363c2118323b34343d393c3d2a2b303128763b3735">[email&#160;protected]</span></div>
+            <div class="link-value"><span class="__cf_email__" data-cfemail="aedccfc0cad7eec4cdc2c2cbcfcacbdcddc6c7de80cdc1c3">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
@@ -786,6 +786,7 @@
   <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
   <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
 </footer>
+
 <script>
 function showTab(tab, btn) {
 
@@ -804,16 +805,27 @@ function showTab(tab, btn) {
   } else {
     document.querySelectorAll('.nav-btn').forEach(b => {
       if (b.innerText.toLowerCase().includes(tab)) {
+<script>
+function showTab(tab, btn) {
+  document.querySelectorAll('.tab-content').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.nav-btn').forEach(function(b) {
+      if (b.innerText.toLowerCase().indexOf(tab) !== -1) {
         b.classList.add('active');
       }
     });
   }
-
-  // Show/hide hero
-  const hero = document.getElementById('hero');
+  var hero = document.getElementById('hero');
   hero.style.display = (tab === 'about') ? 'block' : 'none';
 }
 </script>
-
 </body>
 </html>
