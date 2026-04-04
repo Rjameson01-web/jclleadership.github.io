@@ -529,9 +529,9 @@
 <header>
   <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img">
   <nav>
-    <button class="nav-btn active" onclick="showTab('about',this)">About</button>
-    <button class="nav-btn" onclick="showTab('services',this)">Our Services</button>
-    <button class="nav-btn" onclick="showTab('contact',this)">Contact</button>
+    <button class="nav-btn active" onclick="showTab('about', this)">About</button>
+    <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
+    <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
   </nav>
 </header>
 
@@ -543,8 +543,8 @@
   <p>When growth outpaces structure, execution breaks quietly. Pricing becomes situational. Decision rights move without definition. Control is lost before it is noticed.</p>
   <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
   <div class="hero-ctas">
-    <button class="btn-primary" onclick="showTab('services', document.querySelectorAll('.nav-btn')[1])">View Mandate Approach</button>
-    <button class="btn-ghost" onclick="showTab('contact', document.querySelectorAll('.nav-btn')[2])">Start a Conversation</button>
+    <button class="btn-primary" onclick="showTab('services')">View Mandate Approach</button>
+    <button class="btn-ghost" onclick="showTab('contact')">Start a Conversation</button>
   </div>
 </div>
 
@@ -780,9 +780,27 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function showTab(tab, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    if (btn) btn.classList.add('active');
-    const h
+function showTab(tab, btn) {
+
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+
+  // Show selected tab
+  document.getElementById('tab-' + tab).classList.add('active');
+
+  // Reset nav buttons
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  // Activate correct nav button
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      if (b.innerText.toLowerCase().includes(tab)) {
+        b.classList.add('active');
+      }
+    });
+  }
+
+  // Show/hide hero
+  const h
