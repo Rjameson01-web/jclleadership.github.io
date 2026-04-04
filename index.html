@@ -42,13 +42,17 @@
     position: relative; z-index: 10;
     padding: 2rem 4rem;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 0.5rem;
     border-bottom: 1px solid var(--rule);
   }
 
   .logo-img { height: 75px; width: auto; display: block; }
 
-  nav { display: flex; }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 6px;
+  }
 
   .nav-btn {
     background: none; border: none; cursor: pointer;
@@ -56,7 +60,9 @@
     font-size: 0.68rem; font-weight: 500;
     letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--text-muted);
-    padding: 0.5rem 1.4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+    white-space: nowrap;
     position: relative; transition: color 0.3s;
   }
 
@@ -515,15 +521,18 @@
   }
 
   @media (max-width: 600px) {
-    header { padding: 1rem 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-    .logo-img { height: 54px; }
-    nav { width: 100%; }
-    .nav-btn { padding: 0.4rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.14em; }
-    .hero { padding: 2.5rem 1.2rem 2rem; }
-    .tab-content { padding: 0 1.2rem 3rem; }
-    .hero h1 { font-size: 2.4rem; }
+    header {
+      padding: 1rem 1.2rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    nav {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .hero h1 { font-size: 2.6rem; }
     .hero-ctas { flex-direction: column; }
-    footer { flex-direction: column; gap: 0.3rem; padding: 1rem 1.2rem; }
   }
 </style>
 </head>
@@ -752,7 +761,7 @@
           </div>
           <div>
             <div class="link-label">Email</div>
-            <div class="link-value"><span class="__cf_email__" data-cfemail="aedccfc0cad7eec4cdc2c2cbcfcacbdcddc6c7de80cdc1c3">[email&#160;protected]</span></div>
+            <div class="link-value"><span class="__cf_email__" data-cfemail="9eecfff0fae7def4fdf2f2fbfffafbecedf6f7eeb0fdf1f3">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
