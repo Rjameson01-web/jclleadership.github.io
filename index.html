@@ -7,70 +7,217 @@
   <meta name="description" content="Restoring commercial discipline for privately held maritime and logistics operators.">
 
   <style>
+    :root {
+      --navy: #0B2A44;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --light-navy: #123556;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
-      color: #111827;
-      background: #ffffff;
+      color: var(--white);
+      background: var(--navy);
     }
+
     header, footer {
       padding: 1rem 2rem;
-      background: #0f172a;
-      color: #f9fafb;
+      background: var(--navy);
+      color: var(--white);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
     }
-    .logo { font-weight: 600; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
     header nav a, footer a {
-      color: #e5e7eb;
+      color: var(--white);
       margin-left: 1rem;
       text-decoration: none;
       font-size: 0.95rem;
     }
+
     header nav a.cta, .cta-footer, .btn-primary, .btn-secondary {
-      background: #2563eb;
-      color: #f9fafb;
+      background: var(--gold);
+      color: var(--navy);
       padding: 0.5rem 1rem;
       border-radius: 999px;
       font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
     }
-    .btn-secondary { background: #111827; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
     main {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 2rem 1rem 4rem;
     }
-    section { margin-bottom: 2.5rem; }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
     .hero {
       padding: 2rem 1.5rem;
-      background: #f3f4f6;
+      background: var(--light-navy);
       border-radius: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
     }
+
+    .hero-text {
+      flex: 1 1 320px;
+      min-width: 280px;
+    }
+
+    .hero-image {
+      flex: 0 0 280px;
+      max-width: 320px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+    }
+
     h1, h2, h3 {
-      color: #0f172a;
+      color: var(--white);
       margin-top: 0;
     }
-    ul, ol { padding-left: 1.25rem; }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+      color: var(--gold);
+    }
+
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+      color: #E5E7EB;
+    }
+
+    ul, ol {
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.75rem;
+      color: #E5E7EB;
+    }
+
+    li + li {
+      margin-top: 0.15rem;
+    }
+
     blockquote {
-      border-left: 4px solid #2563eb;
+      border-left: 4px solid var(--gold);
       padding-left: 1rem;
       margin-left: 0;
-      color: #374151;
+      color: #E5E7EB;
     }
+
     .quote-source {
       font-size: 0.9rem;
-      color: #6b7280;
+      color: #9CA3AF;
       margin-top: 0.25rem;
     }
-    a { color: #2563eb; }
-    a:hover { text-decoration: underline; }
-    nav a.active { text-decoration: underline; }
+
+    a {
+      color: var(--gold);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    nav a.active {
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 4px;
+    }
+
     .divider {
-      height: 2px;
-      background: #e5e7eb;
-      margin: 3rem 0;
+      height: 1px;
+      background: rgba(212, 175, 55, 0.35);
+      margin: 3rem 0 2.5rem;
+    }
+
+    article {
+      margin-bottom: 1.5rem;
+      padding: 1rem 1rem 0.75rem;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 0.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    footer {
+      border-top: 1px solid rgba(212, 175, 55, 0.35);
+      border-bottom: none;
+    }
+
+    footer p {
+      margin: 0;
+      color: #E5E7EB;
+    }
+
+    @media (max-width: 768px) {
+      header, footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      header nav a {
+        margin-left: 0.5rem;
+      }
+
+      .hero {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .hero-image {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -78,7 +225,9 @@
 <body>
 
 <header>
-  <div class="logo">Jameson Commercial Leadership</div>
+  <div class="logo">
+    <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership Logo">
+  </div>
   <nav>
     <a href="#home" class="active">Home</a>
     <a href="#about">About</a>
@@ -90,15 +239,18 @@
 
 <main>
 
-<!-- HERO -->
 <section id="home" class="hero">
-  <h1>When Commercial Performance Becomes Harder to Trust</h1>
-  <p>Commercial performance does not fail suddenly. It drifts. When growth outpaces structure, execution breaks quietly. Pricing becomes reactive. Forecasts stop being trusted. Control is lost before it is noticed.</p>
-  <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
-  <a href="#contact" class="btn-primary">Book a 30-Minute Call</a>
+  <div class="hero-text">
+    <h1>When Commercial Performance Becomes Harder to Trust</h1>
+    <p>Commercial performance does not fail suddenly. It drifts. When growth outpaces structure, execution breaks quietly. Pricing becomes reactive. Forecasts stop being trusted. Control is lost before it is noticed.</p>
+    <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
+    <a href="#contact" class="btn-primary">Book a 30-Minute Call</a>
+  </div>
+  <div class="hero-image">
+    <img src="photo.png" alt="Randy Jameson at a maritime terminal">
+  </div>
 </section>
 
-<!-- DRIFT -->
 <section>
   <h2>Where Performance Starts to Drift</h2>
   <ul>
@@ -112,7 +264,6 @@
   <a href="#contact" class="btn-secondary">Schedule a 30-Minute Diagnostic Call</a>
 </section>
 
-<!-- WHO I WORK WITH -->
 <section>
   <h2>Who I Work With</h2>
   <p>Privately held maritime &amp; logistics operators where:</p>
@@ -133,149 +284,8 @@
 
 <div class="divider"></div>
 
-<!-- ENGAGEMENT MODEL -->
 <section id="engagements">
   <h2>How Engagements Work</h2>
   <ol>
     <li><strong>Diagnose</strong> — Structural assessment of pricing, ownership, forecasting, and execution.</li>
-    <li><strong>Stabilize</strong> — Restore control, enforce pricing discipline, reset decision rights, align sales and delivery.</li>
-    <li><strong>Reset</strong> — Rebuild the commercial engine to operate predictably — without external support.</li>
-  </ol>
-</section>
-
-<!-- FIRST 30 DAYS -->
-<section>
-  <h2>First 30 Days</h2>
-  <p>A defined, low-risk entry point for operators who need clarity fast.</p>
-  <ul>
-    <li>Pricing governance assessment</li>
-    <li>Forecast credibility review</li>
-    <li>Ownership and decision-rights mapping</li>
-    <li>Immediate stabilization actions</li>
-    <li>CEO briefing with structural recommendations</li>
-  </ul>
-  <a href="#contact" class="btn-secondary">Schedule a 30-Minute Diagnostic Call</a>
-</section>
-
-<div class="divider"></div>
-
-<!-- WHY CEOS BRING ME IN -->
-<section>
-  <h2>Why CEOs Bring Me In</h2>
-  <ul>
-    <li>Commercial performance has become harder to trust</li>
-    <li>Pricing discipline has weakened and ownership is unclear</li>
-    <li>Forecasts no longer reflect operational reality</li>
-    <li>Revenue is growing but margin is not following</li>
-    <li>A leadership transition has left commercial ownership undefined</li>
-    <li>The team is working hard but outcomes are harder to predict</li>
-  </ul>
-</section>
-
-<!-- PATTERNS OF IMPACT -->
-<section>
-  <h2>Patterns of Impact</h2>
-  <ul>
-    <li>Pricing holds</li>
-    <li>Forecasts become reliable</li>
-    <li>Sales and delivery operate from the same plan</li>
-    <li>Ownership becomes unambiguous</li>
-    <li>Execution rhythm is restored</li>
-    <li>Leadership regains control</li>
-  </ul>
-  <p>Commercial performance becomes predictable again — not periodically, but structurally.</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- CASE STUDIES -->
-<section>
-  <h2>Selected Commercial Execution Interventions</h2>
-
-  <article>
-    <h3>Commercial Control Reset — West Africa</h3>
-    <p>Growth potential was high. Performance had deteriorated. Margins were eroding, pricing was inconsistent, and customer ownership had been delegated to third-party representation with no accountability to outcomes.</p>
-    <p>I stepped in with authority to reset the model, reclaim ownership, centralize pricing, and rebuild the commercial team.</p>
-    <p><strong>Impact:</strong> Cargo volume increased 234% and revenue grew by $84M.</p>
-  </article>
-
-  <article>
-    <h3>Commercial Governance Reset — India</h3>
-    <p>Demand was strong but performance was deteriorating due to fragmented authority and weak alignment between regional execution and corporate strategy.</p>
-    <p>I rebuilt decision rights, aligned execution to strategy, and shifted the commodity mix toward higher-margin business.</p>
-    <p><strong>Impact:</strong> Revenue increased by $60M with stabilized pricing and improved utilization.</p>
-  </article>
-
-  <article>
-    <h3>Regional Commercial System Reset — Americas</h3>
-    <p>Execution was fragmented and inconsistent across locations. Sales and operations were misaligned.</p>
-    <p>I installed regional commercial leadership, aligned strategy to capability, and implemented disciplined pipeline management.</p>
-    <p><strong>Impact:</strong> Region returned to profitability, delivering a $32M P&amp;L.</p>
-  </article>
-</section>
-
-<div class="divider"></div>
-
-<!-- TESTIMONIALS -->
-<section>
-  <h2>Testimonials</h2>
-
-  <blockquote>
-    “Randy brings structure, clarity, and commercial discipline to complex environments. He gets things done. Any company that hires him would be fortunate to have him onboard.”
-  </blockquote>
-  <p class="quote-source">— Managing Director, Global Shipping &amp; Supply Chain</p>
-
-  <blockquote>
-    “Randy is an exceptionally disciplined commercial leader. His communication, structure, and hands-on execution consistently elevated our joint results. Under his direction, we strengthened alignment, increased volume, and delivered meaningful commercial growth.”
-  </blockquote>
-  <p class="quote-source">— Branch Manager, Global Freight &amp; Logistics</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- INSIGHTS -->
-<section id="insights">
-  <h2>Commercial Drift Insights</h2>
-  <p>A diagnostic library on how and why commercial performance drifts — and what it takes to restore it.</p>
-
-  <h3 id="pricing-situational">What causes pricing to become situational?</h3>
-  <p>Pricing becomes situational when governance is weak, floors are unclear, and decision rights are undefined.</p>
-
-  <h3 id="forecast-drift">Why do forecasts drift from reality?</h3>
-  <p>Forecasts drift when they are built on optimism rather than pipeline fact, and when they are disconnected from operational capacity.</p>
-
-  <h3 id="ownership-blur">What causes ownership to blur?</h3>
-  <p>Ownership blurs when roles and mandates are implied rather than explicit, especially under growth pressure.</p>
-
-  <h3 id="decision-rights">How does decision-rights ambiguity erode margin?</h3>
-  <p>Ambiguity slows decisions or pushes them to the wrong level, eroding margin through delay or concessions.</p>
-
-  <h3 id="sales-ops-diverge">Why do sales and operations diverge?</h3>
-  <p>Divergence occurs when each function optimizes locally without a shared operating model or unified plan.</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About JCL</h2>
-  <p>“Commercial drift rarely shows up as a crisis. It shows up as performance that becomes harder to trust.”</p>
-  <p><strong>30 years leading commercial transformations across global maritime and logistics operators</strong> — restoring discipline, rebuilding structure, and stabilizing execution at scale.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Book a 30-Minute Call</h2>
-  <p>If commercial performance has become harder to trust, a structured conversation will clarify whether a mandate-led reset is required.</p>
-  <a href="mailto:randy@jclleadership.com" class="btn-primary">Book a 30-Minute Call</a>
-</section>
-
-</main>
-
-<footer>
-  <p>JCL | Jameson Commercial Leadership — Houston, Texas, United States</p>
-  <a href="#contact" class="cta-footer">Book a 30-Minute Call</a>
-</footer>
-
-</body>
-</html>
+    <li><strong>Stabilize</strong>
