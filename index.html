@@ -29,7 +29,6 @@
     overflow-x: hidden;
   }
 
-  /* subtle noise texture */
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -40,19 +39,19 @@
   /* HEADER */
   header {
     position: relative; z-index: 10;
-    padding: 2rem 4rem;
+    padding: 1.6rem 4rem;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 0.8rem;
     border-bottom: 1px solid var(--rule);
   }
 
-  .logo-img { height: 75px; width: auto; display: block; }
+  .logo-img { height: 75px; width: auto; display: block; max-width: 100%; }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+  .header-right {
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
   }
+
+  nav { display: flex; flex-wrap: wrap; gap: 4px; }
 
   .nav-btn {
     background: none; border: none; cursor: pointer;
@@ -77,6 +76,18 @@
   .nav-btn:hover { color: var(--off-white); }
   .nav-btn.active { color: var(--gold); }
   .nav-btn.active::after { transform: translateX(-50%) scaleX(1); }
+
+  .btn-book-header {
+    display: inline-block;
+    padding: 0.55rem 1.2rem;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.25s;
+  }
+  .btn-book-header:hover { background: var(--gold-light); }
 
   /* CORNER ACCENTS */
   .corner-tr {
@@ -116,7 +127,6 @@
   }
 
   .hero h1 em { font-style: italic; color: var(--gold-light); }
-
   .hero-rule { width: 50px; height: 1px; background: var(--gold); margin-bottom: 1.6rem; }
 
   .hero p {
@@ -127,29 +137,27 @@
 
   .hero-ctas { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
 
-  /* BUTTONS — two styles only */
+  /* BUTTONS */
   .btn-primary {
-    display: inline-block;
-    padding: 0.7rem 1.8rem;
+    display: inline-block; padding: 0.7rem 1.8rem;
     background: var(--gold); color: var(--navy);
     font-family: 'Barlow', sans-serif;
     font-size: 0.68rem; font-weight: 600;
     letter-spacing: 0.16em; text-transform: uppercase;
     text-decoration: none; border: none; cursor: pointer;
-    transition: background 0.25s;
+    transition: background 0.25s; white-space: nowrap;
   }
   .btn-primary:hover { background: var(--gold-light); }
 
   .btn-ghost {
-    display: inline-block;
-    padding: 0.7rem 1.8rem;
+    display: inline-block; padding: 0.7rem 1.8rem;
     background: transparent; color: var(--text-light);
     font-family: 'Barlow', sans-serif;
     font-size: 0.68rem; font-weight: 400;
     letter-spacing: 0.16em; text-transform: uppercase;
     text-decoration: none;
     border: 1px solid rgba(201,168,76,0.35); cursor: pointer;
-    transition: border-color 0.25s, color 0.25s;
+    transition: border-color 0.25s, color 0.25s; white-space: nowrap;
   }
   .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
 
@@ -170,368 +178,218 @@
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2rem; font-weight: 300;
-    color: var(--off-white); line-height: 1.2;
-    margin-bottom: 0.4rem;
+    color: var(--off-white); line-height: 1.2; margin-bottom: 0.4rem;
   }
   .section-title em { font-style: italic; color: var(--gold-light); }
-
-  .section-rule {
-    width: 36px; height: 1px;
-    background: var(--gold);
-    margin: 0.7rem 0 2.2rem;
-  }
+  .section-rule { width: 36px; height: 1px; background: var(--gold); margin: 0.7rem 0 2.2rem; }
 
   .label {
     font-size: 0.6rem; letter-spacing: 0.26em;
     text-transform: uppercase; color: var(--gold);
     font-weight: 500; margin-bottom: 1rem;
   }
-
   .block { margin-bottom: 3rem; }
 
-  /* CARD GRID */
-  .card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px; margin-bottom: 3rem;
-  }
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
 
   .card {
-    background: var(--navy-mid);
-    padding: 2rem 2.2rem;
-    position: relative;
+    background: var(--navy-mid); padding: 2rem 2.2rem; position: relative;
   }
-
   .card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; width: 2px; height: 100%;
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
     background: var(--gold); opacity: 0.35;
   }
-
   .card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.25rem; font-weight: 400;
     color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.25;
   }
-
-  .card p, .card li {
-    font-size: 0.875rem; line-height: 1.7;
-    color: var(--text-muted); font-weight: 300;
-  }
-
-  .card p { margin-bottom: 0.6rem; }
+  .card p { font-size: 0.875rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; margin-bottom: 0.6rem; }
   .card p:last-child { margin-bottom: 0; }
   .card p strong { color: var(--off-white); font-weight: 500; }
-
   .card ul { list-style: none; padding: 0; }
   .card ul li {
-    padding: 0.35rem 0;
-    border-bottom: 1px solid rgba(201,168,76,0.08);
+    font-size: 0.875rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;
+    padding: 0.35rem 0; border-bottom: 1px solid rgba(201,168,76,0.08);
     display: flex; gap: 0.7rem; align-items: flex-start;
   }
-  .card ul li::before {
-    content: '—'; color: var(--gold);
-    flex-shrink: 0; font-size: 0.72rem; margin-top: 0.1rem;
-  }
+  .card ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.72rem; margin-top: 0.1rem; }
   .card ul li:last-child { border-bottom: none; }
-
   .card-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem; font-weight: 300;
-    color: rgba(201,168,76,0.1);
-    position: absolute; top: 0.8rem; right: 1.2rem;
-    line-height: 1;
+    font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300;
+    color: rgba(201,168,76,0.1); position: absolute; top: 0.8rem; right: 1.2rem; line-height: 1;
   }
-
-  .card-tag {
-    font-size: 0.6rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.8rem; font-weight: 500;
-  }
+  .card-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; font-weight: 500; }
 
   /* STATEMENT BAR */
   .statement-bar {
-    background: var(--navy-mid);
-    border-left: 2px solid var(--gold);
+    background: var(--navy-mid); border-left: 2px solid var(--gold);
     padding: 1.4rem 2rem; margin-bottom: 3rem;
   }
   .statement-bar p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-style: italic;
-    color: var(--off-white); line-height: 1.6;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    font-style: italic; color: var(--off-white); line-height: 1.6;
   }
   .statement-bar p strong { font-style: normal; color: var(--gold-light); }
 
+  /* MID-PAGE CTA BAR */
+  .cta-bar {
+    background: var(--navy-light);
+    border: 1px solid var(--rule);
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .cta-bar p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--off-white); line-height: 1.5;
+  }
+
   /* ABOUT PHOTO */
-  .about-top {
-    display: flex; gap: 3.5rem;
-    align-items: flex-start; margin-bottom: 3rem;
-  }
-
+  .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
   .about-photo-wrap { position: relative; flex-shrink: 0; }
-
   .about-photo {
-    width: 205px; height: 265px;
-    object-fit: cover; object-position: center top;
-    display: block; position: relative; z-index: 1;
+    width: 205px; height: 265px; object-fit: cover;
+    object-position: center top; display: block; position: relative; z-index: 1;
   }
-
   .about-photo-wrap::before {
-    content: '';
-    position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
-    border: 1px solid rgba(201,168,76,0.35);
-    pointer-events: none; z-index: 0;
+    content: ''; position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
+    border: 1px solid rgba(201,168,76,0.35); pointer-events: none; z-index: 0;
   }
-
   .about-photo-wrap::after {
-    content: '';
-    position: absolute; bottom: -8px; right: -8px;
+    content: ''; position: absolute; bottom: -8px; right: -8px;
     width: 56px; height: 56px;
-    border-bottom: 2px solid var(--gold);
-    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
     pointer-events: none;
   }
-
   .about-top-text { flex: 1; }
-
   .about-lead {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; font-weight: 300;
-    line-height: 1.6; color: var(--off-white);
-    font-style: italic; margin-bottom: 1.4rem;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300;
+    line-height: 1.6; color: var(--off-white); font-style: italic; margin-bottom: 1.4rem;
   }
-
-  .about-body p {
-    font-size: 0.9rem; line-height: 1.8;
-    color: var(--text-light); font-weight: 300;
-    margin-bottom: 0.9rem;
-  }
+  .about-body p { font-size: 0.9rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 0.9rem; }
 
   /* PRINCIPLES */
-  .principles-grid {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 1.2rem; margin-top: 0.5rem;
-  }
-
-  .principle {
-    padding: 1.1rem 1.3rem;
-    border: 1px solid rgba(201,168,76,0.15);
-    position: relative;
-  }
-
+  .principles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 0.5rem; }
+  .principle { padding: 1.1rem 1.3rem; border: 1px solid rgba(201,168,76,0.15); position: relative; }
   .principle::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; width: 2px; height: 100%;
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
     background: var(--gold); opacity: 0.4;
   }
-
-  .principle .p-title {
-    font-size: 0.68rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.4rem; font-weight: 500;
-  }
-
-  .principle p {
-    font-size: 0.83rem; color: var(--text-muted);
-    line-height: 1.6; font-weight: 300;
-  }
+  .principle .p-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; font-weight: 500; }
+  .principle p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
 
   /* CASES */
-  .cases-grid {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 2px; margin-bottom: 3rem;
-  }
+  .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
+  .case-card { background: var(--navy-mid); padding: 2rem; border-top: 2px solid var(--gold); }
+  .case-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 1rem; line-height: 1.3; }
+  .case-card p { font-size: 0.84rem; line-height: 1.65; color: var(--text-muted); font-weight: 300; margin-bottom: 0.45rem; }
+  .case-card .impact { font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
 
-  .case-card {
-    background: var(--navy-mid);
-    padding: 2rem 2rem 1.8rem;
-    position: relative; border-top: 2px solid var(--gold);
-  }
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 2rem; }
+  .step { background: var(--navy-mid); padding: 1.8rem 2rem; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 0.6rem; }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.3rem; }
+  .step .duration { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; font-weight: 500; }
+  .step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
 
-  .case-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-weight: 400;
-    color: var(--off-white); margin-bottom: 1rem; line-height: 1.3;
-  }
+  /* WHO I WORK WITH */
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .who-card { background: var(--navy-mid); padding: 1.8rem 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .who-card .who-icon { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .who-card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+  .who-card p strong { color: var(--off-white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
 
-  .case-card p {
-    font-size: 0.84rem; line-height: 1.65;
-    color: var(--text-muted); font-weight: 300;
-    margin-bottom: 0.45rem;
-  }
-
-  .case-card .impact {
-    font-size: 1rem; font-weight: 500;
-    color: var(--gold-light); margin-top: 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-  }
-
-  /* ENGAGEMENT STEPS */
-  .steps {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 2px; margin-bottom: 2rem;
-  }
-
-  .step {
-    background: var(--navy-mid); padding: 1.8rem 2rem;
-    position: relative;
-  }
-
-  .step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem; font-weight: 300;
-    color: rgba(201,168,76,0.15); line-height: 1;
-    margin-bottom: 0.6rem;
-  }
-
-  .step h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-weight: 400;
-    color: var(--off-white); margin-bottom: 0.3rem;
-  }
-
-  .step .duration {
-    font-size: 0.62rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.7rem; font-weight: 500;
-  }
-
-  .step p {
-    font-size: 0.85rem; color: var(--text-muted);
-    line-height: 1.65; font-weight: 300;
-  }
-
-  /* SIGNALS LIST */
-  .signals-list {
-    list-style: none; padding: 0;
-    border-top: 1px solid var(--rule);
-  }
-
-  .signals-list li {
-    font-size: 0.93rem; font-weight: 300;
-    color: var(--text-light); line-height: 1.6;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid var(--rule);
+  /* FIRST 30 DAYS */
+  .days-list { list-style: none; padding: 0; border-top: 1px solid var(--rule); margin-bottom: 3rem; }
+  .days-list li {
+    font-size: 0.93rem; font-weight: 300; color: var(--text-light); line-height: 1.6;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--rule);
     display: flex; gap: 1rem; align-items: center;
   }
-
-  .signals-list li::before {
-    content: ''; display: block;
-    width: 5px; height: 5px;
-    background: var(--gold); flex-shrink: 0;
-  }
+  .days-list li::before { content: ''; display: block; width: 5px; height: 5px; background: var(--gold); flex-shrink: 0; }
 
   /* CONTACT */
-  .contact-layout {
-    display: grid; grid-template-columns: 1.2fr 1fr;
-    gap: 5rem; align-items: start;
-  }
-
-  .contact-statement {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 300;
-    line-height: 1.55; color: var(--off-white);
-    margin-bottom: 1.4rem;
-  }
-
+  .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .contact-statement { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.55; color: var(--off-white); margin-bottom: 1.4rem; }
   .contact-statement em { font-style: italic; color: var(--gold-light); }
-
-  .contact-body {
-    font-size: 0.88rem; line-height: 1.75;
-    color: var(--text-muted); font-weight: 300;
-    margin-bottom: 2rem;
-  }
-
-  .contact-links { display: flex; flex-direction: column; gap: 1px; }
-
+  .contact-body { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); font-weight: 300; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1px; margin-bottom: 1.5rem; }
   .contact-link {
-    display: flex; align-items: center; gap: 1.2rem;
-    padding: 1.2rem 1.4rem;
-    background: var(--navy-mid);
-    text-decoration: none; color: var(--off-white);
+    display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem;
+    background: var(--navy-mid); text-decoration: none; color: var(--off-white);
     transition: background 0.25s, color 0.25s;
   }
-
   .contact-link:hover { background: var(--navy-light); color: var(--gold-light); }
-
-  .link-icon {
-    width: 34px; height: 34px;
-    border: 1px solid rgba(201,168,76,0.3);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
+  .link-icon { width: 34px; height: 34px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .link-icon svg { width: 15px; height: 15px; fill: var(--gold); }
-
-  .link-label {
-    font-size: 0.58rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem;
-  }
-
+  .link-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem; }
   .link-value { font-size: 0.88rem; font-weight: 400; }
-
-  .contact-note {
-    background: var(--navy-mid);
-    border-top: 2px solid var(--gold);
-    padding: 1.8rem 2rem;
-  }
-
-  .contact-note .note-label {
-    font-size: 0.58rem; letter-spacing: 0.24em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem;
-  }
-
-  .contact-note p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-style: italic;
-    color: var(--text-light); line-height: 1.65;
-  }
+  .contact-note { background: var(--navy-mid); border-top: 2px solid var(--gold); padding: 1.8rem 2rem; }
+  .contact-note .note-label { font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+  .contact-note p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--text-light); line-height: 1.65; }
 
   /* FOOTER */
   footer {
     position: relative; z-index: 5;
-    padding: 1.4rem 4rem;
+    padding: 0;
     border-top: 1px solid var(--rule);
+  }
+
+  .footer-cta {
+    background: var(--navy-mid);
+    padding: 2.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+
+  .footer-cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-style: italic;
+    color: var(--off-white);
+  }
+
+  .footer-bottom {
+    padding: 1.4rem 4rem;
     display: flex; align-items: center; justify-content: space-between;
   }
 
-  footer .f-brand {
-    font-size: 0.63rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--text-muted);
-  }
-
-  footer .f-location {
-    font-size: 0.68rem; color: var(--text-muted); font-weight: 300;
-  }
+  .f-brand { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+  .f-location { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; }
 
   /* RESPONSIVE */
   @media (max-width: 960px) {
-    header { padding: 1.6rem 2rem; }
+    header { padding: 1.4rem 2rem; }
     .hero { padding: 3.5rem 2rem 2.5rem; }
     .tab-content { padding: 0 2rem 4rem; }
     .about-top { flex-direction: column; gap: 2rem; }
     .about-photo { width: 100%; height: 240px; object-position: center 20%; }
-    .card-grid, .two-col { grid-template-columns: 1fr; }
-    .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
+    .card-grid, .who-grid { grid-template-columns: 1fr; }
+    .three-col, .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
     .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    footer { padding: 1.2rem 2rem; }
+    .footer-cta, .footer-bottom { padding: 1.5rem 2rem; }
     .corner-tr, .corner-bl { display: none; }
+    .cta-bar { flex-direction: column; align-items: flex-start; }
   }
 
   @media (max-width: 600px) {
-    header {
-      padding: 1rem 1.2rem;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.8rem;
-    }
-    nav {
-      width: 100%;
-      flex-wrap: wrap;
-    }
-    .hero h1 { font-size: 2.6rem; }
+    header { padding: 1rem 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .header-right { width: 100%; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .logo-img { height: 54px; }
+    nav { width: 100%; }
+    .btn-book-header { width: 100%; text-align: center; }
+    .nav-btn { padding: 0.4rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.14em; }
+    .hero { padding: 2.5rem 1.2rem 2rem; }
+    .tab-content { padding: 0 1.2rem 3rem; }
+    .hero h1 { font-size: 2.4rem; }
     .hero-ctas { flex-direction: column; }
+    .footer-cta { flex-direction: column; }
+    .footer-bottom { flex-direction: column; gap: 0.3rem; padding: 1rem 1.2rem; }
   }
 </style>
 </head>
@@ -543,11 +401,14 @@
 <!-- HEADER -->
 <header>
   <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img">
-  <nav>
-    <button class="nav-btn active" onclick="showTab('about', this)">About</button>
-    <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
-    <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
-  </nav>
+  <div class="header-right">
+    <nav>
+      <button class="nav-btn active" onclick="showTab('about', this)">About</button>
+      <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
+    </nav>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-book-header">Book a Diagnostic Call</a>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -555,18 +416,17 @@
   <div class="hero-eyebrow">Senior Commercial Executive &nbsp;|&nbsp; United States &nbsp;|&nbsp; Global Travel Supported</div>
   <h1>Commercial performance<br>does not fail suddenly.<br>It <em>drifts.</em></h1>
   <div class="hero-rule"></div>
-  <p>When growth outpaces structure, execution breaks quietly. Pricing becomes situational. Decision rights move without definition. Control is lost before it is noticed.</p>
+  <p>When growth outpaces structure, execution breaks quietly. Pricing becomes reactive. Forecasts stop being trusted. Control is lost before it is noticed.</p>
   <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
   <div class="hero-ctas">
-    <button class="btn-primary" onclick="showTab('services')">View Mandate Approach</button>
-    <button class="btn-ghost" onclick="showTab('contact')">Start a Conversation</button>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Diagnostic Call</a>
+    <button class="btn-ghost" onclick="showTab('services', document.querySelectorAll('.nav-btn')[1])">View Mandate Approach</button>
   </div>
 </div>
 
 <!-- ═══════════ ABOUT TAB ═══════════ -->
 <div id="tab-about" class="tab-content active">
 
-  <!-- Photo + bio -->
   <div class="about-top">
     <div class="about-photo-wrap">
       <img src="photo.png" alt="Randy Jameson" class="about-photo">
@@ -574,37 +434,55 @@
     <div class="about-top-text">
       <h2 class="section-title">About <em>Randy Jameson</em></h2>
       <div class="section-rule"></div>
-      <div class="about-lead">"Commercial performance doesn't fail suddenly. It erodes structurally. Strategy is usually sound. Effort is always high. But decision rights blur, pricing discipline weakens, and ownership becomes distributed instead of explicit."</div>
+      <div class="about-lead">"Commercial drift rarely shows up as a crisis. It shows up as performance that becomes harder to trust."</div>
       <div class="about-body">
         <p>I work with leadership teams when growth has outpaced structure and commercial execution has begun to drift. My role is to restore clarity early, re-establish ownership, and stabilize execution before performance failure sets in.</p>
-        <p>With more than 30 years of senior commercial leadership across A.P. Moller-Maersk, Safmarine, Panalpina, Inchcape Shipping Services, deugro, Logistec, and Wrist Ship Supply, I have led commercial transformations with direct P&L responsibility across complex maritime and logistics environments.</p>
-        <p>The common thread: restoring discipline, rebuilding structure, and stabilizing execution at scale.</p>
+        <p>30 years of senior commercial leadership across A.P. Moller-Maersk, Safmarine, Panalpina, Inchcape Shipping Services, deugro, Logistec, and Wrist Ship Supply — leading transformations with full P&L responsibility across global freight forwarding, liner shipping, supply chain, and maritime services.</p>
+        <p>The common thread: restoring discipline, rebuilding structure, and stabilizing execution at scale. Engagements require mandate clarity and defined outcomes.</p>
       </div>
     </div>
   </div>
 
-  <!-- What is breaking -->
+  <!-- Why CEOs Bring Me In -->
   <div class="block">
-    <div class="label">Where Performance Starts to Drift</div>
-    <div class="statement-bar">
-      <p>Most teams know what is happening. They do not correct it. Not because they lack capability. Because correcting it requires decisions they avoid. <strong>The cycle continues.</strong></p>
-    </div>
+    <div class="label">Why CEOs Bring Me In</div>
     <div class="card-grid">
       <div class="card">
-        <h3>The signals</h3>
         <ul>
-          <li>Pricing becomes situational</li>
-          <li>Exceptions become the standard</li>
-          <li>Decision rights shift without definition</li>
-          <li>Forecasts lose credibility</li>
-          <li>Sales and operations operate on different assumptions</li>
+          <li>Commercial performance has become harder to trust</li>
+          <li>Pricing discipline has weakened and ownership is unclear</li>
+          <li>Forecasts no longer reflect operational reality</li>
         </ul>
       </div>
       <div class="card">
-        <h3>The root cause</h3>
-        <p>Ownership must be clarified. Decision rights must be enforced. Pricing authority must be restricted.</p>
-        <p>That creates friction. So the organisation adjusts around the problem instead. Process increases. Oversight expands. The system remains unchanged.</p>
-        <p><strong>This is not a sales problem. It is a control problem.</strong></p>
+        <ul>
+          <li>Revenue is growing but margin is not following</li>
+          <li>A leadership transition has left commercial ownership undefined</li>
+          <li>The team is working hard but outcomes are harder to predict</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who I Work With -->
+  <div class="block">
+    <div class="label">Who I Work With</div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Privately held maritime and logistics operators</strong>Revenue between $50M and $300M where growth has outpaced commercial structure.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>PE-backed operators post-acquisition</strong>Commercial ownership is undefined and execution discipline needs to be reset quickly.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Family-owned businesses under growth pressure</strong>Informal commercial structures that worked at smaller scale are breaking under expansion.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Operators entering new geographies</strong>US market entry or regional expansion without a commercial architecture to support it.</p>
       </div>
     </div>
   </div>
@@ -628,6 +506,12 @@
     </div>
   </div>
 
+  <!-- Mid-page CTA -->
+  <div class="cta-bar">
+    <p>"If any of this describes your situation, a 30-minute conversation is the right first step."</p>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a Diagnostic Call</a>
+  </div>
+
 </div>
 
 <!-- ═══════════ SERVICES TAB ═══════════ -->
@@ -636,7 +520,39 @@
   <h2 class="section-title">Mandate-Led <em>Commercial Intervention</em></h2>
   <div class="section-rule"></div>
 
-  <p class="services-intro" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
+
+  <!-- Where drift starts -->
+  <div class="block">
+    <div class="label">Where Performance Starts to Drift</div>
+    <div class="statement-bar">
+      <p>Most teams know what is happening. They do not correct it. Not because they lack capability — because correcting it requires decisions they avoid. <strong>The cycle continues.</strong></p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>The signals</h3>
+        <ul>
+          <li>Pricing becomes reactive — exceptions multiply, margins drift</li>
+          <li>Forecasting loses credibility — optimism replaces pipeline fact</li>
+          <li>Ownership blurs across functions — handoffs break, escalations rise</li>
+          <li>Execution becomes inconsistent — performance varies by person, not system</li>
+          <li>Decisions stall without clear authority — teams wait rather than act</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The root cause</h3>
+        <p>The underlying cause is always the same: ambiguity in mandate, ownership, and decision rights.</p>
+        <p>When structure is unclear, the commercial engine cannot absorb volatility. Effort increases. Predictability decreases. Drift becomes the operating norm.</p>
+        <p><strong>This is not a sales problem. It is a control problem.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mid-page CTA -->
+  <div class="cta-bar">
+    <p>"Recognise these patterns? A 30-minute diagnostic call will tell you whether mandate-led intervention is the right response."</p>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a Diagnostic Call</a>
+  </div>
 
   <!-- Engagement types -->
   <div class="block">
@@ -653,34 +569,6 @@
         <h3>Advisory Engagements</h3>
         <div class="card-tag">Structural Diagnosis</div>
         <p>I work with CEOs, boards, and senior commercial leaders to diagnose execution breakdowns, pressure-test decisions, identify early signs of drift, and strengthen execution before performance failure sets in.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Focus areas -->
-  <div class="block">
-    <div class="label">Focus Areas</div>
-    <div class="statement-bar">
-      <p>Restore control. Stabilize performance. <strong>Make outcomes predictable again.</strong></p>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <ul>
-          <li>Pricing discipline and governance</li>
-          <li>Ownership clarity across commercial flows</li>
-          <li>Forecast credibility and execution rhythm</li>
-          <li>Alignment between sales, operations, and finance</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>When to engage</h3>
-        <ul>
-          <li>Performance is holding but harder to explain</li>
-          <li>Margin moves without a clear cause</li>
-          <li>Forecasts are consistently missed</li>
-          <li>Pricing discipline varies across teams</li>
-          <li>Growth continues, but control does not</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -713,28 +601,40 @@
     </div>
   </div>
 
+  <!-- First 30 Days -->
+  <div class="block">
+    <div class="label">What You Can Expect in the First 30 Days</div>
+    <ul class="days-list">
+      <li>Structural diagnostic across pricing, ownership, and decision rights</li>
+      <li>Pricing governance assessment — where discipline has weakened and why</li>
+      <li>Forecast credibility review — gap between pipeline fact and leadership assumptions</li>
+      <li>Ownership and decision-rights mapping across commercial functions</li>
+      <li>Immediate stabilization actions — no waiting for a final report</li>
+    </ul>
+  </div>
+
   <!-- Case outcomes -->
   <div class="block">
     <div class="label">Selected Mandate Outcomes</div>
     <div class="cases-grid">
       <div class="case-card">
         <h3>West Africa — Commercial Reset</h3>
-        <p>Ownership restructured across five countries</p>
-        <p>Pricing authority re-established</p>
-        <p>Cargo volume increased 232%</p>
+        <p>Third-party representation replaced, customer ownership reclaimed</p>
+        <p>Pricing authority centralized, execution reconnected across the network</p>
+        <p>Cargo volume increased 234% over the full engagement</p>
         <div class="impact">Revenue impact: $84M</div>
       </div>
       <div class="case-card">
         <h3>India — Execution Stabilization</h3>
-        <p>Fragmented commercial model aligned</p>
-        <p>Pricing and capacity governance enforced</p>
-        <p>New customer segments activated</p>
+        <p>Decision rights reset across pricing, customer selection, and capacity</p>
+        <p>Sales aligned to asset-backed demand, push-pull model implemented</p>
+        <p>Pricing stabilized, growth became predictable</p>
         <div class="impact">Revenue impact: ~$60M</div>
       </div>
       <div class="case-card">
         <h3>Global Maritime — P&amp;L Recovery</h3>
-        <p>Commercial discipline restored across regions</p>
-        <p>Execution stabilized under pressure</p>
+        <p>Regional commercial leadership established with defined authority</p>
+        <p>Sales and operations unified under a single commercial system</p>
         <div class="impact">Delivered $32M P&amp;L</div>
       </div>
     </div>
@@ -754,7 +654,16 @@
       <p class="contact-body">If you are working through a commercial execution challenge and want to explore whether a mandate-led engagement is the right response, I am glad to have a direct conversation. No obligation — just a frank exchange about what you are seeing and whether there is a fit.</p>
 
       <div class="contact-links">
-        <a href="#" onclick="window.location='mail'+'to:'+ 'randy'+ '@'+'jclleadership.com'; return false;" class="contact-link">
+        <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="contact-link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          </div>
+          <div>
+            <div class="link-label">Book a Call</div>
+            <div class="link-value">30-Minute Diagnostic Call — Calendly</div>
+          </div>
+        </a>
+        <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
           <div class="link-icon">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </div>
@@ -775,7 +684,7 @@
       </div>
 
       <div style="margin-top:1.5rem;">
-        <a href="#" onclick="window.location='mail'+'to:'+ 'randy'+ '@'+'jclleadership.com'; return false;" class="btn-primary">Request a Conversation</a>
+        <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Diagnostic Call</a>
       </div>
     </div>
 
@@ -790,34 +699,34 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
-  <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
+  <div class="footer-cta">
+    <p>"The right first step is a 30-minute conversation."</p>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a Diagnostic Call</a>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
+    <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
+  </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function showTab(tab, btn) {
-
-  // Hide all tabs
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-
-  // Show selected tab
+  document.querySelectorAll('.tab-content').forEach(function(t) {
+    t.classList.remove('active');
+  });
   document.getElementById('tab-' + tab).classList.add('active');
-
-  // Reset nav buttons
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-
-  // Activate correct nav button
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
   if (btn) {
     btn.classList.add('active');
   } else {
-    document.querySelectorAll('.nav-btn').forEach(b => {
-      if (b.innerText.toLowerCase().includes(tab)) {
+    document.querySelectorAll('.nav-btn').forEach(function(b) {
+      if (b.innerText.toLowerCase().indexOf(tab) !== -1) {
         b.classList.add('active');
       }
     });
   }
-
-  // Show/hide hero
   var hero = document.getElementById('hero');
   hero.style.display = (tab === 'about') ? 'block' : 'none';
 }
