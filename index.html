@@ -1,291 +1,752 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jameson Commercial Leadership</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Restoring commercial discipline for privately held maritime and logistics operators.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jameson Commercial Leadership</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0d1b2a;
+    --navy-mid:   #1a2e42;
+    --navy-light: #243d56;
+    --gold:       #c9a84c;
+    --gold-light: #e0c070;
+    --off-white:  #f5f0e8;
+    --text-light: #cdd5de;
+    --text-muted: #7a8fa0;
+    --rule:       rgba(201,168,76,0.3);
+  }
 
-  <style>
-    :root {
-      --navy: #0B2A44;
-      --gold: #D4AF37;
-      --white: #FFFFFF;
-      --light-navy: #123556;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-    * {
-      box-sizing: border-box;
-    }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--navy);
+    color: var(--off-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      color: var(--white);
-      background: var(--navy);
-    }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
 
-    header, footer {
-      padding: 1rem 2rem;
-      background: var(--navy);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-    }
+  /* HEADER */
+  header {
+    position: relative; z-index: 10;
+    padding: 1.6rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+  .logo-img { height: 75px; width: auto; display: block; max-width: 100%; }
 
-    .logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
+  .header-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 
-    header nav a, footer a {
-      color: var(--white);
-      margin-left: 1rem;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
+  nav { display: flex; flex-wrap: wrap; gap: 4px; }
 
-    header nav a.cta, .cta-footer, .btn-primary, .btn-secondary {
-      background: var(--gold);
-      color: var(--navy);
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      font-weight: 500;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-    }
+  .nav-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.5rem 1.4rem;
+    white-space: nowrap;
+    position: relative; transition: color 0.3s;
+  }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
+  .nav-btn::after {
+    content: '';
+    position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%; height: 2px;
+    background: var(--gold);
+    transition: transform 0.3s;
+  }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1rem 4rem;
-    }
+  .nav-btn:hover { color: var(--off-white); }
+  .nav-btn.active { color: var(--gold); }
+  .nav-btn.active::after { transform: translateX(-50%) scaleX(1); }
 
-    section {
-      margin-bottom: 2.5rem;
-    }
+  /* CORNER ACCENTS */
+  .corner-tr {
+    position: fixed; top: 1.5rem; right: 1.5rem;
+    width: 70px; height: 70px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-right: 1px solid rgba(201,168,76,0.2);
+    pointer-events: none; z-index: 2;
+  }
+  .corner-bl {
+    position: fixed; bottom: 1.5rem; left: 1.5rem;
+    width: 70px; height: 70px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-left: 1px solid rgba(201,168,76,0.2);
+    pointer-events: none; z-index: 2;
+  }
 
-    .hero {
-      padding: 2rem 1.5rem;
-      background: var(--light-navy);
-      border-radius: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-    }
+  /* HERO */
+  .hero {
+    position: relative; z-index: 5;
+    padding: 4rem 4rem 3rem;
+    display: flex; align-items: center;
+    gap: 4rem;
+    border-bottom: 1px solid var(--rule);
+    animation: fadeUp 0.9s ease both;
+  }
 
-    .hero-text {
-      flex: 1 1 320px;
-      min-width: 280px;
-    }
+  .hero-text { flex: 1; }
 
-    .hero-image {
-      flex: 0 0 280px;
-      max-width: 320px;
-    }
+  .hero-eyebrow {
+    font-size: 0.63rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.2rem; font-weight: 400;
+  }
 
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 0.75rem;
-      object-fit: cover;
-      border: 1px solid rgba(212, 175, 55, 0.5);
-    }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-weight: 300; line-height: 1.12;
+    color: var(--off-white); margin-bottom: 1.4rem;
+  }
 
-    h1, h2, h3 {
-      color: var(--white);
-      margin-top: 0;
-    }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
 
-    h1 {
-      font-size: 1.9rem;
-      margin-bottom: 0.75rem;
-    }
+  .hero p {
+    font-size: 0.98rem; line-height: 1.75;
+    color: var(--text-light); font-weight: 300;
+    max-width: 520px; margin-bottom: 0.8rem;
+  }
 
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
+  .hero-ctas { display: flex; gap: 1rem; margin-top: 1.8rem; flex-wrap: wrap; }
 
-    h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.35rem;
-      color: var(--gold);
-    }
+  .hero-photo-wrap {
+    flex-shrink: 0;
+    width: 300px;
+    position: relative;
+  }
 
-    p {
-      margin-top: 0.25rem;
-      margin-bottom: 0.75rem;
-      color: #E5E7EB;
-    }
+  .hero-photo {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
 
-    ul, ol {
-      padding-left: 1.25rem;
-      margin-top: 0.25rem;
-      margin-bottom: 0.75rem;
-      color: #E5E7EB;
-    }
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute; bottom: -8px; right: -8px;
+    width: 60px; height: 60px;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    pointer-events: none;
+  }
 
-    li + li {
-      margin-top: 0.15rem;
-    }
+  /* BUTTONS */
+  .btn-primary {
+    display: inline-block; padding: 0.75rem 2rem;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.25s; white-space: nowrap;
+    border-radius: 2px;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
 
-    blockquote {
-      border-left: 4px solid var(--gold);
-      padding-left: 1rem;
-      margin-left: 0;
-      color: #E5E7EB;
-    }
+  .btn-ghost {
+    display: inline-block; padding: 0.75rem 2rem;
+    background: transparent; color: var(--text-light);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.68rem; font-weight: 400;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.35); cursor: pointer;
+    transition: border-color 0.25s, color 0.25s; white-space: nowrap;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
 
-    .quote-source {
-      font-size: 0.9rem;
-      color: #9CA3AF;
-      margin-top: 0.25rem;
-    }
+  /* TAB PANELS */
+  .tab-content {
+    display: none; position: relative; z-index: 5;
+    padding: 0 4rem 5rem;
+    animation: fadeUp 0.55s ease both;
+  }
+  .tab-content.active { display: block; }
 
-    a {
-      color: var(--gold);
-    }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  /* SHARED */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300;
+    color: var(--off-white); line-height: 1.2; margin-bottom: 0.4rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+  .section-rule { width: 36px; height: 1px; background: var(--gold); margin: 0.7rem 0 2.2rem; }
 
-    nav a.active {
-      text-decoration: underline;
-      text-decoration-color: var(--gold);
-      text-underline-offset: 4px;
-    }
+  .label {
+    font-size: 0.6rem; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 500; margin-bottom: 1rem;
+  }
+  .block { margin-bottom: 3rem; }
 
-    .divider {
-      height: 1px;
-      background: rgba(212, 175, 55, 0.35);
-      margin: 3rem 0 2.5rem;
-    }
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
 
-    article {
-      margin-bottom: 1.5rem;
-      padding: 1rem 1rem 0.75rem;
-      background: rgba(0, 0, 0, 0.15);
-      border-radius: 0.5rem;
-      border: 1px solid rgba(212, 175, 55, 0.25);
-    }
+  .card {
+    background: var(--navy-mid); padding: 2rem 2.2rem; position: relative;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
+    background: var(--gold); opacity: 0.35;
+  }
+  .card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400;
+    color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.25;
+  }
+  .card p { font-size: 0.875rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; margin-bottom: 0.6rem; }
+  .card p:last-child { margin-bottom: 0; }
+  .card p strong { color: var(--off-white); font-weight: 500; }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li {
+    font-size: 0.875rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;
+    padding: 0.35rem 0; border-bottom: 1px solid rgba(201,168,76,0.08);
+    display: flex; gap: 0.7rem; align-items: flex-start;
+  }
+  .card ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.72rem; margin-top: 0.1rem; }
+  .card ul li:last-child { border-bottom: none; }
+  .card-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300;
+    color: rgba(201,168,76,0.1); position: absolute; top: 0.8rem; right: 1.2rem; line-height: 1;
+  }
+  .card-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; font-weight: 500; }
 
-    footer {
-      border-top: 1px solid rgba(212, 175, 55, 0.35);
-      border-bottom: none;
-    }
+  /* STATEMENT BAR */
+  .statement-bar {
+    background: var(--navy-mid); border-left: 2px solid var(--gold);
+    padding: 1.4rem 2rem; margin-bottom: 3rem;
+  }
+  .statement-bar p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    font-style: italic; color: var(--off-white); line-height: 1.6;
+  }
+  .statement-bar p strong { font-style: normal; color: var(--gold-light); }
 
-    footer p {
-      margin: 0;
-      color: #E5E7EB;
-    }
+  /* ABOUT PHOTO */
+  .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
+  .about-photo-wrap { position: relative; flex-shrink: 0; }
+  .about-photo {
+    width: 205px; height: 265px; object-fit: cover;
+    object-position: center top; display: block; position: relative; z-index: 1;
+  }
+  .about-photo-wrap::before {
+    content: ''; position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
+    border: 1px solid rgba(201,168,76,0.35); pointer-events: none; z-index: 0;
+  }
+  .about-photo-wrap::after {
+    content: ''; position: absolute; bottom: -8px; right: -8px;
+    width: 56px; height: 56px;
+    border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
+    pointer-events: none;
+  }
+  .about-top-text { flex: 1; }
+  .about-lead {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300;
+    line-height: 1.6; color: var(--off-white); font-style: italic; margin-bottom: 1.4rem;
+  }
+  .about-body p { font-size: 0.9rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 0.9rem; }
 
-    @media (max-width: 768px) {
-      header, footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
+  /* PRINCIPLES */
+  .principles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 0.5rem; }
+  .principle { padding: 1.1rem 1.3rem; border: 1px solid rgba(201,168,76,0.15); position: relative; }
+  .principle::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
+    background: var(--gold); opacity: 0.4;
+  }
+  .principle .p-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; font-weight: 500; }
+  .principle p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
 
-      header nav a {
-        margin-left: 0.5rem;
-      }
+  /* WHO WE WORK WITH */
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .who-card { background: var(--navy-mid); padding: 1.8rem 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .who-card .who-icon { color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; }
+  .who-card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+  .who-card p strong { color: var(--off-white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
 
-      .hero {
-        padding: 1.5rem 1.25rem;
-      }
+  /* CASES */
+  .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
+  .case-card { background: var(--navy-mid); padding: 2rem; border-top: 2px solid var(--gold); }
+  .case-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 1rem; line-height: 1.3; }
+  .case-card p { font-size: 0.84rem; line-height: 1.65; color: var(--text-muted); font-weight: 300; margin-bottom: 0.45rem; }
+  .case-card .impact { font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
 
-      .hero-image {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
-  </style>
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 2rem; }
+  .step { background: var(--navy-mid); padding: 1.8rem 2rem; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 0.6rem; }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.3rem; }
+  .step .duration { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; font-weight: 500; }
+  .step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+  /* FIRST 30 DAYS */
+  .days-list { list-style: none; padding: 0; border-top: 1px solid var(--rule); margin-bottom: 3rem; }
+  .days-list li {
+    font-size: 0.93rem; font-weight: 300; color: var(--text-light); line-height: 1.6;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .days-list li::before { content: ''; display: block; width: 5px; height: 5px; background: var(--gold); flex-shrink: 0; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid rgba(201,168,76,0.3); }
+  .testimonial-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem;
+  }
+  .testimonial-card cite {
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    font-style: normal; font-weight: 500;
+  }
+
+  /* CONTACT */
+  .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .contact-statement { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.55; color: var(--off-white); margin-bottom: 1.4rem; }
+  .contact-statement em { font-style: italic; color: var(--gold-light); }
+  .contact-body { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); font-weight: 300; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1px; margin-bottom: 1.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem;
+    background: var(--navy-mid); text-decoration: none; color: var(--off-white);
+    transition: background 0.25s, color 0.25s;
+  }
+  .contact-link:hover { background: var(--navy-light); color: var(--gold-light); }
+  .link-icon { width: 34px; height: 34px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .link-icon svg { width: 15px; height: 15px; fill: var(--gold); }
+  .link-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem; }
+  .link-value { font-size: 0.88rem; font-weight: 400; }
+  .contact-note { background: var(--navy-mid); border-top: 2px solid var(--gold); padding: 1.8rem 2rem; }
+  .contact-note .note-label { font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+  .contact-note p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--text-light); line-height: 1.65; }
+
+  /* FOOTER */
+  footer { position: relative; z-index: 5; padding: 0; border-top: 1px solid var(--rule); }
+  .footer-cta {
+    background: var(--navy-mid); padding: 2.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .footer-cta p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--off-white); }
+  .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; }
+  .f-brand { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+  .f-location { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    header { padding: 1.4rem 2rem; }
+    .hero { padding: 3rem 2rem 2.5rem; flex-direction: column; gap: 2.5rem; }
+    .hero-photo-wrap { width: 100%; }
+    .hero-photo { height: 280px; object-position: center 20%; }
+    .tab-content { padding: 0 2rem 4rem; }
+    .about-top { flex-direction: column; gap: 2rem; }
+    .about-photo { width: 100%; height: 240px; object-position: center 20%; }
+    .card-grid, .who-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .three-col, .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-cta, .footer-bottom { padding: 1.5rem 2rem; }
+    .corner-tr, .corner-bl { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 1rem 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .header-right { width: 100%; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .logo-img { height: 54px; }
+    nav { width: 100%; }
+    .nav-btn { padding: 0.4rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.14em; }
+    .hero { padding: 2rem 1.2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .tab-content { padding: 0 1.2rem 3rem; }
+    .hero-ctas { flex-direction: column; }
+    .footer-cta { flex-direction: column; }
+    .footer-bottom { flex-direction: column; gap: 0.3rem; padding: 1rem 1.2rem; }
+  }
+</style>
 </head>
-
 <body>
 
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+
+<!-- HEADER -->
 <header>
-  <div class="logo">
-    <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership Logo">
+  <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img">
+  <div class="header-right">
+    <nav>
+      <button class="nav-btn active" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn" onclick="showTab('about', this)">About</button>
+      <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
+    </nav>
   </div>
-  <nav>
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#engagements">Engagements</a>
-    <a href="#insights">Insights</a>
-    <a href="#contact" class="cta">Book a 30-Minute Call</a>
-  </nav>
 </header>
 
-<main>
-
-<section id="home" class="hero">
+<!-- HERO -->
+<div id="hero" class="hero">
   <div class="hero-text">
-    <h1>When Commercial Performance Becomes Harder to Trust</h1>
+    <div class="hero-eyebrow">Fractional CRO &nbsp;|&nbsp; Maritime &amp; Logistics &nbsp;|&nbsp; United States</div>
+    <h1>When Commercial Performance<br>Becomes <em>Harder to Trust</em></h1>
     <p>Commercial performance does not fail suddenly. It drifts. When growth outpaces structure, execution breaks quietly. Pricing becomes reactive. Forecasts stop being trusted. Control is lost before it is noticed.</p>
     <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
-    <a href="#contact" class="btn-primary">Book a 30-Minute Call</a>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
+      <button class="btn-ghost" onclick="showTab('services', document.querySelectorAll('.nav-btn')[0])">View Our Services</button>
+    </div>
   </div>
-  <div class="hero-image">
-    <img src="photo.png" alt="Randy Jameson at a maritime terminal">
+  <div class="hero-photo-wrap">
+    <img src="photo.png" alt="Randy Jameson" class="hero-photo">
   </div>
-</section>
+</div>
 
-<section>
-  <h2>Where Performance Starts to Drift</h2>
-  <ul>
-    <li>Pricing becomes situational</li>
-    <li>Forecasts no longer reflect operational reality</li>
-    <li>Sales and delivery operate from different assumptions</li>
-    <li>Ownership is implied, not explicit</li>
-    <li>Leadership is forced into late-stage intervention</li>
-  </ul>
-  <p>These are structural issues — not effort issues.</p>
-  <a href="#contact" class="btn-secondary">Schedule a 30-Minute Diagnostic Call</a>
-</section>
+<!-- ═══════════ OUR SERVICES TAB ═══════════ -->
+<div id="tab-services" class="tab-content active">
 
-<section>
-  <h2>Who I Work With</h2>
-  <p>Privately held maritime &amp; logistics operators where:</p>
-  <ul>
-    <li>Revenue is <strong>$50M–$300M</strong></li>
-    <li>Growth has outpaced commercial structure</li>
-    <li>Pricing discipline has weakened</li>
-    <li>Forecasts are no longer trusted</li>
-    <li>Leadership needs clarity, not more effort</li>
-  </ul>
-  <p>Also:</p>
-  <ul>
-    <li>PE-backed operators post-acquisition needing rapid commercial stabilization</li>
-    <li>Family-owned operators scaling beyond informal structures</li>
-    <li>Operators entering new geographies without a commercial architecture to support it</li>
-  </ul>
-</section>
+  <h2 class="section-title">Mandate-Led <em>Commercial Intervention</em></h2>
+  <div class="section-rule"></div>
 
-<div class="divider"></div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
 
-<section id="engagements">
-  <h2>How Engagements Work</h2>
-  <ol>
-    <li><strong>Diagnose</strong> — Structural assessment of pricing, ownership, forecasting, and execution.</li>
-    <li><strong>Stabilize</strong>
+  <!-- Where drift starts -->
+  <div class="block">
+    <div class="label">Where Performance Starts to Drift</div>
+    <div class="statement-bar">
+      <p>Most teams know what is happening. They do not correct it. Not because they lack capability — because correcting it requires decisions they avoid. <strong>The cycle continues.</strong></p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>The signals</h3>
+        <ul>
+          <li>Pricing becomes reactive — exceptions multiply, margins drift</li>
+          <li>Forecasting loses credibility — optimism replaces pipeline fact</li>
+          <li>Ownership blurs across functions — handoffs break, escalations rise</li>
+          <li>Execution becomes inconsistent — performance varies by person, not system</li>
+          <li>Decisions stall without clear authority — teams wait rather than act</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The root cause</h3>
+        <p>The underlying cause is always the same: ambiguity in mandate, ownership, and decision rights.</p>
+        <p>When structure is unclear, the commercial engine cannot absorb volatility. Effort increases. Predictability decreases. Drift becomes the operating norm.</p>
+        <p><strong>This is not a sales problem. It is a control problem.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How JCL engages -->
+  <div class="block">
+    <div class="label">How JCL Engages</div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-num">01</span>
+        <h3>Mandate-Led Engagements</h3>
+        <div class="card-tag">Fractional or Interim</div>
+        <p>JCL steps in with explicit decision rights to reset the commercial engine, enforce pricing discipline, align sales and operations, rebuild forecasting credibility, and install a sustainable operating model for permanent leadership.</p>
+      </div>
+      <div class="card">
+        <span class="card-num">02</span>
+        <h3>Advisory Engagements</h3>
+        <div class="card-tag">Structural Diagnosis</div>
+        <p>JCL works with CEOs, boards, and senior commercial leaders to diagnose execution breakdowns, pressure-test decisions, identify early signs of drift, and strengthen execution before performance failure sets in.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Focus areas -->
+  <div class="block">
+    <div class="label">Focus Areas</div>
+    <div class="statement-bar">
+      <p>Restore control. Stabilize performance. <strong>Make outcomes predictable again.</strong></p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <ul>
+          <li>Pricing discipline and governance</li>
+          <li>Ownership clarity across commercial flows</li>
+          <li>Forecast credibility and execution rhythm</li>
+          <li>Alignment between sales, operations, and finance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>When to engage</h3>
+        <ul>
+          <li>Performance is holding but harder to explain</li>
+          <li>Margin moves without a clear cause</li>
+          <li>Forecasts are consistently missed</li>
+          <li>Pricing discipline varies across teams</li>
+          <li>Growth continues, but control does not</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engagement model -->
+  <div class="block">
+    <div class="label">Engagement Model</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="duration">30 – 45 Days</div>
+        <h3>Diagnose</h3>
+        <p>Identify where control has been lost. Map structural breakdowns across pricing, ownership, and decision rights.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="duration">60 – 120 Days</div>
+        <h3>Stabilize</h3>
+        <p>Reassign decision rights, enforce pricing discipline, and align sales and operations to a single operating model.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="duration">30 – 60 Days</div>
+        <h3>Reset</h3>
+        <p>Restore execution rhythm and forecast credibility. Hand off a stable, accountable model to permanent leadership.</p>
+      </div>
+    </div>
+    <div class="statement-bar" style="margin-top:2px;margin-bottom:0;">
+      <p><strong>Authority is explicit. Outcomes are defined upfront.</strong></p>
+    </div>
+  </div>
+
+  <!-- First 30 Days -->
+  <div class="block">
+    <div class="label">What You Can Expect in the First 30 Days</div>
+    <ul class="days-list">
+      <li>Structural diagnostic across pricing, ownership, and decision rights</li>
+      <li>Pricing governance assessment — where discipline has weakened and why</li>
+      <li>Forecast credibility review — gap between pipeline fact and leadership assumptions</li>
+      <li>Ownership and decision-rights mapping across commercial functions</li>
+      <li>Immediate stabilization actions — no waiting for a final report</li>
+    </ul>
+  </div>
+
+  <!-- Case outcomes -->
+  <div class="block">
+    <div class="label">Selected Mandate Outcomes</div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <h3>West Africa — Commercial Reset</h3>
+        <p>Third-party representation replaced, customer ownership reclaimed</p>
+        <p>Pricing authority centralized, execution reconnected across the network</p>
+        <p>Cargo volume increased 234% over the full engagement</p>
+        <div class="impact">Revenue impact: $84M</div>
+      </div>
+      <div class="case-card">
+        <h3>India — Execution Stabilization</h3>
+        <p>Decision rights reset across pricing, customer selection, and capacity</p>
+        <p>Sales aligned to asset-backed demand, push-pull model implemented</p>
+        <p>Pricing stabilized, growth became predictable</p>
+        <div class="impact">Revenue impact: ~$60M</div>
+      </div>
+      <div class="case-card">
+        <h3>Global Maritime — P&amp;L Recovery</h3>
+        <p>Regional commercial leadership established with defined authority</p>
+        <p>Sales and operations unified under a single commercial system</p>
+        <div class="impact">Delivered $32M P&amp;L</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="block">
+    <div class="label">What Leaders Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <blockquote>"Randy is a seasoned, analytical global leader with the rare ability to bring structure, clarity, and commercial discipline to complex environments. He gets things done. Any company that hires him as a leader would be fortunate to have him onboard."</blockquote>
+        <cite>Managing Director, Global Shipping &amp; Supply Chain</cite>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"Randy is an exceptionally disciplined commercial leader. His communication, structure, and hands-on execution consistently elevated our joint results. Under his direction, we strengthened alignment, increased volume, and delivered meaningful commercial growth. Any organisation would benefit from his leadership."</blockquote>
+        <cite>Branch Manager, Global Freight &amp; Logistics</cite>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ ABOUT TAB ═══════════ -->
+<div id="tab-about" class="tab-content">
+
+  <div class="about-top">
+    <div class="about-photo-wrap">
+      <img src="photo_about.png" alt="Randy Jameson" class="about-photo">
+    </div>
+    <div class="about-top-text">
+      <h2 class="section-title">About <em>Randy Jameson</em></h2>
+      <div class="section-rule"></div>
+      <div class="about-lead">"Commercial drift rarely shows up as a crisis. It shows up as performance that becomes harder to trust."</div>
+      <div class="about-body">
+        <p>I work with CEOs and owners when the commercial engine is no longer producing the predictability, margin discipline, or new business momentum the business once relied on. My role is operational, not advisory. I step inside the business, diagnose the drift, rebuild commercial discipline, and — as trust builds — assume the level of authority required to restore control and stabilize performance.</p>
+        <p>Across 30 years of senior commercial leadership in maritime and logistics, I have led commercial transformations with full P&L responsibility across global freight forwarding, liner shipping, supply chain solutions, and maritime services.</p>
+        <p>The common thread: restoring discipline, rebuilding structure, and stabilizing execution at scale. Engagements require mandate clarity and defined outcomes. That is where I operate best.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why CEOs Bring JCL In -->
+  <div class="block">
+    <div class="label">Why CEOs Bring JCL In</div>
+    <div class="card-grid">
+      <div class="card">
+        <ul>
+          <li>Commercial performance has become harder to trust</li>
+          <li>Pricing discipline has weakened and ownership is unclear</li>
+          <li>Forecasts no longer reflect operational reality</li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Revenue is growing but margin is not following</li>
+          <li>A leadership transition has left commercial ownership undefined</li>
+          <li>The team is working hard but outcomes are harder to predict</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who We Work With -->
+  <div class="block">
+    <div class="label">Who We Work With</div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Privately held maritime and logistics operators</strong>Revenue between $50M and $300M where growth has outpaced commercial structure.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>PE-backed operators post-acquisition</strong>Commercial ownership is undefined and execution discipline needs to be reset quickly.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Family-owned businesses under growth pressure</strong>Informal commercial structures that worked at smaller scale are breaking under expansion.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">—</div>
+        <p><strong>Operators entering new geographies</strong>US market entry or regional expansion without a commercial architecture to support it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operating Principles -->
+  <div class="block">
+    <div class="label">Operating Principles</div>
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="p-title">Structural Diagnosis</div>
+        <p>Surface fixes do not resolve structural drift. Root causes are identified and addressed directly.</p>
+      </div>
+      <div class="principle">
+        <div class="p-title">Explicit Ownership</div>
+        <p>Assumed alignment is not alignment. Decision rights are clarified, not implied.</p>
+      </div>
+      <div class="principle">
+        <div class="p-title">Early Intervention</div>
+        <p>Drift is identified and addressed before it hardens into systemic failure.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ CONTACT TAB ═══════════ -->
+<div id="tab-contact" class="tab-content">
+
+  <h2 class="section-title">Start a <em>Direct Conversation</em></h2>
+  <div class="section-rule"></div>
+
+  <div class="contact-layout">
+    <div>
+      <p class="contact-statement">No preparation required.<br>No extended process.<br><em>A frank exchange about what you are seeing.</em></p>
+      <p class="contact-body">If you are working through a commercial execution challenge and want to explore whether a mandate-led engagement is the right response, we are glad to have a direct conversation. No obligation — just a frank exchange about what you are seeing and whether there is a fit.</p>
+
+      <div class="contact-links">
+        <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <div class="link-label">Email</div>
+            <div class="link-value">randy&#64;jclleadership&#46;com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </div>
+          <div>
+            <div class="link-label">LinkedIn</div>
+            <div class="link-value">Randy Jameson</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-note">
+      <div class="note-label">A Note on Fit</div>
+      <p>"JCL works with private and family-owned maritime, project logistics, and heavy lift operators where commercial architecture gaps are creating execution risk. If that describes your situation, we would like to hear about it."</p>
+      <p style="margin-top:1.2rem;font-style:normal;font-size:0.85rem;color:var(--text-muted);font-family:'Barlow',sans-serif;font-weight:300;">Randy Jameson &nbsp;|&nbsp; Principal Advisor, JCL &nbsp;|&nbsp; Houston, Texas</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cta">
+    <p>"The right first step is a 30-minute conversation."</p>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a Diagnostic Call</a>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
+    <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
+  </div>
+</footer>
+
+<script>
+function showTab(tab, btn) {
+  document.querySelectorAll('.tab-content').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.nav-btn').forEach(function(b) {
+      if (b.innerText.toLowerCase().indexOf(tab) !== -1) {
+        b.classList.add('active');
+      }
+    });
+  }
+  var hero = document.getElementById('hero');
+  hero.style.display = (tab === 'services') ? 'flex' : 'none';
+}
+</script>
+</body>
+</html>
