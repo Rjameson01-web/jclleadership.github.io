@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jameson Commercial Leadership</title>
+<title>Jameson Commercial Leadership | Fractional CRO | Maritime & Logistics</title>
+<meta name="description" content="Fractional CRO for maritime operators, logistics providers, 3PLs, freight forwarders, NVOCCs, and heavy-lift carriers. Restoring commercial discipline when growth has outpaced structure.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -46,9 +47,7 @@
   }
 
   .logo-img { height: 75px; width: auto; display: block; max-width: 100%; }
-
   .header-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-
   nav { display: flex; flex-wrap: wrap; gap: 4px; }
 
   .nav-btn {
@@ -118,26 +117,13 @@
 
   .hero h1 em { font-style: italic; color: var(--gold-light); }
 
-  .hero p {
-    font-size: 0.98rem; line-height: 1.75;
-    color: var(--text-light); font-weight: 300;
-    max-width: 520px; margin-bottom: 0.8rem;
-  }
-
-  .hero-ctas { display: flex; gap: 1rem; margin-top: 1.8rem; flex-wrap: wrap; }
-
   .hero-photo-wrap {
-    flex-shrink: 0;
-    width: 300px;
-    position: relative;
+    flex-shrink: 0; width: 300px; position: relative;
   }
 
   .hero-photo {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
+    width: 100%; height: 380px;
+    object-fit: cover; object-position: center top; display: block;
   }
 
   .hero-photo-wrap::before {
@@ -174,6 +160,8 @@
   }
   .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
 
+  .hero-ctas { display: flex; gap: 1rem; margin-top: 1.8rem; flex-wrap: wrap; }
+
   /* TAB PANELS */
   .tab-content {
     display: none; position: relative; z-index: 5;
@@ -195,98 +183,44 @@
   }
   .section-title em { font-style: italic; color: var(--gold-light); }
   .section-rule { width: 36px; height: 1px; background: var(--gold); margin: 0.7rem 0 2.2rem; }
-
-  .label {
-    font-size: 0.6rem; letter-spacing: 0.26em;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 500; margin-bottom: 1rem;
-  }
+  .label { font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
   .block { margin-bottom: 3rem; }
 
   /* CARDS */
   .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
 
-  .card {
-    background: var(--navy-mid); padding: 2rem 2.2rem; position: relative;
-  }
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
-    background: var(--gold); opacity: 0.35;
-  }
-  .card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem; font-weight: 400;
-    color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.25;
-  }
+  .card { background: var(--navy-mid); padding: 2rem 2.2rem; position: relative; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--gold); opacity: 0.35; }
+  .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.25; }
   .card p { font-size: 0.875rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; margin-bottom: 0.6rem; }
   .card p:last-child { margin-bottom: 0; }
   .card p strong { color: var(--off-white); font-weight: 500; }
   .card ul { list-style: none; padding: 0; }
-  .card ul li {
-    font-size: 0.875rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;
-    padding: 0.35rem 0; border-bottom: 1px solid rgba(201,168,76,0.08);
-    display: flex; gap: 0.7rem; align-items: flex-start;
-  }
+  .card ul li { font-size: 0.875rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; padding: 0.35rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); display: flex; gap: 0.7rem; align-items: flex-start; }
   .card ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.72rem; margin-top: 0.1rem; }
   .card ul li:last-child { border-bottom: none; }
-  .card-num {
-    font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300;
-    color: rgba(201,168,76,0.1); position: absolute; top: 0.8rem; right: 1.2rem; line-height: 1;
-  }
+  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: rgba(201,168,76,0.1); position: absolute; top: 0.8rem; right: 1.2rem; line-height: 1; }
   .card-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; font-weight: 500; }
 
   /* STATEMENT BAR */
-  .statement-bar {
-    background: var(--navy-mid); border-left: 2px solid var(--gold);
-    padding: 1.4rem 2rem; margin-bottom: 3rem;
-  }
-  .statement-bar p {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
-    font-style: italic; color: var(--off-white); line-height: 1.6;
-  }
+  .statement-bar { background: var(--navy-mid); border-left: 2px solid var(--gold); padding: 1.4rem 2rem; margin-bottom: 3rem; }
+  .statement-bar p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--off-white); line-height: 1.6; }
   .statement-bar p strong { font-style: normal; color: var(--gold-light); }
 
-  /* ABOUT PHOTO */
-  .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
-  .about-photo-wrap { position: relative; flex-shrink: 0; }
-  .about-photo {
-    width: 205px; height: 265px; object-fit: cover;
-    object-position: center top; display: block; position: relative; z-index: 1;
+  /* CASE PREVIEW */
+  .case-preview {
+    background: var(--navy-mid);
+    border-top: 2px solid var(--gold);
+    padding: 2rem 2.4rem;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
   }
-  .about-photo-wrap::before {
-    content: ''; position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px;
-    border: 1px solid rgba(201,168,76,0.35); pointer-events: none; z-index: 0;
-  }
-  .about-photo-wrap::after {
-    content: ''; position: absolute; bottom: -8px; right: -8px;
-    width: 56px; height: 56px;
-    border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
-    pointer-events: none;
-  }
-  .about-top-text { flex: 1; }
-  .about-lead {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300;
-    line-height: 1.6; color: var(--off-white); font-style: italic; margin-bottom: 1.4rem;
-  }
-  .about-body p { font-size: 0.9rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 0.9rem; }
-
-  /* PRINCIPLES */
-  .principles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 0.5rem; }
-  .principle { padding: 1.1rem 1.3rem; border: 1px solid rgba(201,168,76,0.15); position: relative; }
-  .principle::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
-    background: var(--gold); opacity: 0.4;
-  }
-  .principle .p-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; font-weight: 500; }
-  .principle p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
-
-  /* WHO WE WORK WITH */
-  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
-  .who-card { background: var(--navy-mid); padding: 1.8rem 2rem; display: flex; gap: 1rem; align-items: flex-start; }
-  .who-card .who-icon { color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; }
-  .who-card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
-  .who-card p strong { color: var(--off-white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+  .case-preview-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.6rem; }
+  .case-preview-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: 0.3rem; }
+  .case-preview-text .impact { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--gold-light); margin-top: 0.8rem; }
+  .case-preview-link { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-decoration: none; white-space: nowrap; font-weight: 500; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; cursor: pointer; background: none; border-left: none; border-right: none; border-top: none; font-family: 'Barlow', sans-serif; }
+  .case-preview-link:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
 
   /* CASES */
   .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
@@ -305,26 +239,38 @@
 
   /* FIRST 30 DAYS */
   .days-list { list-style: none; padding: 0; border-top: 1px solid var(--rule); margin-bottom: 3rem; }
-  .days-list li {
-    font-size: 0.93rem; font-weight: 300; color: var(--text-light); line-height: 1.6;
-    padding: 0.9rem 0; border-bottom: 1px solid var(--rule);
-    display: flex; gap: 1rem; align-items: center;
-  }
+  .days-list li { font-size: 0.93rem; font-weight: 300; color: var(--text-light); line-height: 1.6; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); display: flex; gap: 1rem; align-items: center; }
   .days-list li::before { content: ''; display: block; width: 5px; height: 5px; background: var(--gold); flex-shrink: 0; }
 
   /* TESTIMONIALS */
   .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
   .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid rgba(201,168,76,0.3); }
-  .testimonial-card blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem; font-style: italic;
-    color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem;
-  }
-  .testimonial-card cite {
-    font-size: 0.72rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--gold);
-    font-style: normal; font-weight: 500;
-  }
+  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem; }
+  .testimonial-card cite { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-style: normal; font-weight: 500; }
+
+  /* ABOUT */
+  .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
+  .about-photo-wrap { position: relative; flex-shrink: 0; }
+  .about-photo { width: 205px; height: 265px; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 1; }
+  .about-photo-wrap::before { content: ''; position: absolute; top: -8px; left: -8px; right: 8px; bottom: 8px; border: 1px solid rgba(201,168,76,0.35); pointer-events: none; z-index: 0; }
+  .about-photo-wrap::after { content: ''; position: absolute; bottom: -8px; right: -8px; width: 56px; height: 56px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); pointer-events: none; }
+  .about-top-text { flex: 1; }
+  .about-lead { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; line-height: 1.6; color: var(--off-white); font-style: italic; margin-bottom: 1.4rem; }
+  .about-body p { font-size: 0.9rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 0.9rem; }
+
+  /* PRINCIPLES */
+  .principles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 0.5rem; }
+  .principle { padding: 1.1rem 1.3rem; border: 1px solid rgba(201,168,76,0.15); position: relative; }
+  .principle::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--gold); opacity: 0.4; }
+  .principle .p-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; font-weight: 500; }
+  .principle p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+  /* WHO WE WORK WITH */
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .who-card { background: var(--navy-mid); padding: 1.8rem 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .who-card .who-icon { color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; }
+  .who-card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+  .who-card p strong { color: var(--off-white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
 
   /* CONTACT */
   .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
@@ -332,11 +278,7 @@
   .contact-statement em { font-style: italic; color: var(--gold-light); }
   .contact-body { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); font-weight: 300; margin-bottom: 2rem; }
   .contact-links { display: flex; flex-direction: column; gap: 1px; margin-bottom: 1.5rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem;
-    background: var(--navy-mid); text-decoration: none; color: var(--off-white);
-    transition: background 0.25s, color 0.25s;
-  }
+  .contact-link { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; background: var(--navy-mid); text-decoration: none; color: var(--off-white); transition: background 0.25s, color 0.25s; }
   .contact-link:hover { background: var(--navy-light); color: var(--gold-light); }
   .link-icon { width: 34px; height: 34px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .link-icon svg { width: 15px; height: 15px; fill: var(--gold); }
@@ -348,11 +290,7 @@
 
   /* FOOTER */
   footer { position: relative; z-index: 5; padding: 0; border-top: 1px solid var(--rule); }
-  .footer-cta {
-    background: var(--navy-mid); padding: 2.5rem 4rem;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 2rem; flex-wrap: wrap;
-  }
+  .footer-cta { background: var(--navy-mid); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .footer-cta p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--off-white); }
   .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; }
   .f-brand { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
@@ -368,10 +306,11 @@
     .about-top { flex-direction: column; gap: 2rem; }
     .about-photo { width: 100%; height: 240px; object-position: center 20%; }
     .card-grid, .who-grid, .testimonials-grid { grid-template-columns: 1fr; }
-    .three-col, .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
+    .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
     .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-cta, .footer-bottom { padding: 1.5rem 2rem; }
     .corner-tr, .corner-bl { display: none; }
+    .case-preview { flex-direction: column; align-items: flex-start; }
   }
 
   @media (max-width: 600px) {
@@ -400,6 +339,7 @@
   <div class="header-right">
     <nav>
       <button class="nav-btn active" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
     </nav>
@@ -409,13 +349,21 @@
 <!-- HERO -->
 <div id="hero" class="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow">Fractional CRO &nbsp;|&nbsp; Maritime &amp; Logistics &nbsp;|&nbsp; United States</div>
+    <div class="hero-eyebrow">Fractional CRO for Maritime &amp; Logistics Operators</div>
     <h1>When Commercial Performance<br>Becomes <em>Harder to Trust</em></h1>
-    <p>Commercial performance does not fail suddenly. It drifts. When growth outpaces structure, execution breaks quietly. Pricing becomes reactive. Forecasts stop being trusted. Control is lost before it is noticed.</p>
-    <p>I step in to reset control, restore pricing discipline, and stabilize performance.</p>
+    <p style="font-size:1rem;line-height:1.7;color:var(--text-light);font-weight:300;max-width:520px;margin-bottom:1.2rem;">Restoring commercial discipline, pricing control, and revenue predictability when growth has outpaced structure.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:1.4rem;max-width:520px;">
+      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Stabilize the commercial engine when pricing, forecasting, and customer management have slipped.</li>
+      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Rebuild sales, operations, and finance alignment so decisions, handoffs, and execution run on a single operating rhythm.</li>
+      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Restore predictable performance with a commercial model owners can trust and leadership can sustain.</li>
+    </ul>
+    <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:520px;margin-bottom:1rem;">I step in when maritime and logistics operators need senior commercial leadership without adding a full-time CRO. I rebuild the commercial model, install operating discipline, and run the commercial engine until performance is stable and leadership can sustain it.</p>
+    <p style="font-size:0.78rem;letter-spacing:0.08em;color:var(--text-muted);font-weight:400;font-style:italic;max-width:520px;margin-bottom:1.6rem;">Trusted by privately held maritime and logistics operators when commercial performance slips.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
+      <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[1])">See how the engagement works &rarr;</button>
     </div>
+    <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No retainers. No long-term contracts. Mandate-based execution.</p>
   </div>
   <div class="hero-photo-wrap">
     <img src="photo.png" alt="Randy Jameson" class="hero-photo">
@@ -456,7 +404,33 @@
     </div>
   </div>
 
-  <!-- How JCL engages -->
+  <!-- Case preview -->
+  <div class="block">
+    <div class="label">Mandate in Action</div>
+    <div class="case-preview">
+      <div class="case-preview-text">
+        <h3>Global Maritime — P&amp;L Recovery</h3>
+        <p>Regional commercial leadership established with defined authority.</p>
+        <p>Sales and operations unified under a single commercial system.</p>
+        <p>Execution stabilized under pressure across multiple locations.</p>
+        <div class="impact">Delivered $32M P&amp;L</div>
+      </div>
+      <button class="case-preview-link" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[1])">See all mandate outcomes &rarr;</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ HOW ENGAGEMENTS WORK TAB ═══════════ -->
+<div id="tab-engagement" class="tab-content">
+
+  <h2 class="section-title">How <em>Engagements Work</em></h2>
+  <div class="section-rule"></div>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:0.8rem;">This is the fractional CRO engagement path for maritime operators, logistics providers, 3PLs, project freight forwarders, NVOCCs, and specialized heavy-lift carriers when commercial performance breaks down.</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
+
+  <!-- Engagement types -->
   <div class="block">
     <div class="label">How JCL Engages</div>
     <div class="card-grid">
@@ -633,7 +607,7 @@
     <div class="who-grid">
       <div class="who-card">
         <div class="who-icon">—</div>
-        <p><strong>Privately held maritime and logistics operators</strong>Revenue between $50M and $300M where growth has outpaced commercial structure.</p>
+        <p><strong>Privately held maritime and logistics operators</strong>Freight forwarding, port services, terminals, and stevedoring businesses between $50M and $300M where growth has outpaced commercial structure.</p>
       </div>
       <div class="who-card">
         <div class="who-icon">—</div>
@@ -681,7 +655,6 @@
     <div>
       <p class="contact-statement">No preparation required.<br>No extended process.<br><em>A frank exchange about what you are seeing.</em></p>
       <p class="contact-body">If you are working through a commercial execution challenge and want to explore whether a mandate-led engagement is the right response, we are glad to have a direct conversation. No obligation — just a frank exchange about what you are seeing and whether there is a fit.</p>
-
       <div class="contact-links">
         <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
           <div class="link-icon">
@@ -703,7 +676,6 @@
         </a>
       </div>
     </div>
-
     <div class="contact-note">
       <div class="note-label">A Note on Fit</div>
       <p>"JCL works with private and family-owned maritime, project logistics, and heavy lift operators where commercial architecture gaps are creating execution risk. If that describes your situation, we would like to hear about it."</p>
