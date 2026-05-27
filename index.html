@@ -317,56 +317,44 @@
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-  .mobile-menu {
+}
+
+  /* DROPDOWN MENU */
+  .dd-wrapper {
+    position: relative;
+  }
+
+  .dropdown-menu {
     display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(13,27,42,0.97);
-    z-index: 99;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    animation: fadeUp 0.3s ease both;
-  }}
-
-  .mobile-menu.open { display: flex; }
-
-  .mobile-menu .close-btn {
     position: absolute;
-    top: 2rem; right: 2rem;
-    background: none; border: none;
-    cursor: pointer;
-    color: var(--gold);
-    font-size: 1.5rem;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-  }}
+    top: calc(100% + 12px);
+    right: 0;
+    min-width: 260px;
+    background: var(--navy-mid);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--gold);
+    z-index: 999;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    flex-direction: column;
+  }
 
-  .mobile-menu .menu-item {
+  .dropdown-menu.open { display: flex; }
+
+  .dd-item {
     background: none; border: none; cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 300;
-    color: var(--text-light);
-    padding: 0.8rem 2rem;
-    transition: color 0.25s;
-    text-align: center;
-    letter-spacing: 0.05em;
-  }}
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.72rem; font-weight: 400;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.9rem 1.5rem;
+    text-align: left;
+    transition: background 0.2s, color 0.2s;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
 
-  .mobile-menu .menu-item:hover { color: var(--gold-light); }
-  .mobile-menu .menu-item.active { color: var(--gold); }
-
-  .mobile-menu .menu-rule {
-    width: 40px; height: 1px;
-    background: var(--rule);
-    margin: 0.5rem 0;
-  }}
-
-  .mobile-menu .menu-cta {
-    margin-top: 1.5rem;
-  }}
+  .dd-item:last-of-type { border-bottom: none; }
+  .dd-item:hover { background: var(--navy-light); color: var(--off-white); }
+  .dd-item.active { color: var(--gold); }
 
   /* RESPONSIVE */
   @media (max-width: 960px) {
@@ -410,18 +398,30 @@
 <header>
   <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img"
     onclick="showTab('home', document.querySelectorAll('.nav-btn')[0])">
-  <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav style="display:none;">
-    <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
-    <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
-    <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
-    <button class="nav-btn" onclick="showTab('about', this)">About</button>
-    <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
-  </nav>
+  <div class="dd-wrapper" style="display:flex;align-items:center;gap:1rem;">
+    <nav>
+      <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
+      <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
+      <button class="nav-btn" onclick="showTab('about', this)">About</button>
+      <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="dropdown-menu" id="mobileMenu">
+      <button class="dd-item" id="mm-home" onclick="showTab('home', null); toggleMenu()">Home</button>
+      <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">Our Services</button>
+      <button class="dd-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
+      <button class="dd-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
+      <button class="dd-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
+      <div style="padding:1rem 1.5rem;border-top:1px solid var(--rule);">
+        <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()" style="display:block;text-align:center;">Book a 30-Minute Call</a>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- HERO (Home tab only) -->
@@ -774,22 +774,7 @@
 
 </div>
 
-<!-- MOBILE MENU OVERLAY -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="close-btn" onclick="toggleMenu()">&#10005;</button>
-  <button class="menu-item active" id="mm-home" onclick="showTab('home', null); toggleMenu()">Home</button>
-  <div class="menu-rule"></div>
-  <button class="menu-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">Our Services</button>
-  <div class="menu-rule"></div>
-  <button class="menu-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
-  <div class="menu-rule"></div>
-  <button class="menu-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
-  <div class="menu-rule"></div>
-  <button class="menu-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
-  <div class="menu-cta">
-    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()">Book a 30-Minute Call</a>
-  </div>
-</div>
+
 
 <!-- FOOTER -->
 <footer>
@@ -836,8 +821,17 @@ function toggleMenu() {
   var btn = document.getElementById('hamburgerBtn');
   menu.classList.toggle('open');
   btn.classList.toggle('open');
-  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('mobileMenu');
+  var btn = document.getElementById('hamburgerBtn');
+  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
