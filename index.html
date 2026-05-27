@@ -8,15 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:       #0d1b2a;
-    --navy-mid:   #1a2e42;
-    --navy-light: #243d56;
-    --gold:       #c9a84c;
-    --gold-light: #e0c070;
-    --off-white:  #f5f0e8;
-    --text-light: #cdd5de;
-    --text-muted: #7a8fa0;
-    --rule:       rgba(201,168,76,0.3);
+    --navy: #0d1b2a; --navy-mid: #1a2e42; --navy-light: #243d56;
+    --gold: #c9a84c; --gold-light: #e0c070;
+    --off-white: #f5f0e8; --text-light: #cdd5de;
+    --text-muted: #7a8fa0; --rule: rgba(201,168,76,0.3);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,14 +34,20 @@
 
   /* HEADER */
   header {
-    position: relative; z-index: 10;
+    position: sticky; top: 0; z-index: 100;
     padding: 1.6rem 4rem;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 0.8rem;
     border-bottom: 1px solid var(--rule);
+    background: var(--navy);
+    backdrop-filter: blur(8px);
   }
 
-  .logo-img { height: 75px; width: auto; display: block; max-width: 100%; }
+  .logo-img {
+    height: 75px; width: auto; display: block;
+    max-width: 100%; cursor: pointer;
+  }
+
   .header-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
   nav { display: flex; flex-wrap: wrap; gap: 4px; }
 
@@ -75,27 +76,14 @@
   .nav-btn.active::after { transform: translateX(-50%) scaleX(1); }
 
   /* CORNER ACCENTS */
-  .corner-tr {
-    position: fixed; top: 1.5rem; right: 1.5rem;
-    width: 70px; height: 70px;
-    border-top: 1px solid rgba(201,168,76,0.2);
-    border-right: 1px solid rgba(201,168,76,0.2);
-    pointer-events: none; z-index: 2;
-  }
-  .corner-bl {
-    position: fixed; bottom: 1.5rem; left: 1.5rem;
-    width: 70px; height: 70px;
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-    border-left: 1px solid rgba(201,168,76,0.2);
-    pointer-events: none; z-index: 2;
-  }
+  .corner-tr { position: fixed; top: 1.5rem; right: 1.5rem; width: 70px; height: 70px; border-top: 1px solid rgba(201,168,76,0.2); border-right: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
+  .corner-bl { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 70px; height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2); border-left: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
 
   /* HERO */
   .hero {
     position: relative; z-index: 5;
     padding: 4rem 4rem 3rem;
-    display: flex; align-items: center;
-    gap: 4rem;
+    display: flex; align-items: center; gap: 4rem;
     border-bottom: 1px solid var(--rule);
     animation: fadeUp 0.9s ease both;
   }
@@ -117,9 +105,7 @@
 
   .hero h1 em { font-style: italic; color: var(--gold-light); }
 
-  .hero-photo-wrap {
-    flex-shrink: 0; width: 300px; position: relative;
-  }
+  .hero-photo-wrap { flex-shrink: 0; width: 300px; position: relative; }
 
   .hero-photo {
     width: 100%; height: 380px;
@@ -143,8 +129,7 @@
     font-size: 0.68rem; font-weight: 600;
     letter-spacing: 0.16em; text-transform: uppercase;
     text-decoration: none; border: none; cursor: pointer;
-    transition: background 0.25s; white-space: nowrap;
-    border-radius: 2px;
+    transition: background 0.25s; white-space: nowrap; border-radius: 2px;
   }
   .btn-primary:hover { background: var(--gold-light); }
 
@@ -176,11 +161,7 @@
   }
 
   /* SHARED */
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 300;
-    color: var(--off-white); line-height: 1.2; margin-bottom: 0.4rem;
-  }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--off-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .section-title em { font-style: italic; color: var(--gold-light); }
   .section-rule { width: 36px; height: 1px; background: var(--gold); margin: 0.7rem 0 2.2rem; }
   .label { font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
@@ -188,7 +169,6 @@
 
   /* CARDS */
   .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
-
   .card { background: var(--navy-mid); padding: 2rem 2.2rem; position: relative; }
   .card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--gold); opacity: 0.35; }
   .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.25; }
@@ -207,15 +187,28 @@
   .statement-bar p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--off-white); line-height: 1.6; }
   .statement-bar p strong { font-style: normal; color: var(--gold-light); }
 
-  /* CASE PREVIEW */
-  .case-preview {
-    background: var(--navy-mid);
-    border-top: 2px solid var(--gold);
-    padding: 2rem 2.4rem;
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 2rem; flex-wrap: wrap;
-    margin-bottom: 3rem;
+  /* SERVICES LIST */
+  .services-list { list-style: none; padding: 0; border-top: 1px solid var(--rule); margin-bottom: 3rem; }
+  .services-list li {
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 2rem;
+    align-items: start;
   }
+  .services-list li .svc-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--off-white); line-height: 1.3;
+  }
+  .services-list li .svc-desc {
+    font-size: 0.88rem; line-height: 1.75;
+    color: var(--text-muted); font-weight: 300;
+  }
+
+  /* CASE PREVIEW */
+  .case-preview { background: var(--navy-mid); border-top: 2px solid var(--gold); padding: 2rem 2.4rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
   .case-preview-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.6rem; }
   .case-preview-text p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; margin-bottom: 0.3rem; }
   .case-preview-text .impact { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--gold-light); margin-top: 0.8rem; }
@@ -292,9 +285,85 @@
   footer { position: relative; z-index: 5; padding: 0; border-top: 1px solid var(--rule); }
   .footer-cta { background: var(--navy-mid); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .footer-cta p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--off-white); }
-  .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
   .f-brand { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
   .f-location { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; }
+  .f-privacy { font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.25s; }
+  .f-privacy:hover { color: var(--gold); }
+
+  /* HAMBURGER MENU */
+  .hamburger {{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px; height: 18px;
+    cursor: pointer;
+    background: none; border: none;
+    padding: 0; flex-shrink: 0;
+  }}
+
+  .hamburger span {{
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }}
+
+  .hamburger.open span:nth-child(1) {{ transform: translateY(8px) rotate(45deg); }}
+  .hamburger.open span:nth-child(2) {{ opacity: 0; transform: scaleX(0); }}
+  .hamburger.open span:nth-child(3) {{ transform: translateY(-8px) rotate(-45deg); }}
+
+  .mobile-menu {{
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13,27,42,0.97);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: fadeUp 0.3s ease both;
+  }}
+
+  .mobile-menu.open {{ display: flex; }}
+
+  .mobile-menu .close-btn {{
+    position: absolute;
+    top: 2rem; right: 2rem;
+    background: none; border: none;
+    cursor: pointer;
+    color: var(--gold);
+    font-size: 1.5rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }}
+
+  .mobile-menu .menu-item {{
+    background: none; border: none; cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    color: var(--text-light);
+    padding: 0.8rem 2rem;
+    transition: color 0.25s;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }}
+
+  .mobile-menu .menu-item:hover {{ color: var(--gold-light); }}
+  .mobile-menu .menu-item.active {{ color: var(--gold); }}
+
+  .mobile-menu .menu-rule {{
+    width: 40px; height: 1px;
+    background: var(--rule);
+    margin: 0.5rem 0;
+  }}
+
+  .mobile-menu .menu-cta {{
+    margin-top: 1.5rem;
+  }}
 
   /* RESPONSIVE */
   @media (max-width: 960px) {
@@ -311,6 +380,7 @@
     .footer-cta, .footer-bottom { padding: 1.5rem 2rem; }
     .corner-tr, .corner-bl { display: none; }
     .case-preview { flex-direction: column; align-items: flex-start; }
+    .services-list li { grid-template-columns: 1fr; gap: 0.5rem; }
   }
 
   @media (max-width: 600px) {
@@ -324,7 +394,7 @@
     .tab-content { padding: 0 1.2rem 3rem; }
     .hero-ctas { flex-direction: column; }
     .footer-cta { flex-direction: column; }
-    .footer-bottom { flex-direction: column; gap: 0.3rem; padding: 1rem 1.2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1rem 1.2rem; }
   }
 </style>
 </head>
@@ -335,10 +405,17 @@
 
 <!-- HEADER -->
 <header>
-  <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img">
+  <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img"
+    onclick="showTab('home', document.querySelectorAll('.nav-btn')[0])">
   <div class="header-right">
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
-      <button class="nav-btn active" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
+      <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
       <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
@@ -346,7 +423,7 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (Home tab only) -->
 <div id="hero" class="hero">
   <div class="hero-text">
     <div class="hero-eyebrow">Fractional CRO for Maritime &amp; Logistics Operators</div>
@@ -361,7 +438,7 @@
     <p style="font-size:0.78rem;letter-spacing:0.08em;color:var(--text-muted);font-weight:400;font-style:italic;max-width:520px;margin-bottom:1.6rem;">Trusted by privately held maritime and logistics operators when commercial performance slips.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
-      <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[1])">See how the engagement works &rarr;</button>
+      <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See how the engagement works &rarr;</button>
     </div>
     <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No retainers. No long-term contracts. Mandate-based execution.</p>
   </div>
@@ -370,17 +447,66 @@
   </div>
 </div>
 
-<!-- ═══════════ OUR SERVICES TAB ═══════════ -->
-<div id="tab-services" class="tab-content active">
+<!-- ═══ HOME TAB ═══ -->
+<div id="tab-home" class="tab-content active">
+  <!-- Case preview -->
+  <div class="block" style="margin-top:3rem;">
+    <div class="label">Mandate in Action</div>
+    <div class="case-preview">
+      <div class="case-preview-text">
+        <h3>Global Maritime — P&amp;L Recovery</h3>
+        <p>Regional commercial leadership established with defined authority.</p>
+        <p>Sales and operations unified under a single commercial system.</p>
+        <p>Execution stabilized under pressure across multiple locations.</p>
+        <div class="impact">Delivered $32M P&amp;L</div>
+      </div>
+      <button class="case-preview-link" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See all mandate outcomes &rarr;</button>
+    </div>
+  </div>
+</div>
 
-  <h2 class="section-title">Mandate-Led <em>Commercial Intervention</em></h2>
+<!-- ═══ OUR SERVICES TAB ═══ -->
+<div id="tab-services" class="tab-content">
+
+  <h2 class="section-title">Our <em>Services</em></h2>
   <div class="section-rule"></div>
 
-  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.5rem;">JCL provides mandate-led commercial execution for maritime and logistics operators. Below is a plain summary of what we do and when we are brought in.</p>
 
-  <!-- Where drift starts -->
+  <!-- Services list -->
   <div class="block">
-    <div class="label">Where Performance Starts to Drift</div>
+    <div class="label">What We Do</div>
+    <ul class="services-list">
+      <li>
+        <span class="svc-name">Fractional CRO</span>
+        <span class="svc-desc">Senior commercial leadership on a fractional basis. JCL steps in to run the commercial function, enforce pricing discipline, and restore performance — without the cost or commitment of a full-time hire.</span>
+      </li>
+      <li>
+        <span class="svc-name">Commercial Reset</span>
+        <span class="svc-desc">A structured mandate-led engagement to rebuild the commercial engine. Decision rights are clarified, pricing authority is restored, and sales and operations are aligned to a single operating model.</span>
+      </li>
+      <li>
+        <span class="svc-name">Pricing Governance</span>
+        <span class="svc-desc">Discounting brought under control. Approval thresholds defined. Realized margins aligned with what was quoted. Pricing decisions made governable rather than situational.</span>
+      </li>
+      <li>
+        <span class="svc-name">Forecast Credibility</span>
+        <span class="svc-desc">Forecasting rebuilt on pipeline fact rather than optimism. Forecast-to-actual gaps closed. Leadership able to plan from the numbers rather than discount them.</span>
+      </li>
+      <li>
+        <span class="svc-name">Sales &amp; Operations Alignment</span>
+        <span class="svc-desc">Sales and delivery unified under a single operating model. Handoffs clarified, friction reduced, and execution rhythm restored so the commercial engine performs consistently.</span>
+      </li>
+      <li>
+        <span class="svc-name">Advisory Engagements</span>
+        <span class="svc-desc">Direct work with CEOs and boards to identify where structural drift is forming, pressure-test commercial decisions, and intervene before execution failure sets in.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Drift signals -->
+  <div class="block">
+    <div class="label">When JCL Is Brought In</div>
     <div class="statement-bar">
       <p>Most teams know what is happening. They do not correct it. Not because they lack capability — because correcting it requires decisions they avoid. <strong>The cycle continues.</strong></p>
     </div>
@@ -404,24 +530,9 @@
     </div>
   </div>
 
-  <!-- Case preview -->
-  <div class="block">
-    <div class="label">Mandate in Action</div>
-    <div class="case-preview">
-      <div class="case-preview-text">
-        <h3>Global Maritime — P&amp;L Recovery</h3>
-        <p>Regional commercial leadership established with defined authority.</p>
-        <p>Sales and operations unified under a single commercial system.</p>
-        <p>Execution stabilized under pressure across multiple locations.</p>
-        <div class="impact">Delivered $32M P&amp;L</div>
-      </div>
-      <button class="case-preview-link" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[1])">See all mandate outcomes &rarr;</button>
-    </div>
-  </div>
-
 </div>
 
-<!-- ═══════════ HOW ENGAGEMENTS WORK TAB ═══════════ -->
+<!-- ═══ HOW ENGAGEMENTS WORK TAB ═══ -->
 <div id="tab-engagement" class="tab-content">
 
   <h2 class="section-title">How <em>Engagements Work</em></h2>
@@ -430,7 +541,6 @@
   <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:0.8rem;">This is the fractional CRO engagement path for maritime operators, logistics providers, 3PLs, project freight forwarders, NVOCCs, and specialized heavy-lift carriers when commercial performance breaks down.</p>
   <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2.8rem;">This is not advisory support. It is structured intervention with defined authority. Time-bound, outcome-driven, and built on explicit decision rights.</p>
 
-  <!-- Engagement types -->
   <div class="block">
     <div class="label">How JCL Engages</div>
     <div class="card-grid">
@@ -449,12 +559,9 @@
     </div>
   </div>
 
-  <!-- Focus areas -->
   <div class="block">
     <div class="label">Focus Areas</div>
-    <div class="statement-bar">
-      <p>Restore control. Stabilize performance. <strong>Make outcomes predictable again.</strong></p>
-    </div>
+    <div class="statement-bar"><p>Restore control. Stabilize performance. <strong>Make outcomes predictable again.</strong></p></div>
     <div class="card-grid">
       <div class="card">
         <ul>
@@ -477,7 +584,6 @@
     </div>
   </div>
 
-  <!-- Engagement model -->
   <div class="block">
     <div class="label">Engagement Model</div>
     <div class="steps">
@@ -495,17 +601,14 @@
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <div class="duration">30 – 60 Days</div>
+        <div class="duration">120 – 180 Days</div>
         <h3>Reset</h3>
         <p>Restore execution rhythm and forecast credibility. Hand off a stable, accountable model to permanent leadership.</p>
       </div>
     </div>
-    <div class="statement-bar" style="margin-top:2px;margin-bottom:0;">
-      <p><strong>Authority is explicit. Outcomes are defined upfront.</strong></p>
-    </div>
+    <div class="statement-bar" style="margin-top:2px;margin-bottom:0;"><p><strong>Authority is explicit. Outcomes are defined upfront.</strong></p></div>
   </div>
 
-  <!-- First 30 Days -->
   <div class="block">
     <div class="label">What You Can Expect in the First 30 Days</div>
     <ul class="days-list">
@@ -517,7 +620,6 @@
     </ul>
   </div>
 
-  <!-- Case outcomes -->
   <div class="block">
     <div class="label">Selected Mandate Outcomes</div>
     <div class="cases-grid">
@@ -544,7 +646,6 @@
     </div>
   </div>
 
-  <!-- Testimonials -->
   <div class="block">
     <div class="label">What Leaders Say</div>
     <div class="testimonials-grid">
@@ -561,7 +662,7 @@
 
 </div>
 
-<!-- ═══════════ ABOUT TAB ═══════════ -->
+<!-- ═══ ABOUT TAB ═══ -->
 <div id="tab-about" class="tab-content">
 
   <div class="about-top">
@@ -574,13 +675,12 @@
       <div class="about-lead">"Commercial drift rarely shows up as a crisis. It shows up as performance that becomes harder to trust."</div>
       <div class="about-body">
         <p>I work with CEOs and owners when the commercial engine is no longer producing the predictability, margin discipline, or new business momentum the business once relied on. My role is operational, not advisory. I step inside the business, diagnose the drift, rebuild commercial discipline, and — as trust builds — assume the level of authority required to restore control and stabilize performance.</p>
-        <p>Across 30 years of senior commercial leadership in maritime and logistics, I have led commercial transformations with full P&L responsibility across global freight forwarding, liner shipping, supply chain solutions, and maritime services.</p>
+        <p>Across 30 years of senior commercial leadership in maritime and logistics, I have led commercial transformations with full P&L responsibility across global freight forwarding, liner shipping, and maritime services, with broad commercial exposure across supply chain solutions.</p>
         <p>The common thread: restoring discipline, rebuilding structure, and stabilizing execution at scale. Engagements require mandate clarity and defined outcomes. That is where I operate best.</p>
       </div>
     </div>
   </div>
 
-  <!-- Why CEOs Bring JCL In -->
   <div class="block">
     <div class="label">Why CEOs Bring JCL In</div>
     <div class="card-grid">
@@ -601,7 +701,6 @@
     </div>
   </div>
 
-  <!-- Who We Work With -->
   <div class="block">
     <div class="label">Who We Work With</div>
     <div class="who-grid">
@@ -624,7 +723,6 @@
     </div>
   </div>
 
-  <!-- Operating Principles -->
   <div class="block">
     <div class="label">Operating Principles</div>
     <div class="principles-grid">
@@ -645,7 +743,7 @@
 
 </div>
 
-<!-- ═══════════ CONTACT TAB ═══════════ -->
+<!-- ═══ CONTACT TAB ═══ -->
 <div id="tab-contact" class="tab-content">
 
   <h2 class="section-title">Start a <em>Direct Conversation</em></h2>
@@ -657,22 +755,12 @@
       <p class="contact-body">If you are working through a commercial execution challenge and want to explore whether a mandate-led engagement is the right response, we are glad to have a direct conversation. No obligation — just a frank exchange about what you are seeing and whether there is a fit.</p>
       <div class="contact-links">
         <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div>
-            <div class="link-label">Email</div>
-            <div class="link-value">randy&#64;jclleadership&#46;com</div>
-          </div>
+          <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div><div class="link-label">Email</div><div class="link-value">randy&#64;jclleadership&#46;com</div></div>
         </a>
         <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
-          <div class="link-icon">
-            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-          </div>
-          <div>
-            <div class="link-label">LinkedIn</div>
-            <div class="link-value">Randy Jameson</div>
-          </div>
+          <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></div>
+          <div><div class="link-label">LinkedIn</div><div class="link-value">Randy Jameson</div></div>
         </a>
       </div>
     </div>
@@ -685,6 +773,23 @@
 
 </div>
 
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="toggleMenu()">&#10005;</button>
+  <button class="menu-item active" id="mm-home" onclick="showTab('home', null); toggleMenu()">Home</button>
+  <div class="menu-rule"></div>
+  <button class="menu-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">Our Services</button>
+  <div class="menu-rule"></div>
+  <button class="menu-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
+  <div class="menu-rule"></div>
+  <button class="menu-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
+  <div class="menu-rule"></div>
+  <button class="menu-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
+  <div class="menu-cta">
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()">Book a 30-Minute Call</a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-cta">
@@ -694,6 +799,7 @@
   <div class="footer-bottom">
     <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
     <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
+    <a href="privacy.html" class="f-privacy">Privacy Policy</a>
   </div>
 </footer>
 
@@ -716,7 +822,21 @@ function showTab(tab, btn) {
     });
   }
   var hero = document.getElementById('hero');
-  hero.style.display = (tab === 'services') ? 'flex' : 'none';
+  hero.style.display = (tab === 'home') ? 'flex' : 'none';
+  // Update mobile menu active state
+  var tabs = ['home','services','engagement','about','contact'];
+  tabs.forEach(function(t) {
+    var el = document.getElementById('mm-' + t);
+    if (el) el.classList.toggle('active', t === tab);
+  });
+}
+
+function toggleMenu() {
+  var menu = document.getElementById('mobileMenu');
+  var btn = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
 </script>
 </body>
