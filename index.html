@@ -25,6 +25,12 @@
     overflow-x: hidden;
   }
 
+  .page-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+  }
+
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -86,6 +92,10 @@
     display: flex; align-items: center; gap: 4rem;
     border-bottom: 1px solid var(--rule);
     animation: fadeUp 0.9s ease both;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .hero-text { flex: 1; }
@@ -105,7 +115,7 @@
 
   .hero h1 em { font-style: italic; color: var(--gold-light); }
 
-  .hero-photo-wrap { flex-shrink: 0; width: 280px; position: relative; }
+  .hero-photo-wrap { flex-shrink: 0; width: 300px; position: relative; margin-left: auto; }
 
   .hero-photo {
     width: 100%;
@@ -157,6 +167,10 @@
     display: none; position: relative; z-index: 5;
     padding: 0 4rem 5rem;
     animation: fadeUp 0.55s ease both;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
   }
   .tab-content.active { display: block; }
 
@@ -288,9 +302,9 @@
 
   /* FOOTER */
   footer { position: relative; z-index: 5; padding: 0; border-top: 1px solid var(--rule); }
-  .footer-cta { background: var(--navy-mid); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .footer-cta { background: var(--navy-mid); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; max-width: 1280px; margin: 0 auto; }
   .footer-cta p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--off-white); }
-  .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom { padding: 1.4rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1280px; margin: 0 auto; }
   .f-brand { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
   .f-location { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; }
   .f-privacy { font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.25s; }
@@ -424,7 +438,7 @@
 <div class="corner-bl"></div>
 
 <!-- HEADER -->
-<header>
+<header><div class="page-wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;width:100%;">
   <img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img"
     onclick="showTab('home', document.querySelectorAll('.nav-btn')[0])">
   <div class="dd-wrapper" style="display:flex;align-items:center;gap:1rem;">
@@ -451,15 +465,15 @@
       </div>
     </div>
   </div>
-</header>
+</div></header>
 
 <!-- HERO (Home tab only) -->
-<div id="hero" class="hero">
+<div id="hero" class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;">
   <div class="hero-text">
     <div class="hero-eyebrow">Fractional CRO for Maritime &amp; Logistics Operators</div>
     <h1>When Commercial Performance<br>Becomes <em>Harder to Trust</em></h1>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-light);font-weight:300;max-width:520px;margin-bottom:0.8rem;">This is what it looks like from the inside:</p>
-    <ul style="list-style:none;padding:0;margin-bottom:1rem;max-width:520px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:0.8rem;">This is what it looks like from the inside:</p>
+    <ul style="list-style:none;padding:0;margin-bottom:1rem;max-width:580px;">
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Performance is holding but harder to explain</li>
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Margin moves without a clear cause</li>
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Forecasts are consistently missed</li>
@@ -467,14 +481,14 @@
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Growth continues, but control does not</li>
     </ul>
     <p style="font-size:0.85rem;color:var(--text-light);font-weight:300;max-width:520px;margin-bottom:1.4rem;">These are not isolated problems. They are the early signals of structural drift.</p>
-    <ul style="list-style:none;padding:0;margin-bottom:1.4rem;max-width:520px;">
+    <ul style="list-style:none;padding:0;margin-bottom:1.4rem;max-width:580px;">
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Stabilize the commercial engine when pricing, forecasting, and customer management have slipped.</li>
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Rebuild sales, operations, and finance alignment so decisions, handoffs, and execution run on a single operating rhythm.</li>
       <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Restore predictable performance with a commercial model owners can trust and leadership can sustain.</li>
     </ul>
-    <p style="font-size:1rem;line-height:1.7;color:var(--text-light);font-weight:300;max-width:520px;margin-bottom:1rem;">Restoring commercial discipline, pricing control, and revenue predictability when growth has outpaced structure.</p>
-    <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:520px;margin-bottom:1rem;">I step in when maritime and logistics operators need senior commercial leadership without adding a full-time CRO. I rebuild the commercial model, install operating discipline, and run the commercial engine until performance is stable and leadership can sustain it.</p>
-    <p style="font-size:0.78rem;letter-spacing:0.08em;color:var(--text-muted);font-weight:400;font-style:italic;max-width:520px;margin-bottom:1.6rem;">Trusted by privately held maritime and logistics operators when commercial performance slips.</p>
+    <p style="font-size:1rem;line-height:1.7;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1rem;">Restoring commercial discipline, pricing control, and revenue predictability when growth has outpaced structure.</p>
+    <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:580px;margin-bottom:1rem;">I step in when maritime and logistics operators need senior commercial leadership without adding a full-time CRO. I rebuild the commercial model, install operating discipline, and run the commercial engine until performance is stable and leadership can sustain it.</p>
+    <p style="font-size:0.78rem;letter-spacing:0.08em;color:var(--text-muted);font-weight:400;font-style:italic;max-width:580px;margin-bottom:1.6rem;">Trusted by privately held maritime and logistics operators when commercial performance slips.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
       <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See how the engagement works &rarr;</button>
@@ -483,6 +497,7 @@
   </div>
   <div class="hero-photo-wrap">
     <img src="photo.png" alt="Randy Jameson" class="hero-photo">
+  </div>
   </div>
 </div>
 
@@ -831,11 +846,55 @@
   <h2 class="section-title">Start a <em>Direct Conversation</em></h2>
   <div class="section-rule"></div>
 
-  <div class="contact-layout">
+  <div style="max-width:860px;">
+
+    <!-- Contact form -->
     <div>
       <p class="contact-statement">No preparation required.<br>No extended process.<br><em>A frank exchange about what you are seeing.</em></p>
-      <p class="contact-body">If you are working through a commercial execution challenge and want to explore whether a mandate-led engagement is the right response, we are glad to have a direct conversation. No obligation — just a frank exchange about what you are seeing and whether there is a fit.</p>
-      <div class="contact-links">
+      <p class="contact-body">No obligation. No proposal. Just a direct conversation about what you are seeing and whether there is a fit.</p>
+
+      <form action="https://formspree.io/f/xnjrwzrl" method="POST" id="contact-form">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:1px;max-width:860px;">
+          <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
+            <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Name *</label>
+            <input type="text" name="name" required placeholder="Your name"
+              style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
+          </div>
+          <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
+            <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Company *</label>
+            <input type="text" name="company" required placeholder="Your company"
+              style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
+          </div>
+        </div>
+
+        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1px;">
+          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Email *</label>
+          <input type="email" name="email" required placeholder="your@email.com"
+            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
+        </div>
+
+        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1.5rem;">
+          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">What are you seeing? *</label>
+          <textarea name="message" required rows="5" placeholder="Describe what is happening inside your business..."
+            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;resize:vertical;"></textarea>
+        </div>
+
+        <!-- Success message (hidden by default) -->
+        <div id="form-success" style="display:none;background:var(--navy-mid);border-left:2px solid var(--gold);padding:1.2rem 1.5rem;margin-bottom:1.5rem;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--off-white);">Message received. We will be in touch shortly.</p>
+        </div>
+
+        <button type="submit"
+          style="display:inline-block;padding:0.75rem 2rem;background:var(--gold);color:var(--navy);font-family:'Barlow',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.25s;border-radius:2px;">
+          Send Message
+        </button>
+        <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;">Or book directly: <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" style="color:var(--gold);text-decoration:none;">Schedule a 30-Minute Call</a></p>
+
+      </form>
+
+      <!-- Also reachable via -->
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1px;">
         <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
           <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
           <div><div class="link-label">Email</div><div class="link-value">randy&#64;jclleadership&#46;com</div></div>
@@ -846,12 +905,35 @@
         </a>
       </div>
     </div>
-    <div class="contact-note">
-      <div class="note-label">A Note on Fit</div>
-      <p>"JCL works with private and family-owned maritime, project logistics, and heavy lift operators where commercial architecture gaps are creating execution risk. If that describes your situation, we would like to hear about it."</p>
-      <p style="margin-top:1.2rem;font-style:normal;font-size:0.85rem;color:var(--text-muted);font-family:'Barlow',sans-serif;font-weight:300;">Randy Jameson &nbsp;|&nbsp; Principal Advisor, JCL &nbsp;|&nbsp; Houston, Texas</p>
-    </div>
+
   </div>
+
+  <div class="contact-note" style="max-width:860px;margin-top:2rem;">
+    <div class="note-label">A Note on Fit</div>
+    <p>"JCL works with private and family-owned maritime, project logistics, and heavy lift operators where commercial architecture gaps are creating execution risk. If that describes your situation, we would like to hear about it."</p>
+    <p style="margin-top:1.2rem;font-style:normal;font-size:0.85rem;color:var(--text-muted);font-family:'Barlow',sans-serif;font-weight:300;">Randy Jameson &nbsp;|&nbsp; Principal Advisor, JCL &nbsp;|&nbsp; Houston, Texas</p>
+  </div>
+
+  <script>
+    var form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(response) {
+          if (response.ok) {
+            form.reset();
+            form.style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+          }
+        });
+      });
+    }
+  </script>
 
 </div>
 
