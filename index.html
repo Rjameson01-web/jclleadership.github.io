@@ -405,6 +405,10 @@
     .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1rem 1.2rem; }
     .section-title { font-size: 1.8rem; }
     .about-photo { aspect-ratio: 2/3; max-height: 420px; object-position: center top; }
+    .randy-photo-wrap { display: none; }
+    .randy-text { flex: 1 1 100%; width: 100%; }
+    .randy-flex { flex-direction: column; }
+    .tab-content p[style*="max-width:740px"], .tab-content p[style*="max-width: 740px"] { max-width: 100% !important; }
   }
 </style>
 </head>
@@ -443,7 +447,7 @@
 
 <!-- HERO -->
 <div id="hero" class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;">
-  <div class="hero-text">
+  <div class="hero-text" style="flex:1;min-width:0;">
     <div class="hero-eyebrow">Fractional CRO &mdash; Maritime &amp; Logistics</div>
     <h1>The commercial problems that cost maritime and logistics operators the most are never the ones that arrive as <em>a crisis.</em></h1>
     <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1.6rem;">They arrive gradually, through patterns that individually seem manageable. The margin is moving without clear explanation, forecasts are revised too late to act on, and sales prices to win the business rather than protect it. By the time the pattern has a name, it has already been expensive for months.</p>
@@ -486,12 +490,12 @@
   <!-- Randy Jameson -->
   <div class="block">
     <div class="label">Randy Jameson &mdash; Principal Advisor</div>
-    <div style="display:flex;gap:3rem;align-items:flex-start;">
-      <div style="flex:1;">
+    <div class="randy-flex" style="display:flex;gap:3rem;align-items:flex-start;">
+      <div class="randy-text" style="flex:1;">
         <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;margin-bottom:1.2rem;">Randy Jameson has led commercial transformations with full P&amp;L responsibility across global freight forwarding, liner shipping, supply chain solutions, and maritime services for over 30 years. The common thread across each engagement is not the industry or the geography. It is the pattern: a commercial engine that has drifted from the structure it needs to perform predictably, and the mandate to rebuild it.</p>
         <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;">JCL engagements are not delivered at arm&rsquo;s length. Where the situation requires it, Randy is on the ground. Where structured remote engagement is sufficient, the operating rhythm is built to deliver the same discipline and accountability without the cost of permanent physical presence. What does not change is the mandate, the authority, and the commitment to a clean handoff when the engagement is complete.</p>
       </div>
-      <div style="flex-shrink:0;width:200px;position:relative;">
+      <div class="randy-photo-wrap" style="flex-shrink:0;width:200px;position:relative;">
         <div style="position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;border:1px solid rgba(201,168,76,0.35);pointer-events:none;z-index:0;"></div>
         <img src="photo.png" alt="Randy Jameson" style="width:200px;height:auto;aspect-ratio:3/4;max-height:280px;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1;">
         <div style="position:absolute;bottom:-8px;right:-8px;width:56px;height:56px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);pointer-events:none;"></div>
