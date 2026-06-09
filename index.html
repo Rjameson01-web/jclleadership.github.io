@@ -249,11 +249,6 @@
   .step .duration { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; font-weight: 500; }
   .step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
 
-  /* FIRST 30 DAYS */
-  .days-list { list-style: none; padding: 0; border-top: 1px solid var(--rule); margin-bottom: 3rem; }
-  .days-list li { font-size: 0.93rem; font-weight: 300; color: var(--text-light); line-height: 1.6; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); display: flex; gap: 1rem; align-items: center; }
-  .days-list li::before { content: ''; display: block; width: 5px; height: 5px; background: var(--gold); flex-shrink: 0; }
-
   /* TESTIMONIALS */
   .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
   .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid rgba(201,168,76,0.3); }
@@ -336,12 +331,8 @@
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-}
-
   /* DROPDOWN MENU */
-  .dd-wrapper {
-    position: relative;
-  }
+  .dd-wrapper { position: relative; }
 
   .dropdown-menu {
     display: none;
@@ -375,36 +366,21 @@
   .dd-item:hover { background: var(--navy-light); color: var(--off-white); }
   .dd-item.active { color: var(--gold); }
 
+  /* SITUATION ITEMS */
+  .situation { margin-bottom: 2.5rem; border-left: 2px solid rgba(201,168,76,0.2); padding-left: 1.5rem; }
+  .situation h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--off-white); margin-bottom: 0.6rem; line-height: 1.3; }
+  .situation p { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); font-weight: 300; }
+
   /* RESPONSIVE */
   @media (max-width: 960px) {
     header { padding: 1.2rem 2rem; }
-    .hero {
-      padding: 3rem 2rem 2.5rem;
-      flex-direction: column-reverse;
-      gap: 2rem;
-    }
-    .hero-photo-wrap {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    .hero-photo {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 2/3;
-      max-height: 480px;
-      object-position: center top;
-    }
+    .hero { padding: 3rem 2rem 2.5rem; flex-direction: column-reverse; gap: 2rem; }
+    .hero-photo-wrap { width: 100%; max-width: 420px; margin: 0 auto; }
+    .hero-photo { width: 100%; height: auto; aspect-ratio: 2/3; max-height: 480px; object-position: center top; }
     .tab-content { padding: 0 2rem 4rem; }
     .about-top { flex-direction: column; gap: 2rem; }
     .about-photo-wrap { width: 100%; max-width: 380px; }
-    .about-photo {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 2/3;
-      max-height: 480px;
-      object-position: center top;
-    }
+    .about-photo { width: 100%; height: auto; aspect-ratio: 2/3; max-height: 480px; object-position: center top; }
     .card-grid, .who-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .cases-grid, .steps, .principles-grid { grid-template-columns: 1fr; }
     .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -444,19 +420,17 @@
   <div class="dd-wrapper" style="display:flex;align-items:center;gap:1rem;">
     <nav>
       <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
-      <button class="nav-btn" onclick="showTab('services', this)">Our Services</button>
+      <button class="nav-btn" onclick="showTab('services', this)">What We Address</button>
       <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     <div class="dropdown-menu" id="mobileMenu">
       <button class="dd-item" id="mm-home" onclick="showTab('home', null); toggleMenu()">Home</button>
-      <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">Our Services</button>
+      <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">What We Address</button>
       <button class="dd-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
       <button class="dd-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
       <button class="dd-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
@@ -467,120 +441,141 @@
   </div>
 </div></header>
 
-<!-- HERO (Home tab only) -->
+<!-- HERO -->
 <div id="hero" class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;">
   <div class="hero-text">
-    <div class="hero-eyebrow">Fractional CRO for Maritime &amp; Logistics Operators</div>
-    <h1>When Commercial Performance<br>Becomes <em>Harder to Trust</em></h1>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:0.8rem;">This is what it looks like from the inside:</p>
-    <ul style="list-style:none;padding:0;margin-bottom:1rem;max-width:580px;">
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Performance is holding but harder to explain</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Margin moves without a clear cause</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Forecasts are consistently missed</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Pricing discipline varies across teams</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-muted);font-weight:300;padding:0.3rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Growth continues, but control does not</li>
-    </ul>
-    <p style="font-size:0.85rem;color:var(--text-light);font-weight:300;max-width:520px;margin-bottom:1.4rem;">These are not isolated problems. They are the early signals of structural drift.</p>
-    <ul style="list-style:none;padding:0;margin-bottom:1.4rem;max-width:580px;">
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Stabilize the commercial engine when pricing, forecasting, and customer management have slipped.</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Rebuild sales, operations, and finance alignment so decisions, handoffs, and execution run on a single operating rhythm.</li>
-      <li style="font-size:0.88rem;line-height:1.7;color:var(--text-light);font-weight:300;padding:0.4rem 0;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">—</span>Restore predictable performance with a commercial model owners can trust and leadership can sustain.</li>
-    </ul>
-    <p style="font-size:1rem;line-height:1.7;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1rem;">Restoring commercial discipline, pricing control, and revenue predictability when growth has outpaced structure.</p>
-    <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;max-width:580px;margin-bottom:1rem;">I step in when maritime and logistics operators need senior commercial leadership without adding a full-time CRO. I rebuild the commercial model, install operating discipline, and run the commercial engine until performance is stable and leadership can sustain it.</p>
-    <p style="font-size:0.78rem;letter-spacing:0.08em;color:var(--text-muted);font-weight:400;font-style:italic;max-width:580px;margin-bottom:1.6rem;">Trusted by privately held maritime and logistics operators when commercial performance slips.</p>
+    <div class="hero-eyebrow">Fractional CRO &mdash; Maritime &amp; Logistics</div>
+    <h1>The commercial problems that cost maritime and logistics operators the most are never the ones that arrive as <em>a crisis.</em></h1>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1.6rem;">They arrive gradually, through patterns that individually seem manageable. The margin is moving without clear explanation, forecasts are revised too late to act on, and sales prices to win the business rather than protect it. By the time the pattern has a name, it has already been expensive for months.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
       <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See how the engagement works &rarr;</button>
     </div>
-    <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No retainers. No long-term contracts. Mandate-based execution.</p>
+    <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No preparation required. No proposal. No obligation.</p>
   </div>
   <div class="hero-photo-wrap">
     <img src="photo.png" alt="Randy Jameson" class="hero-photo">
   </div>
-  </div>
-</div>
+</div></div>
 
-<!-- ═══ HOME TAB ═══ -->
+<!-- HOME TAB -->
 <div id="tab-home" class="tab-content active">
-  <!-- Case preview -->
+
+  <!-- Operational Gap -->
   <div class="block" style="margin-top:3rem;">
-    <div class="label">Mandate in Action</div>
-    <div class="case-preview">
-      <div class="case-preview-text">
-        <h3>Global Maritime — P&amp;L Recovery</h3>
-        <p>Regional commercial leadership established with defined authority.</p>
-        <p>Sales and operations unified under a single commercial system.</p>
-        <p>Execution stabilized under pressure across multiple locations.</p>
-        <div class="impact">Delivered $32M P&amp;L</div>
+    <div class="label">The Operational Gap</div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:1.4rem;">Maritime and logistics operators invest heavily in operational excellence. Schedules are optimized, assets are utilized, compliance is maintained, and the infrastructure to support global trade is built with discipline and capital intensity that few industries match.</p>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:1.4rem;">The commercial engine rarely keeps pace. Not because it is ignored, but because operational delivery is visible and immediate while commercial structure is invisible until it starts to cost you. By the time the margin drift, the forecast gaps, and the pricing inconsistencies become undeniable, the operation has outgrown the commercial model it was built on.</p>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;">The instinct at that point is to add headcount. Another sales hire, a regional manager, someone to own the problem. But the problem does not have an owner yet because the structure has not defined one. More resource into an ungoverned commercial model does not restore control. It distributes the problem further.</p>
+  </div>
+
+  <!-- Cost of Diagnosis -->
+  <div class="block">
+    <div class="label">The Cost of Diagnosis Without Authority</div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:1.4rem;">The most common response to commercial drift is to bring in outside expertise. A consultant who assesses the operation, maps the gaps, and delivers a structured set of recommendations. The diagnosis is usually accurate. The findings brief is usually thorough. And then the engagement ends, the report sits in a folder, and the structure that produced the drift remains unchanged because no one inside the business has the authority, the bandwidth, or the mandate to implement what was recommended.</p>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;">Diagnosis without authority produces insight without change. And while the analysis is being reviewed, the commercial engine continues to drift and the opportunities it should be capturing are going elsewhere.</p>
+  </div>
+
+  <!-- JCL Distinction -->
+  <div class="block">
+    <div class="statement-bar" style="margin-bottom:1.5rem;">
+      <p style="font-style:normal;font-size:1.3rem;font-weight:300;">JCL operates differently.</p>
+    </div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:1.4rem;">The engagement is not advisory and it is not a consulting retainer. It is a mandate. A defined period of fractional commercial leadership with explicit decision rights, clear outcomes, and a structured exit that leaves permanent leadership with a commercial engine they can sustain without external support.</p>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;">The distinction matters because the problem is structural, not analytical. Structural problems require someone with the authority to change them, not someone with the expertise to describe them.</p>
+  </div>
+
+  <!-- Randy Jameson -->
+  <div class="block">
+    <div class="label">Randy Jameson &mdash; Principal Advisor</div>
+    <div style="display:flex;gap:3rem;align-items:flex-start;">
+      <div style="flex:1;">
+        <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;margin-bottom:1.2rem;">Randy Jameson has led commercial transformations with full P&amp;L responsibility across global freight forwarding, liner shipping, supply chain solutions, and maritime services for over 30 years. The common thread across each engagement is not the industry or the geography. It is the pattern: a commercial engine that has drifted from the structure it needs to perform predictably, and the mandate to rebuild it.</p>
+        <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;">JCL engagements are not delivered at arm&rsquo;s length. Where the situation requires it, Randy is on the ground. Where structured remote engagement is sufficient, the operating rhythm is built to deliver the same discipline and accountability without the cost of permanent physical presence. What does not change is the mandate, the authority, and the commitment to a clean handoff when the engagement is complete.</p>
       </div>
-      <button class="case-preview-link" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See all mandate outcomes &rarr;</button>
+      <div style="flex-shrink:0;width:200px;position:relative;">
+        <div style="position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;border:1px solid rgba(201,168,76,0.35);pointer-events:none;z-index:0;"></div>
+        <img src="photo_about.png" alt="Randy Jameson" style="width:200px;height:auto;aspect-ratio:3/4;max-height:280px;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1;">
+        <div style="position:absolute;bottom:-8px;right:-8px;width:56px;height:56px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);pointer-events:none;"></div>
+      </div>
     </div>
   </div>
+
+  <!-- How It Starts -->
+  <div class="block">
+    <div class="label">How It Starts</div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:2rem;">There is no pitch deck and no proposal process. The first conversation is 30 minutes. You describe what you are seeing. Randy asks the questions that matter. By the end of the call you will know whether the situation calls for a JCL engagement and whether there is a fit worth exploring.</p>
+    <div style="background:var(--navy-mid);padding:2rem 2.4rem;border-top:2px solid var(--gold);max-width:620px;display:flex;gap:1.5rem;align-items:flex-start;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:rgba(201,168,76,0.15);line-height:1;flex-shrink:0;">1</div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--off-white);margin-bottom:0.4rem;">A direct conversation</div>
+        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.65;font-weight:300;">30 minutes. No pitch, no preparation required on your side. You describe what you are seeing. Randy asks the questions that matter. By the end of the call you will know whether there is a fit worth exploring.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="block">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--off-white);max-width:580px;margin-bottom:1.4rem;">If that is a conversation worth having, I would welcome 30 minutes at your convenience.</p>
+    <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;max-width:520px;margin-bottom:1.6rem;">No preparation required. No extended process. A frank exchange about what you are seeing and whether there is a fit.</p>
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
+    <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;">Or reach Randy directly: <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" style="color:var(--gold);text-decoration:none;">randy&#64;jclleadership&#46;com</a></p>
+  </div>
+
 </div>
 
-<!-- ═══ OUR SERVICES TAB ═══ -->
+<!-- WHAT WE ADDRESS TAB -->
 <div id="tab-services" class="tab-content">
 
   <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
-  <h2 class="section-title">Our <em>Services</em></h2>
+
+  <h2 class="section-title">What We <em>Address</em></h2>
   <div class="section-rule"></div>
 
-  <div class="block">
-    <div class="label">Typical Situations</div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2rem;">Does any of this sound familiar?</p>
-    <div class="card">
-      <ul>
-        <li>Forecasts revised repeatedly late in the cycle — and leadership has stopped relying on them</li>
-        <li>Pricing exceptions increasing across teams, regions, or customer segments without clear approval authority</li>
-        <li>Margin inconsistency between regions, branches, or service lines that no one can fully explain</li>
-        <li>Escalations concentrating around senior leadership on decisions that should be resolved below them</li>
-        <li>Sales and operations operating against different priorities, creating rework, friction, and cost</li>
-        <li>Revenue holding while confidence in the numbers — and in the commercial engine — quietly weakens</li>
-      </ul>
-      <p style="font-size:0.9rem;font-style:italic;color:var(--text-light);margin-top:1.4rem;font-family:'Cormorant Garamond',serif;">If more than two of these describe your business right now, the commercial engine has already started to drift.</p>
-    </div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:3rem;">The situations below are not failures of effort or strategy. They are structural conditions that effort and strategy alone cannot resolve.</p>
+
+  <div class="situation">
+    <h3>Revenue is growing but margin is not following</h3>
+    <p>Volume is up, activity is high, and the business is winning work. But realized margins are not reflecting what was quoted, and no one can fully explain the gap. The variance is widening quietly, and the commercial structure that should be governing it is not.</p>
   </div>
 
-  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;font-style:normal;color:var(--off-white);line-height:1.4;max-width:680px;margin-bottom:2.5rem;">JCL provides mandate-led commercial execution for maritime and logistics operators. Below is a plain summary of what we do and when we are brought in.</p>
-
-  <!-- Services list -->
-  <div class="block">
-    <div class="label">What We Do</div>
-    <ul class="services-list">
-      <li>
-        <span class="svc-name">Fractional CRO</span>
-        <span class="svc-desc">Senior commercial leadership on a fractional basis. JCL steps in to run the commercial function, enforce pricing discipline, and restore performance — without the cost or commitment of a full-time hire.</span>
-      </li>
-      <li>
-        <span class="svc-name">Commercial Reset</span>
-        <span class="svc-desc">A structured mandate-led engagement to rebuild the commercial engine. Decision rights are clarified, pricing authority is restored, and sales and operations are aligned to a single operating model.</span>
-      </li>
-      <li>
-        <span class="svc-name">Pricing Governance</span>
-        <span class="svc-desc">Discounting brought under control. Approval thresholds defined. Realized margins aligned with what was quoted. Pricing decisions made governable rather than situational.</span>
-      </li>
-      <li>
-        <span class="svc-name">Forecast Credibility</span>
-        <span class="svc-desc">Forecasting rebuilt on pipeline fact rather than optimism. Forecast-to-actual gaps closed. Leadership able to plan from the numbers rather than discount them.</span>
-      </li>
-      <li>
-        <span class="svc-name">Sales &amp; Operations Alignment</span>
-        <span class="svc-desc">Sales and delivery unified under a single operating model. Handoffs clarified, friction reduced, and execution rhythm restored so the commercial engine performs consistently.</span>
-      </li>
-      <li>
-        <span class="svc-name">Advisory Engagements</span>
-        <span class="svc-desc">Direct work with CEOs and boards to identify where structural drift is forming, pressure-test commercial decisions, and intervene before execution failure sets in.</span>
-      </li>
-    </ul>
+  <div class="situation">
+    <h3>The operation has scaled but the commercial model has not</h3>
+    <p>The business has grown, added service lines, expanded geographically, and built genuine operational capability. The commercial architecture was designed for an earlier, simpler version of the organisation. It has not kept pace, and the gaps are starting to show.</p>
   </div>
 
-  <!-- Drift signals -->
+  <div class="situation">
+    <h3>A leadership transition has left commercial ownership undefined</h3>
+    <p>A CEO has changed, a commercial leader has departed, or an acquisition has created ambiguity about who owns what. The team is working but decisions are stalling, accountability is distributed, and no one has the authority to reset the model.</p>
+  </div>
 
+  <div class="situation">
+    <h3>Sales is pricing to win business rather than protect margin</h3>
+    <p>The sales team has discretion but not governance. Pricing decisions are made deal by deal, discounting is negotiated rather than governed, and the floor keeps moving. The authority exists but the structure to protect it does not.</p>
+  </div>
+
+  <div class="situation">
+    <h3>Forecasts are revised so frequently that leadership has stopped trusting them</h3>
+    <p>The numbers are consistently wrong in the same direction. Revisions come late in the cycle. Leadership has begun discounting the forward view before the period closes, which means the commercial engine is operating without a reliable instrument panel.</p>
+  </div>
+
+  <div class="situation">
+    <h3>Governance expectations have risen faster than the commercial structure</h3>
+    <p>A PE investment, a debt facility, or a post-acquisition integration has raised the performance and reporting bar. The commercial model was built for a privately held operator running on relationships. It was not built for the scrutiny it is now under.</p>
+  </div>
+
+  <div class="situation">
+    <h3>Headcount has been added but performance has not improved</h3>
+    <p>The instinct was to hire. Another sales leader, a regional manager, someone to own the problem. The headcount is in place but the structure that would make them effective is not. The problem has been distributed, not resolved.</p>
+  </div>
+
+  <div class="statement-bar" style="margin-top:1rem;">
+    <p>If more than one of these describes your business right now, the commercial engine has already started to drift. The question is whether the situation calls for advice or authority.</p>
+  </div>
 
 </div>
 
-<!-- ═══ HOW ENGAGEMENTS WORK TAB ═══ -->
+<!-- HOW ENGAGEMENTS WORK TAB -->
 <div id="tab-engagement" class="tab-content">
 
   <div style="margin-bottom:3rem;">
@@ -591,38 +586,37 @@
   <h2 class="section-title">How <em>Engagements Work</em></h2>
   <div class="section-rule"></div>
 
-  <!-- 1. Opening anchor -->
-  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;font-style:normal;color:var(--off-white);line-height:1.5;max-width:740px;margin-bottom:3rem;">JCL engagements are structured around restoring commercial control, forecast reliability, pricing discipline, and execution clarity inside maritime and logistics organisations operating under pressure.</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:1.4rem;">This is the fractional CRO engagement path for maritime operators, logistics providers, 3PLs, project freight forwarders, NVOCCs, and specialized heavy-lift carriers when commercial performance breaks down.</p>
 
-  <!-- 2. Entry Engagements -->
+  <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:3rem;">Every JCL engagement begins with a diagnostic. Before any intervention is proposed, the structural causes of the performance gap are identified and mapped. What is drifting, where the authority gaps are, and what a reset would require. That diagnostic stands alone as a deliverable &mdash; a findings brief with a clear recommendation. Some engagements end there. Most do not.</p>
+
+  <!-- Three phases -->
   <div class="block">
-    <div class="label">Entry Engagements — Start Here</div>
-    <p style="font-size:0.88rem;color:var(--text-muted);font-weight:300;max-width:680px;margin-bottom:2rem;">Focused diagnostic engagements for owners and CEOs who need clarity before committing to broader intervention. Typical duration: 30–60 days. Each review stands alone or forms the foundation for the Implement &amp; Stabilize phase.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:0;">
-      <div style="background:var(--navy-mid);padding:2rem 2.2rem;border-top:2px solid var(--gold);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--off-white);margin-bottom:0.5rem;">Forecast Credibility Review</div>
-        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500;">Entry Engagement 01</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Assess where pipeline assumptions, forecasting discipline, and operational reality have diverged. Identify why leadership can no longer trust the numbers.</p>
+    <div class="label">The Engagement Path</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">A</div>
+        <div class="duration">30 &ndash; 60 Days</div>
+        <h3>Executive Review</h3>
+        <p>A focused diagnostic engagement that identifies which drift patterns are active, maps the structural breakdowns driving them, and produces a findings brief with a clear recommendation on what intervention is required and what it would deliver. Authority to implement is not assumed. It is defined at the outset of the next phase.</p>
       </div>
-      <div style="background:var(--navy-mid);padding:2rem 2.2rem;border-top:2px solid var(--gold);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--off-white);margin-bottom:0.5rem;">Pricing Discipline Assessment</div>
-        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500;">Entry Engagement 02</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Identify where pricing authority, exception handling, and margin realisation have become inconsistent across teams, regions, or customer segments.</p>
+      <div class="step">
+        <div class="step-num">B</div>
+        <div class="duration">60 &ndash; 120 Days</div>
+        <h3>Implement &amp; Stabilize</h3>
+        <p>Authority granted to implement the recommended changes. Pricing governance enforced. Forecasting rebuilt on fact. Decision rights clarified. Sales and operations aligned to a single operating model. The commercial engine stabilized under mandate.</p>
       </div>
-      <div style="background:var(--navy-mid);padding:2rem 2.2rem;border-top:2px solid var(--gold);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--off-white);margin-bottom:0.5rem;">Commercial Pressure Review</div>
-        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500;">Entry Engagement 03</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Surface escalation overload, ownership ambiguity, and execution friction across sales and operations before it compounds into structural drift.</p>
-      </div>
-      <div style="background:var(--navy-mid);padding:2rem 2.2rem;border-top:2px solid var(--gold);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--off-white);margin-bottom:0.5rem;">Margin Leakage Diagnostic</div>
-        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500;">Entry Engagement 04</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Identify the structural causes of margin erosion despite stable or growing revenue. Map where commercial decisions are costing more than they appear.</p>
+      <div class="step">
+        <div class="step-num">C</div>
+        <div class="duration">120 &ndash; 180 Days</div>
+        <h3>Reset</h3>
+        <p>The commercial architecture embedded and handed off. Permanent leadership inherits a structure that performs without external support. The engagement ends when the handoff is clean, not when the calendar runs out.</p>
       </div>
     </div>
+    <div class="statement-bar" style="margin-top:2px;"><p><strong>Authority is explicit. Outcomes are defined upfront.</strong></p></div>
   </div>
 
-  <!-- 3. What Changes -->
+  <!-- What changes -->
   <div class="block">
     <div class="label">What Changes</div>
     <ul style="list-style:none;padding:0;max-width:580px;">
@@ -634,113 +628,91 @@
     </ul>
   </div>
 
-  <!-- 4. Engagement Paths -->
-  <div class="block">
-    <div class="label">How JCL Engages</div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:2rem;">This is the fractional CRO engagement path for maritime operators, logistics providers, 3PLs, project freight forwarders, NVOCCs, and specialized heavy-lift carriers when commercial performance breaks down.</p>
-    <div class="card-grid">
-      <div class="card">
-        <span class="card-num">01</span>
-        <h3>Mandate-Led Engagements</h3>
-        <div class="card-tag">Fractional or Interim</div>
-        <p>JCL steps in with explicit decision rights to reset the commercial engine, enforce pricing discipline, align sales and operations, rebuild forecasting credibility, and install a sustainable operating model for permanent leadership.</p>
-      </div>
-      <div class="card">
-        <span class="card-num">02</span>
-        <h3>Advisory Engagements</h3>
-        <div class="card-tag">Structural Diagnosis</div>
-        <p>JCL works with CEOs, boards, and senior commercial leaders to diagnose execution breakdowns, pressure-test decisions, identify early signs of drift, and strengthen execution before performance failure sets in.</p>
-      </div>
-    </div>
-
-    <div class="statement-bar">
-      <p>Not every operator needs the full sequence. Some need a bounded diagnostic before committing to broader intervention. Others are already past that point. <strong>The engagement starts where the problem is.</strong></p>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">A</div>
-        <div class="duration">30 – 60 Days</div>
-        <h3>Executive Review</h3>
-        <p>A focused diagnostic engagement. One or more of the four entry reviews delivered with a structured findings brief. Stands alone or leads into Phase B.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">B</div>
-        <div class="duration">60 – 120 Days</div>
-        <h3>Implement &amp; Stabilize</h3>
-        <p>Authority granted to implement proposed changes. Pricing governance enforced, forecasting rebuilt, decision rights clarified, sales and operations aligned to a single operating model.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">C</div>
-        <div class="duration">120 – 180 Days</div>
-        <h3>Reset</h3>
-        <p>Commercial architecture embedded and handed off. Permanent leadership inherits a commercial engine that runs without external support.</p>
-      </div>
-    </div>
-    <div class="statement-bar" style="margin-top:2px;"><p><strong>Authority is explicit. Outcomes are defined upfront.</strong></p></div>
-  </div>
-
-  <!-- 5. Focus Areas -->
-  <div class="block">
-    <div class="label">Focus Areas</div>
-    <div class="card-grid">
-      <div class="card">
-        <ul>
-          <li>Pricing discipline and governance</li>
-          <li>Ownership clarity across commercial flows</li>
-          <li>Forecast credibility and execution rhythm</li>
-          <li>Alignment between sales, operations, and finance</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>When to engage</h3>
-        <ul>
-          <li>Performance is holding but harder to explain</li>
-          <li>Margin moves without a clear cause</li>
-          <li>Forecasts are consistently missed</li>
-          <li>Pricing discipline varies across teams</li>
-          <li>Growth continues, but control does not</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 6. Engagement in Practice -->
-  <div class="block">
-    <div class="label">Engagement in Practice</div>
-    <div class="statement-bar">
-      <p>"A recent engagement involved stabilizing forecast credibility and pricing governance across a multi-location logistics operation where margin variance and escalation overload had begun impacting executive decision-making. The Executive Review identified three structural breakdowns within the first 30 days. The Implement &amp; Stabilize phase restored pricing authority and rebuilt the forecasting model on pipeline fact within 90 days. Leadership inherited a commercial engine they could trust."</p>
-    </div>
-  </div>
-
-  <!-- 7. Selected Mandate Outcomes -->
+  <!-- Selected Mandate Outcomes -->
   <div class="block">
     <div class="label">Selected Mandate Outcomes</div>
     <div class="cases-grid">
       <div class="case-card">
-        <h3>West Africa — Commercial Reset</h3>
-        <p>Third-party representation replaced, customer ownership reclaimed</p>
-        <p>Pricing authority centralized, execution reconnected across the network</p>
-        <p>Cargo volume increased 234% over the full engagement</p>
+        <h3>Global Liner Operator &mdash; West Africa</h3>
+        <p>Containerized and MPV operations. Third-party representation replaced, customer ownership reclaimed, and pricing authority centralized.</p>
+        <p>Cargo volume increased 234% over the full engagement.</p>
         <div class="impact">Revenue impact: $84M</div>
       </div>
       <div class="case-card">
-        <h3>India — Execution Stabilization</h3>
-        <p>Decision rights reset across pricing, customer selection, and capacity</p>
-        <p>Sales aligned to asset-backed demand, push-pull model implemented</p>
-        <p>Pricing stabilized, growth became predictable</p>
-        <div class="impact">Revenue impact: ~$60M</div>
+        <h3>Global Liner Operator &mdash; India</h3>
+        <p>Decision rights reset across pricing, customer selection, and capacity allocation. Sales aligned to asset-backed demand.</p>
+        <p>Pricing stabilized and growth became predictable once governance and connectivity were restored.</p>
+        <div class="impact">Revenue impact: $60M</div>
       </div>
       <div class="case-card">
-        <h3>Global Maritime — P&amp;L Recovery</h3>
-        <p>Regional commercial leadership established with defined authority</p>
-        <p>Sales and operations unified under a single commercial system</p>
-        <div class="impact">Delivered $32M P&amp;L</div>
+        <h3>Global Marine Agency &mdash; Americas</h3>
+        <p>Regional commercial leadership established with defined authority. Sales and operations unified under a single commercial system across multiple locations.</p>
+        <div class="impact">Revenue impact: $32M P&amp;L delivered</div>
+      </div>
+    </div>
+    <!-- Fourth outcome - full width -->
+    <div style="background:var(--navy-mid);padding:2rem;border-top:2px solid var(--gold);margin-bottom:2px;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--off-white);margin-bottom:1rem;line-height:1.3;">Regional Carrier &mdash; Five-Country Network</h3>
+      <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;">Engaged as commercial architect for a full reset of the client's commercial model across five countries. Decision rights clarified, pricing governance installed, and sales execution rebuilt under a structured, centralized commercial framework. The client doubled revenue in the first year and tripled it within three years.</p>
+    </div>
+  </div>
+
+  <!-- Note on fit -->
+  <div class="statement-bar">
+    <p>JCL engagements require mandate clarity and defined outcomes. Not every situation calls for the full sequence. <strong>The right starting point is a 30-minute conversation.</strong></p>
+  </div>
+
+</div>
+
+<!-- ABOUT TAB -->
+<div id="tab-about" class="tab-content">
+
+  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
+
+  <div class="about-top">
+    <div class="about-photo-wrap">
+      <img src="photo_about.png" alt="Randy Jameson" class="about-photo">
+    </div>
+    <div class="about-top-text">
+      <h2 class="section-title">About <em>Randy Jameson</em></h2>
+      <div class="section-rule"></div>
+      <div class="about-body">
+        <p>Every engagement starts with the same question: what is the structural cause of the performance gap, and who has the authority to fix it? Not the presenting symptoms &mdash; the forecasts that miss, the margins that erode, the pricing decisions that vary by who is in the room. The structure underneath them.</p>
+        <p>JCL exists to help founders, C-suite executives, and PE boards address the structural gaps that emerge when commercial development falls behind operational growth, and rebuild a commercial engine that matches the organisation's strengths.</p>
+        <p>Advisory engagement is not sufficient when the problem is structural. Identifying the drift is not the same as reversing it. The mandate model was built on that distinction.</p>
       </div>
     </div>
   </div>
 
-  <!-- 8. What Leaders Say -->
+  <!-- Mandate Outcomes -->
+  <div class="block">
+    <div class="label">Selected Mandate Outcomes</div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <h3>Global Liner Operator &mdash; West Africa</h3>
+        <p>Containerized and MPV operations. Third-party representation replaced, customer ownership reclaimed, and pricing authority centralized.</p>
+        <p>Cargo volume increased 234% over the full engagement.</p>
+        <div class="impact">Revenue impact: $84M</div>
+      </div>
+      <div class="case-card">
+        <h3>Global Liner Operator &mdash; India</h3>
+        <p>Decision rights reset across pricing, customer selection, and capacity allocation. Sales aligned to asset-backed demand.</p>
+        <p>Pricing stabilized and growth became predictable once governance and connectivity were restored.</p>
+        <div class="impact">Revenue impact: $60M</div>
+      </div>
+      <div class="case-card">
+        <h3>Global Marine Agency &mdash; Americas</h3>
+        <p>Regional commercial leadership established with defined authority. Sales and operations unified under a single commercial system across multiple locations.</p>
+        <div class="impact">Revenue impact: $32M P&amp;L delivered</div>
+      </div>
+    </div>
+    <div style="background:var(--navy-mid);padding:2rem;border-top:2px solid var(--gold);">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--off-white);margin-bottom:1rem;line-height:1.3;">Regional Carrier &mdash; Five-Country Network</h3>
+      <p style="font-size:0.88rem;line-height:1.75;color:var(--text-muted);font-weight:300;">Engaged as commercial architect for a full reset of the client's commercial model across five countries. Decision rights clarified, pricing governance installed, and sales execution rebuilt under a structured, centralized commercial framework. The client doubled revenue in the first year and tripled it within three years.</p>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
   <div class="block">
     <div class="label">What Leaders Say</div>
     <div class="testimonials-grid">
@@ -757,89 +729,7 @@
 
 </div>
 
-<!-- ═══ ABOUT TAB ═══ -->
-<div id="tab-about" class="tab-content">
-
-  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
-  <div class="about-top">
-    <div class="about-photo-wrap">
-      <img src="photo_about.png" alt="Randy Jameson" class="about-photo">
-    </div>
-    <div class="about-top-text">
-      <h2 class="section-title">About <em>Randy Jameson</em></h2>
-      <div class="section-rule"></div>
-      <div class="about-lead">"Commercial drift rarely shows up as a crisis. It shows up as performance that becomes harder to trust."</div>
-      <div class="about-body">
-        <p>I work with CEOs and owners when the commercial engine is no longer producing the predictability, margin discipline, or new business momentum the business once relied on. My role is operational, not advisory. I step inside the business, diagnose the drift, rebuild commercial discipline, and — as trust builds — assume the level of authority required to restore control and stabilize performance.</p>
-        <p>Across 30 years of senior commercial leadership in maritime and logistics, I have led commercial transformations with full P&L responsibility across global freight forwarding, liner shipping, and maritime services, with broad commercial exposure across supply chain solutions.</p>
-        <p>The common thread: restoring discipline, rebuilding structure, and stabilizing execution at scale. Engagements require mandate clarity and defined outcomes. That is where I operate best.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="block">
-    <div class="label">Why CEOs Bring JCL In</div>
-    <div class="card-grid">
-      <div class="card">
-        <ul>
-          <li>Commercial performance has become harder to trust</li>
-          <li>Pricing discipline has weakened and ownership is unclear</li>
-          <li>Forecasts no longer reflect operational reality</li>
-        </ul>
-      </div>
-      <div class="card">
-        <ul>
-          <li>Revenue is growing but margin is not following</li>
-          <li>A leadership transition has left commercial ownership undefined</li>
-          <li>The team is working hard but outcomes are harder to predict</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="block">
-    <div class="label">Who We Work With</div>
-    <div class="who-grid">
-      <div class="who-card">
-        <div class="who-icon">—</div>
-        <p><strong>Privately held maritime and logistics operators</strong>Freight forwarding, port services, terminals, and stevedoring businesses between $50M and $300M where growth has outpaced commercial structure.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">—</div>
-        <p><strong>PE-backed operators post-acquisition</strong>Commercial ownership is undefined and execution discipline needs to be reset quickly.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">—</div>
-        <p><strong>Family-owned businesses under growth pressure</strong>Informal commercial structures that worked at smaller scale are breaking under expansion.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">—</div>
-        <p><strong>Operators entering new geographies</strong>US market entry or regional expansion without a commercial architecture to support it.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="block">
-    <div class="label">Operating Principles</div>
-    <div class="principles-grid">
-      <div class="principle">
-        <div class="p-title">Structural Diagnosis</div>
-        <p>Surface fixes do not resolve structural drift. Root causes are identified and addressed directly.</p>
-      </div>
-      <div class="principle">
-        <div class="p-title">Explicit Ownership</div>
-        <p>Assumed alignment is not alignment. Decision rights are clarified, not implied.</p>
-      </div>
-      <div class="principle">
-        <div class="p-title">Early Intervention</div>
-        <p>Drift is identified and addressed before it hardens into systemic failure.</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ═══ CONTACT TAB ═══ -->
+<!-- CONTACT TAB -->
 <div id="tab-contact" class="tab-content">
 
   <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
@@ -847,65 +737,45 @@
   <div class="section-rule"></div>
 
   <div style="max-width:860px;">
+    <p class="contact-statement">No preparation required.<br>No extended process.<br><em>A frank exchange about what you are seeing.</em></p>
+    <p class="contact-body">No obligation. No proposal. Just a direct conversation about what you are seeing and whether there is a fit.</p>
 
-    <!-- Contact form -->
-    <div>
-      <p class="contact-statement">No preparation required.<br>No extended process.<br><em>A frank exchange about what you are seeing.</em></p>
-      <p class="contact-body">No obligation. No proposal. Just a direct conversation about what you are seeing and whether there is a fit.</p>
-
-      <form action="https://formspree.io/f/xnjrwzrl" method="POST" id="contact-form">
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:1px;max-width:860px;">
-          <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
-            <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Name *</label>
-            <input type="text" name="name" required placeholder="Your name"
-              style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
-          </div>
-          <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
-            <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Company *</label>
-            <input type="text" name="company" required placeholder="Your company"
-              style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
-          </div>
+    <form action="https://formspree.io/f/xnjrwzrl" method="POST" id="contact-form">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:1px;max-width:860px;">
+        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
+          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Name *</label>
+          <input type="text" name="name" required placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
         </div>
-
-        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1px;">
-          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Email *</label>
-          <input type="email" name="email" required placeholder="your@email.com"
-            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
+        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;">
+          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Company *</label>
+          <input type="text" name="company" required placeholder="Your company" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
         </div>
-
-        <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1.5rem;">
-          <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">What are you seeing? *</label>
-          <textarea name="message" required rows="5" placeholder="Describe what is happening inside your business..."
-            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;resize:vertical;"></textarea>
-        </div>
-
-        <!-- Success message (hidden by default) -->
-        <div id="form-success" style="display:none;background:var(--navy-mid);border-left:2px solid var(--gold);padding:1.2rem 1.5rem;margin-bottom:1.5rem;">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--off-white);">Message received. We will be in touch shortly.</p>
-        </div>
-
-        <button type="submit"
-          style="display:inline-block;padding:0.75rem 2rem;background:var(--gold);color:var(--navy);font-family:'Barlow',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.25s;border-radius:2px;">
-          Send Message
-        </button>
-        <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;">Or book directly: <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" style="color:var(--gold);text-decoration:none;">Schedule a 30-Minute Call</a></p>
-
-      </form>
-
-      <!-- Also reachable via -->
-      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1px;">
-        <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
-          <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-          <div><div class="link-label">Email</div><div class="link-value">randy&#64;jclleadership&#46;com</div></div>
-        </a>
-        <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
-          <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></div>
-          <div><div class="link-label">LinkedIn</div><div class="link-value">Randy Jameson</div></div>
-        </a>
       </div>
-    </div>
+      <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1px;">
+        <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">Email *</label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;">
+      </div>
+      <div style="background:var(--navy-mid);padding:1.2rem 1.4rem;margin-bottom:1.5rem;">
+        <label style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:0.5rem;">What are you seeing? *</label>
+        <textarea name="message" required rows="5" placeholder="Describe what is happening inside your business..." style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:0.9rem;font-weight:300;padding:0.4rem 0;outline:none;resize:vertical;"></textarea>
+      </div>
+      <div id="form-success" style="display:none;background:var(--navy-mid);border-left:2px solid var(--gold);padding:1.2rem 1.5rem;margin-bottom:1.5rem;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--off-white);">Message received. We will be in touch shortly.</p>
+      </div>
+      <button type="submit" style="display:inline-block;padding:0.75rem 2rem;background:var(--gold);color:var(--navy);font-family:'Barlow',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.25s;border-radius:2px;">Send Message</button>
+      <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;">Or book directly: <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" style="color:var(--gold);text-decoration:none;">Schedule a 30-Minute Call</a></p>
+    </form>
 
+    <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1px;">
+      <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" class="contact-link">
+        <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><div class="link-label">Email</div><div class="link-value">randy&#64;jclleadership&#46;com</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/randyjameson" target="_blank" rel="noopener" class="contact-link">
+        <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></div>
+        <div><div class="link-label">LinkedIn</div><div class="link-value">Randy Jameson</div></div>
+      </a>
+    </div>
   </div>
 
   <div class="contact-note" style="max-width:860px;margin-top:2rem;">
@@ -937,13 +807,9 @@
 
 </div>
 
-
-
 <!-- FOOTER -->
 <footer>
-  <div class="footer-cta" style="justify-content:center;">
-    <p>"The right first step is a 30-minute conversation."</p>
-  </div>
+
   <div class="footer-bottom">
     <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
     <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
@@ -971,7 +837,6 @@ function showTab(tab, btn) {
   }
   var hero = document.getElementById('hero');
   hero.style.display = (tab === 'home') ? 'flex' : 'none';
-  // Update mobile menu active state
   var tabs = ['home','services','engagement','about','contact'];
   tabs.forEach(function(t) {
     var el = document.getElementById('mm-' + t);
@@ -986,7 +851,6 @@ function toggleMenu() {
   btn.classList.toggle('open');
 }
 
-// Close dropdown when clicking outside
 document.addEventListener('click', function(e) {
   var menu = document.getElementById('mobileMenu');
   var btn = document.getElementById('hamburgerBtn');
