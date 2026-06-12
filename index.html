@@ -409,7 +409,81 @@
     .randy-flex { flex-direction: column; }
     .tab-content p[style*="max-width:740px"], .tab-content p[style*="max-width: 740px"] { max-width: 100% !important; }
   }
+
+  /* FAQ */
+  .faq-list { border-top: 1px solid var(--rule); }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 0; gap: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--off-white); text-align: left;
+    transition: color 0.25s;
+  }
+  .faq-question:hover { color: var(--gold-light); }
+  .faq-question.open { color: var(--gold-light); }
+  .faq-icon {
+    font-size: 1.4rem; font-weight: 300;
+    color: var(--gold); flex-shrink: 0;
+    transition: transform 0.3s;
+    font-family: 'Barlow', sans-serif;
+  }
+  .faq-question.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { display: none; padding: 0 0 1.4rem 0; max-width: 740px; }
+  .faq-answer.open { display: block; }
+  .faq-answer p { font-size: 0.92rem; line-height: 1.85; color: var(--text-light); font-weight: 300; margin-bottom: 0.8rem; }
+  .faq-answer p:last-child { margin-bottom: 0; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a fractional CRO do in maritime logistics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A fractional Chief Revenue Officer in maritime logistics is a senior commercial executive who takes an active mandate — with defined authority and decision rights — inside an operator's business for a fixed period, typically 90 to 180 days. The role is not advisory. It is operational commercial leadership without the cost or permanence of a full-time hire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who hires a fractional CRO in maritime logistics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maritime and logistics operators between $50M and $300M in revenue hire a fractional CRO when commercial execution has started to drift and a full-time hire is premature, unavailable, or unnecessary. Common situations include eroding pricing discipline, a commercial leadership gap, post-acquisition integration, or unclear decision rights causing deals to stall or be discounted inconsistently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a fractional CRO different from a consultant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A consultant diagnoses and recommends. A fractional CRO diagnoses and implements — with the authority to change the structure that produced the problem. Diagnosis without authority produces insight without change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a fractional CRO engagement cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fractional CRO engagements in maritime logistics are typically structured as monthly retainers over a defined engagement window. The fee reflects senior executive time with mandate authority, not hourly consulting rates. For an operator experiencing margin drift or a commercial leadership gap, the revenue impact of a structured reset consistently exceeds the engagement cost by a significant multiple."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a fractional CRO engagement last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most engagements run 90 to 180 days across three phases: diagnostic (30-60 days), implementation and stabilization (60-120 days), and handoff (30-60 days). Some engagements conclude after the diagnostic if the findings brief is sufficient for internal execution."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -426,6 +500,7 @@
       <button class="nav-btn" onclick="showTab('services', this)">What We Address</button>
       <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
+      <button class="nav-btn" onclick="showTab('insights', this)">Commercial Drift Insights</button>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
@@ -436,6 +511,7 @@
       <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">What We Address</button>
       <button class="dd-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
       <button class="dd-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
+      <button class="dd-item" id="mm-insights" onclick="showTab('insights', null); toggleMenu()">Commercial Drift Insights</button>
       <button class="dd-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
       <div style="padding:1rem 1.5rem;border-top:1px solid var(--rule);">
         <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()" style="display:block;text-align:center;">Book a 30-Minute Call</a>
@@ -706,6 +782,87 @@
 </div>
 
 <!-- CONTACT TAB -->
+<!-- ═══ COMMERCIAL DRIFT INSIGHTS TAB ═══ -->
+<div id="tab-insights" class="tab-content">
+
+  <div style="margin-bottom:3rem;">
+    <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
+    <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p>
+  </div>
+
+  <h2 class="section-title">Commercial Drift <em>Insights</em></h2>
+  <div class="section-rule"></div>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;font-style:normal;color:var(--off-white);line-height:1.5;max-width:740px;margin-bottom:3rem;">Practical answers to the questions maritime and logistics operators ask when commercial performance starts to feel less predictable.</p>
+
+  <div class="block">
+    <div class="label">Fractional CRO — Maritime &amp; Logistics</div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What does a fractional CRO do in maritime logistics?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>A fractional Chief Revenue Officer in maritime logistics is a senior commercial executive who takes an active mandate — with defined authority and decision rights — inside an operator's business for a fixed period, typically 90 to 180 days.</p>
+          <p>The role is not advisory. It is operational commercial leadership without the cost or permanence of a full-time hire. The fractional CRO owns pricing governance, forecasting discipline, sales and operations alignment, and execution rhythm for the duration of the engagement — then hands off a stable commercial engine to permanent leadership.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Who hires a fractional CRO in maritime logistics?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Maritime and logistics operators between $50M and $300M in revenue hire a fractional CRO when commercial execution has started to drift and a full-time hire is premature, unavailable, or unnecessary.</p>
+          <p>Common situations include eroding pricing discipline, a commercial leadership gap following a departure, post-acquisition integration where commercial ownership is undefined, or unclear decision rights causing deals to stall or be discounted inconsistently. The fractional model provides senior mandate authority at the moment it is needed, without the timeline or cost of a permanent search.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How is a fractional CRO different from a consultant?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>A consultant diagnoses and recommends. A fractional CRO diagnoses and implements — with the authority to change the structure that produced the problem.</p>
+          <p>Diagnosis without authority produces insight without change. The structural issues that cause commercial drift — blurred ownership, weakened pricing discipline, fragmented decision rights — cannot be resolved through a report or a set of recommendations. They require someone with the mandate to act on the diagnosis directly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What does a fractional CRO engagement cost?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Fractional CRO engagements in maritime logistics are typically structured as monthly retainers over a defined engagement window. The fee reflects senior executive time with mandate authority, not hourly consulting rates.</p>
+          <p>For an operator experiencing margin drift or a commercial leadership gap, the revenue impact of a structured reset consistently exceeds the engagement cost by a significant multiple. The more relevant question is not what the engagement costs — it is what continued drift is costing the business each month it goes unaddressed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How long does a fractional CRO engagement last?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Most engagements run 90 to 180 days across three phases: diagnostic (30–60 days), implementation and stabilization (60–120 days), and handoff (30–60 days).</p>
+          <p>Some engagements conclude after the diagnostic phase if the findings brief is sufficient for internal execution. Others extend into full commercial reset engagements where the fractional CRO holds decision rights across pricing, forecasting, and execution until performance is stable and permanent leadership can sustain it without external support.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="statement-bar" style="margin-top:1rem;">
+    <p>"If any of these questions describe where your business is right now, a 30-minute conversation is the right first step." &nbsp;<a href="https://calendly.com/randy-jclleadership/30min" target="_blank" style="color:var(--gold-light);font-style:normal;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-family:'Barlow',sans-serif;font-weight:500;">Book a Call &rarr;</a></p>
+  </div>
+
+</div>
+
 <div id="tab-contact" class="tab-content">
 
   <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
@@ -794,6 +951,19 @@
 </footer>
 
 <script>
+function toggleFaq(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-question.open').forEach(function(q) {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+
 function showTab(tab, btn) {
   document.querySelectorAll('.tab-content').forEach(function(t) {
     t.classList.remove('active');
@@ -813,7 +983,7 @@ function showTab(tab, btn) {
   }
   var hero = document.getElementById('hero');
   hero.style.display = (tab === 'home') ? 'flex' : 'none';
-  var tabs = ['home','services','engagement','about','contact'];
+  var tabs = ['home','services','engagement','about','insights','contact'];
   tabs.forEach(function(t) {
     var el = document.getElementById('mm-' + t);
     if (el) el.classList.toggle('active', t === tab);
