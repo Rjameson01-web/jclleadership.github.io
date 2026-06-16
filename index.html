@@ -989,6 +989,9 @@ function showTab(tab, btn) {
     var el = document.getElementById('mm-' + t);
     if (el) el.classList.toggle('active', t === tab);
   });
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 function toggleMenu() {
