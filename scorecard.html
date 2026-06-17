@@ -164,7 +164,7 @@
   .domain-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem; font-weight: 300;
-    color: rgba(201,168,76,0.25); line-height: 1;
+    color: rgba(255,255,255,0.25); line-height: 1;
     flex-shrink: 0;
   }
 
@@ -445,10 +445,10 @@
 <!-- INTRO -->
 <div class="intro">
   <div class="page-eyebrow">Commercial Diagnostic &mdash; Maritime &amp; Logistics</div>
-  <h1>Where is your commercial engine <em>losing ground?</em></h1>
+  <h1>Is your commercial engine losing ground? <em>Take the free diagnostic and find out in 5 minutes</em></h1>
   <div class="intro-body">
     <div class="intro-text">
-      <p>This diagnostic identifies where commercial drift is active in your business before it becomes structural. Twenty questions across four domains. Your responses are confidential. There is no pitch at the end.</p>
+      <p>This diagnostic identifies where commercial drift is active in your business before it becomes structural. Twenty questions across four domains. Your responses are confidential.</p>
       <p>Answer each question honestly based on how your business operates today, not how you intend it to operate. The value is in the accuracy of the picture, not the score.</p>
     </div>
     <div class="intro-meta">
@@ -465,8 +465,8 @@
         <span class="meta-value">5 minutes</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Follow-up</span>
-        <span class="meta-value">None unless you want one</span>
+        <span class="meta-label">Responses</span>
+        <span class="meta-value">Confidential</span>
       </div>
     </div>
   </div>
@@ -509,7 +509,7 @@
   <!-- DOMAIN 1 -->
   <div class="domain-block">
     <div class="domain-header">
-      <span class="domain-number">01</span>
+      <span class="domain-number">1</span>
       <span class="domain-title">Commercial Drift</span>
     </div>
     <div id="d1-questions"></div>
@@ -518,7 +518,7 @@
   <!-- DOMAIN 2 -->
   <div class="domain-block">
     <div class="domain-header">
-      <span class="domain-number">02</span>
+      <span class="domain-number">2</span>
       <span class="domain-title">Structural Lag</span>
     </div>
     <div id="d2-questions"></div>
@@ -527,7 +527,7 @@
   <!-- DOMAIN 3 -->
   <div class="domain-block">
     <div class="domain-header">
-      <span class="domain-number">03</span>
+      <span class="domain-number">3</span>
       <span class="domain-title">Execution Reliability</span>
     </div>
     <div id="d3-questions"></div>
@@ -536,7 +536,7 @@
   <!-- DOMAIN 4 -->
   <div class="domain-block">
     <div class="domain-header">
-      <span class="domain-number">04</span>
+      <span class="domain-number">4</span>
       <span class="domain-title">Owner Confidence &amp; Control</span>
     </div>
     <div id="d4-questions"></div>
@@ -548,7 +548,7 @@
 <div class="submit-section">
   <span class="error-msg" id="error-msg">Please answer all questions and complete your details before submitting.</span>
   <button class="btn-primary" id="submit-btn" onclick="submitDiagnostic()">View My Results</button>
-  <p class="submit-note">No pitch. No follow-up unless you want one. Your results are shown immediately on this page.</p>
+  <p class="submit-note">Your results are shown immediately on this page.</p>
 </div>
 
 <!-- RESULTS -->
@@ -613,7 +613,7 @@
 </footer>
 
 <script>
-const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyA7VMWjObfz6YHYpM95mdfaEkgvpDowlEJDeMm6yS2RculD3KjmkzEBVSNVJKhbeWv/exec';
 
 const questions = {
   d1: [
