@@ -614,7 +614,7 @@
 </footer>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfwo-f_mVLGrTLEg7x4MLCne0XbejJXyU7sGOIrxkbaTmOBBs7VGOKSV0hv77RfMsP/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwVmm6BBGII8L7Mjwkx5lGGLqUHfbJQsf0gjabZlO9N1ca9HXEV1wtZxvqphCz5HjWp/exec';
 
 const questions = {
   d1: [
@@ -803,11 +803,9 @@ function submitDiagnostic() {
     timestamp: new Date().toISOString()
   };
 
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+  fetch(SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload)), {
+    method: 'GET',
+    mode: 'no-cors'
   }).catch(() => {});
 }
 </script>
