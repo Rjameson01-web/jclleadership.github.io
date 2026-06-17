@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Drift Diagnostic | JCL — Jameson Commercial Leadership</title>
+<meta name="description" content="A 20-question diagnostic for maritime and logistics operators. Identify where commercial drift is active before it becomes structural.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a; --navy-mid: #1a2e42; --navy-light: #243d56;
+    --gold: #c9a84c; --gold-light: #e0c070;
+    --off-white: #f5f0e8; --text-light: #cdd5de;
+    --text-muted: #7a8fa0; --rule: rgba(201,168,76,0.3);
+    --error: #e07070;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--navy);
+    color: var(--off-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.6;
+  }
+
+  .corner-tr { position: fixed; top: 1.5rem; right: 1.5rem; width: 70px; height: 70px; border-top: 1px solid rgba(201,168,76,0.2); border-right: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
+  .corner-bl { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 70px; height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2); border-left: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    padding: 1.6rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    background: var(--navy);
+    backdrop-filter: blur(8px);
+  }
+
+  .logo-img { height: 75px; width: auto; display: block; cursor: pointer; }
+
+  .nav-btn {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.5rem 1.4rem;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block;
+  }
+  .nav-btn:hover { color: var(--off-white); }
+
+  /* INTRO SECTION */
+  .intro {
+    position: relative; z-index: 5;
+    padding: 4rem 4rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    max-width: 1280px; margin: 0 auto;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .page-eyebrow {
+    font-size: 0.63rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.2rem; font-weight: 400;
+  }
+
+  .intro h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--off-white); margin-bottom: 1rem;
+  }
+  .intro h1 em { font-style: italic; color: var(--gold-light); }
+
+  .intro-body { display: flex; gap: 4rem; align-items: flex-start; flex-wrap: wrap; margin-top: 1.5rem; }
+
+  .intro-text { flex: 1; min-width: 280px; }
+  .intro-text p {
+    font-size: 0.92rem; line-height: 1.85;
+    color: var(--text-light); font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+
+  .intro-meta { flex-shrink: 0; display: flex; flex-direction: column; gap: 1rem; min-width: 200px; }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-label { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
+  .meta-value { font-size: 0.88rem; color: var(--off-white); font-weight: 400; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* CONTACT FORM */
+  .contact-section {
+    position: relative; z-index: 5;
+    padding: 3rem 4rem;
+    border-bottom: 1px solid var(--rule);
+    max-width: 1280px; margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.4rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem 1.4rem;
+  }
+
+  .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .field-group label {
+    font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 400;
+  }
+
+  .field-group input {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.88rem; font-weight: 300;
+    padding: 0.7rem 1rem;
+    outline: none;
+    transition: border-color 0.25s;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  .field-group input:focus { border-color: var(--gold); }
+  .field-group input.error { border-color: var(--error); }
+  .field-group input::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+  /* DIAGNOSTIC QUESTIONS */
+  .diagnostic-section {
+    position: relative; z-index: 5;
+    padding: 3rem 4rem;
+    max-width: 1280px; margin: 0 auto;
+  }
+
+  .domain-block { margin-bottom: 3rem; }
+
+  .domain-header {
+    display: flex; align-items: baseline; gap: 1.2rem;
+    margin-bottom: 1.6rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .domain-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    color: rgba(201,168,76,0.25); line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .domain-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--off-white);
+  }
+
+  .question-row {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    display: flex; flex-direction: column; gap: 0.9rem;
+  }
+
+  .question-row:last-child { border-bottom: none; }
+
+  .question-text {
+    font-size: 0.9rem; line-height: 1.65;
+    color: var(--text-light); font-weight: 300;
+  }
+
+  .scale-row {
+    display: flex; gap: 0; align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .scale-option { flex: 1; }
+
+  .scale-option input[type="radio"] { display: none; }
+
+  .scale-option label {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0.5rem 0.3rem;
+    border: 1px solid rgba(201,168,76,0.12);
+    border-right: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    gap: 0.3rem; text-align: center;
+  }
+
+  .scale-option:last-child label { border-right: 1px solid rgba(201,168,76,0.12); }
+
+  .scale-option input:checked + label {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+  }
+
+  .scale-option label:hover { background: rgba(201,168,76,0.07); }
+
+  .scale-num {
+    font-size: 0.95rem; font-weight: 500;
+    color: var(--gold); line-height: 1;
+  }
+
+  .scale-option input:checked + label .scale-num { color: var(--gold-light); }
+
+  .scale-desc {
+    font-size: 0.55rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
+    line-height: 1.3; font-weight: 400;
+  }
+
+  .question-row.unanswered .scale-row {
+    outline: 1px solid var(--error);
+    outline-offset: 2px;
+  }
+
+  /* SUBMIT */
+  .submit-section {
+    position: relative; z-index: 5;
+    padding: 2rem 4rem 4rem;
+    max-width: 1280px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;
+  }
+
+  .error-msg {
+    font-size: 0.78rem; color: var(--error);
+    display: none; font-weight: 400;
+  }
+  .error-msg.visible { display: block; }
+
+  .btn-primary {
+    display: inline-block; padding: 0.9rem 2.8rem;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background 0.25s; border-radius: 2px;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .submit-note {
+    font-size: 0.75rem; color: var(--text-muted);
+    font-weight: 300; line-height: 1.6; max-width: 480px;
+  }
+
+  /* RESULTS */
+  .results-section {
+    display: none;
+    position: relative; z-index: 5;
+    padding: 4rem 4rem 6rem;
+    max-width: 1280px; margin: 0 auto;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .results-section.visible { display: block; }
+
+  .results-header { margin-bottom: 2.5rem; }
+
+  .results-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--off-white); margin-bottom: 0.5rem;
+  }
+  .results-header h2 em { font-style: italic; color: var(--gold-light); }
+
+  .score-display {
+    display: flex; align-items: baseline; gap: 0.6rem;
+    margin: 1.8rem 0 0.5rem;
+  }
+
+  .score-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: var(--gold); line-height: 1;
+  }
+
+  .score-denom {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300;
+    color: var(--text-muted);
+  }
+
+  .score-band {
+    display: inline-block;
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 600; padding: 0.4rem 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .band-high { background: rgba(200,80,80,0.15); color: #e08080; border: 1px solid rgba(200,80,80,0.3); }
+  .band-structural { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--rule); }
+  .band-early { background: rgba(100,160,200,0.1); color: #90c0d8; border: 1px solid rgba(100,160,200,0.25); }
+  .band-stable { background: rgba(80,180,120,0.1); color: #80c890; border: 1px solid rgba(80,180,120,0.25); }
+
+  .band-description {
+    font-size: 0.92rem; line-height: 1.85;
+    color: var(--text-light); font-weight: 300;
+    max-width: 680px; margin-bottom: 2.5rem;
+  }
+
+  /* DOMAIN BREAKDOWN */
+  .domain-breakdown { margin-bottom: 2.5rem; }
+
+  .breakdown-title {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.2rem;
+  }
+
+  .breakdown-grid { display: flex; flex-direction: column; gap: 0.8rem; }
+
+  .breakdown-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 60px;
+    align-items: center; gap: 1.2rem;
+  }
+
+  .breakdown-label {
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted); font-weight: 400;
+  }
+
+  .breakdown-bar-track {
+    height: 4px; background: rgba(201,168,76,0.1);
+    position: relative;
+  }
+
+  .breakdown-bar-fill {
+    height: 100%; background: var(--gold);
+    transition: width 1s ease;
+  }
+
+  .breakdown-score {
+    font-size: 0.82rem; color: var(--off-white);
+    font-weight: 500; text-align: right;
+  }
+
+  /* CALENDLY CTA */
+  .results-cta {
+    background: var(--navy-mid);
+    border-left: 2px solid var(--gold);
+    padding: 2rem 2.4rem;
+    margin-top: 2rem;
+    display: flex; align-items: flex-start; gap: 2.5rem; flex-wrap: wrap;
+  }
+
+  .cta-text { flex: 1; min-width: 240px; }
+  .cta-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--off-white); margin-bottom: 0.6rem;
+  }
+  .cta-text p {
+    font-size: 0.85rem; line-height: 1.75;
+    color: var(--text-muted); font-weight: 300;
+  }
+
+  .cta-action { flex-shrink: 0; display: flex; flex-direction: column; gap: 0.6rem; justify-content: center; }
+
+  .btn-cta {
+    display: inline-block; padding: 0.85rem 2.2rem;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.25s; white-space: nowrap;
+    text-align: center;
+  }
+  .btn-cta:hover { background: var(--gold-light); }
+
+  .cta-note {
+    font-size: 0.7rem; color: var(--text-muted);
+    font-weight: 300; text-align: center; line-height: 1.4;
+  }
+
+  /* FOOTER */
+  footer { position: relative; z-index: 5; border-top: 1px solid var(--rule); }
+  .footer-bottom {
+    padding: 1.4rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.8rem;
+  }
+  .f-brand { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); font-weight: 400; }
+  .f-location { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 300; }
+  .f-privacy { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .f-privacy:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    header { padding: 1.2rem 2rem; }
+    .intro, .contact-section, .diagnostic-section, .submit-section, .results-section { padding-left: 2rem; padding-right: 2rem; }
+    .corner-tr, .corner-bl { display: none; }
+    .footer-bottom { padding: 1.2rem 2rem; }
+    .breakdown-row { grid-template-columns: 160px 1fr 50px; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0.8rem 1.2rem; }
+    .logo-img { height: 52px; }
+    .intro, .contact-section, .diagnostic-section, .submit-section, .results-section { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .scale-desc { display: none; }
+    .scale-num { font-size: 0.85rem; }
+    .breakdown-row { grid-template-columns: 130px 1fr 44px; gap: 0.7rem; }
+    .results-cta { flex-direction: column; gap: 1.4rem; }
+    .footer-bottom { padding: 1rem 1.2rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html"><img src="JCL_logo_no_bg.png" alt="Jameson Commercial Leadership" class="logo-img"></a>
+  <nav>
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="insights.html" class="nav-btn">Insights</a>
+  </nav>
+</header>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="page-eyebrow">Commercial Diagnostic &mdash; Maritime &amp; Logistics</div>
+  <h1>Where is your commercial engine <em>losing ground?</em></h1>
+  <div class="intro-body">
+    <div class="intro-text">
+      <p>This diagnostic identifies where commercial drift is active in your business before it becomes structural. Twenty questions across four domains. Your responses are confidential. There is no pitch at the end.</p>
+      <p>Answer each question honestly based on how your business operates today, not how you intend it to operate. The value is in the accuracy of the picture, not the score.</p>
+    </div>
+    <div class="intro-meta">
+      <div class="meta-item">
+        <span class="meta-label">Questions</span>
+        <span class="meta-value">20</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domains</span>
+        <span class="meta-value">4</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Time required</span>
+        <span class="meta-value">5 minutes</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Follow-up</span>
+        <span class="meta-value">None unless you want one</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT FIELDS -->
+<div class="contact-section">
+  <div class="section-label">Your Details</div>
+  <div class="contact-grid">
+    <div class="field-group">
+      <label for="f-company">Company</label>
+      <input type="text" id="f-company" placeholder="Company name">
+    </div>
+    <div class="field-group">
+      <label for="f-name">Your Name</label>
+      <input type="text" id="f-name" placeholder="Full name">
+    </div>
+    <div class="field-group">
+      <label for="f-title">Title</label>
+      <input type="text" id="f-title" placeholder="Job title">
+    </div>
+    <div class="field-group">
+      <label for="f-email">Email</label>
+      <input type="email" id="f-email" placeholder="Work email">
+    </div>
+    <div class="field-group">
+      <label for="f-city">HQ City</label>
+      <input type="text" id="f-city" placeholder="City">
+    </div>
+    <div class="field-group">
+      <label for="f-state">HQ State / Country</label>
+      <input type="text" id="f-state" placeholder="State or country">
+    </div>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="diagnostic-section">
+
+  <!-- DOMAIN 1 -->
+  <div class="domain-block">
+    <div class="domain-header">
+      <span class="domain-number">01</span>
+      <span class="domain-title">Commercial Drift</span>
+    </div>
+    <div id="d1-questions"></div>
+  </div>
+
+  <!-- DOMAIN 2 -->
+  <div class="domain-block">
+    <div class="domain-header">
+      <span class="domain-number">02</span>
+      <span class="domain-title">Structural Lag</span>
+    </div>
+    <div id="d2-questions"></div>
+  </div>
+
+  <!-- DOMAIN 3 -->
+  <div class="domain-block">
+    <div class="domain-header">
+      <span class="domain-number">03</span>
+      <span class="domain-title">Execution Reliability</span>
+    </div>
+    <div id="d3-questions"></div>
+  </div>
+
+  <!-- DOMAIN 4 -->
+  <div class="domain-block">
+    <div class="domain-header">
+      <span class="domain-number">04</span>
+      <span class="domain-title">Owner Confidence &amp; Control</span>
+    </div>
+    <div id="d4-questions"></div>
+  </div>
+
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-section">
+  <span class="error-msg" id="error-msg">Please answer all questions and complete your details before submitting.</span>
+  <button class="btn-primary" id="submit-btn" onclick="submitDiagnostic()">View My Results</button>
+  <p class="submit-note">No pitch. No follow-up unless you want one. Your results are shown immediately on this page.</p>
+</div>
+
+<!-- RESULTS -->
+<div class="results-section" id="results-section">
+  <div class="results-header">
+    <div class="page-eyebrow">Your Diagnostic Results</div>
+    <h2>Here is where your commercial engine <em>stands today</em></h2>
+  </div>
+
+  <div class="score-display">
+    <span class="score-number" id="res-total">--</span>
+    <span class="score-denom">/100</span>
+  </div>
+  <div class="score-band" id="res-band"></div>
+  <p class="band-description" id="res-description"></p>
+
+  <div class="domain-breakdown">
+    <div class="breakdown-title">Score by Domain</div>
+    <div class="breakdown-grid">
+      <div class="breakdown-row">
+        <span class="breakdown-label">Commercial Drift</span>
+        <div class="breakdown-bar-track"><div class="breakdown-bar-fill" id="bar-d1" style="width:0%"></div></div>
+        <span class="breakdown-score" id="score-d1">--</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Structural Lag</span>
+        <div class="breakdown-bar-track"><div class="breakdown-bar-fill" id="bar-d2" style="width:0%"></div></div>
+        <span class="breakdown-score" id="score-d2">--</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Execution Reliability</span>
+        <div class="breakdown-bar-track"><div class="breakdown-bar-fill" id="bar-d3" style="width:0%"></div></div>
+        <span class="breakdown-score" id="score-d3">--</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Owner Confidence</span>
+        <div class="breakdown-bar-track"><div class="breakdown-bar-fill" id="bar-d4" style="width:0%"></div></div>
+        <span class="breakdown-score" id="score-d4">--</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-cta">
+    <div class="cta-text">
+      <h3>A 30-minute conversation costs nothing</h3>
+      <p>If your results have surfaced something worth discussing, book a call directly. No preparation required. No proposal to follow. A direct conversation about what the diagnostic is telling you.</p>
+    </div>
+    <div class="cta-action">
+      <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-cta">Book a 30-Minute Call</a>
+      <span class="cta-note">No commitment. No pitch.</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <span class="f-brand">JCL &nbsp;|&nbsp; Jameson Commercial Leadership</span>
+    <span class="f-location">Houston, Texas &nbsp;|&nbsp; United States</span>
+    <a href="privacy.html" class="f-privacy">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+const questions = {
+  d1: [
+    "Do you have confidence your team is closing business at the margins your model requires?",
+    "Do you feel your pricing approach is applied consistently across customers and corridors?",
+    "Do you believe your team understands which customers strengthen vs. weaken your margin profile?",
+    "How confident are you that deals are being structured in line with your commercial strategy?",
+    "Do you feel your revenue performance is predictable enough to make forward decisions comfortably?"
+  ],
+  d2: [
+    "Do you feel decision rights between sales, operations, and finance are clear and consistently followed?",
+    "Do you believe your commercial rhythm (meetings, reviews, handoffs) is strong enough to support growth?",
+    "How often do you find deals stalling because no one owns the next step?",
+    "Do you feel your commercial model is understood and executed the same way across the organization?",
+    "Do you have confidence your offices across the network operate with the discipline and cadence your business requires?"
+  ],
+  d3: [
+    "Do you feel customers experience consistent delivery across your key corridors?",
+    "Do you believe the service your network delivers matches the standard your commercial team is selling?",
+    "Do you feel your operations team can reliably deliver on the commitments your commercial team makes to customers?",
+    "Do you have confidence you can see issues early enough to prevent customer escalations?",
+    "Do you feel sales and operations present a unified, aligned message to customers?"
+  ],
+  d4: [
+    "Do you feel you intervene in commercial issues more often than you should at this stage of growth?",
+    "Do you and your leadership team have confidence in the pipeline and trust the numbers you're being shown?",
+    "Do you feel your leadership team is aligned on how the commercial engine should run?",
+    "Do you believe the business has a repeatable commercial rhythm that works without your involvement?",
+    "If you stepped away for 30 days, do you feel revenue would hold without degradation?"
+  ]
+};
+
+const scaleLabels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Fully'];
+
+function buildQuestions(domainKey, containerId) {
+  const container = document.getElementById(containerId);
+  questions[domainKey].forEach((q, i) => {
+    const qNum = i + 1;
+    const row = document.createElement('div');
+    row.className = 'question-row';
+    row.id = `${domainKey}-q${qNum}`;
+
+    let scaleHTML = '<div class="scale-row">';
+    for (let v = 1; v <= 5; v++) {
+      scaleHTML += `
+        <div class="scale-option">
+          <input type="radio" name="${domainKey}-q${qNum}" id="${domainKey}-q${qNum}-v${v}" value="${v}">
+          <label for="${domainKey}-q${qNum}-v${v}">
+            <span class="scale-num">${v}</span>
+            <span class="scale-desc">${scaleLabels[v-1]}</span>
+          </label>
+        </div>`;
+    }
+    scaleHTML += '</div>';
+
+    row.innerHTML = `<div class="question-text">${q}</div>${scaleHTML}`;
+    container.appendChild(row);
+  });
+}
+
+buildQuestions('d1', 'd1-questions');
+buildQuestions('d2', 'd2-questions');
+buildQuestions('d3', 'd3-questions');
+buildQuestions('d4', 'd4-questions');
+
+function getScore(domainKey) {
+  let total = 0;
+  let answered = 0;
+  for (let i = 1; i <= 5; i++) {
+    const sel = document.querySelector(`input[name="${domainKey}-q${i}"]:checked`);
+    if (sel) {
+      total += (6 - parseInt(sel.value));
+      answered++;
+    }
+  }
+  return { total, answered };
+}
+
+function getBandInfo(score) {
+  if (score >= 80) return {
+    label: 'High Drift',
+    cls: 'band-high',
+    description: 'Commercial drift is active and significant across multiple domains. The patterns driving margin erosion, forecast inconsistency, and execution gaps are unlikely to self-correct. A structured intervention with defined mandate and decision rights is what this profile calls for.'
+  };
+  if (score >= 60) return {
+    label: 'Structural Weakness Emerging',
+    cls: 'band-structural',
+    description: 'The structural foundations of your commercial engine are under pressure. Execution may still be holding, but the governance, decision rights, and commercial rhythm that need to support growth are not keeping pace. Addressing this now is significantly less disruptive than addressing it after performance deteriorates.'
+  };
+  if (score >= 40) return {
+    label: 'Early Drift',
+    cls: 'band-early',
+    description: 'Early drift patterns are present. The business is performing but the diagnostic has identified areas where the commercial structure is not as robust as the operation requires. Left unaddressed, early drift compounds. The window to act before it becomes structural is open.'
+  };
+  return {
+    label: 'Stable but Vulnerable',
+    cls: 'band-stable',
+    description: 'The commercial engine is broadly stable. The diagnostic has not identified significant active drift. Vulnerability remains where growth or transition could expose structural gaps that are not yet visible under current operating conditions.'
+  };
+}
+
+function getTriggerMessage(score) {
+  if (score >= 80) return 'Message 1 — High Drift';
+  if (score >= 60) return 'Message 2 — Structural Weakness';
+  if (score >= 40) return 'Message 3 — Early Drift';
+  return 'Message 3 — Early Drift';
+}
+
+function submitDiagnostic() {
+  const errorEl = document.getElementById('error-msg');
+  let valid = true;
+
+  // Validate contact fields
+  const fields = ['f-company','f-name','f-title','f-email','f-city','f-state'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+
+  // Validate all questions answered
+  const domains = ['d1','d2','d3','d4'];
+  domains.forEach(d => {
+    for (let i = 1; i <= 5; i++) {
+      const rowId = `${d}-q${i}`;
+      const sel = document.querySelector(`input[name="${rowId}"]:checked`);
+      const row = document.getElementById(rowId);
+      if (!sel) { row.classList.add('unanswered'); valid = false; }
+      else row.classList.remove('unanswered');
+    }
+  });
+
+  if (!valid) {
+    errorEl.classList.add('visible');
+    errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  errorEl.classList.remove('visible');
+
+  // Calculate scores
+  const d1 = getScore('d1');
+  const d2 = getScore('d2');
+  const d3 = getScore('d3');
+  const d4 = getScore('d4');
+  const total = d1.total + d2.total + d3.total + d4.total;
+  const band = getBandInfo(total);
+  const trigger = getTriggerMessage(total);
+
+  // Show results
+  document.getElementById('res-total').textContent = total;
+  const bandEl = document.getElementById('res-band');
+  bandEl.textContent = band.label;
+  bandEl.className = 'score-band ' + band.cls;
+  document.getElementById('res-description').textContent = band.description;
+
+  // Domain bars
+  setTimeout(() => {
+    document.getElementById('bar-d1').style.width = (d1.total / 25 * 100) + '%';
+    document.getElementById('bar-d2').style.width = (d2.total / 25 * 100) + '%';
+    document.getElementById('bar-d3').style.width = (d3.total / 25 * 100) + '%';
+    document.getElementById('bar-d4').style.width = (d4.total / 25 * 100) + '%';
+  }, 100);
+
+  document.getElementById('score-d1').textContent = d1.total + '/25';
+  document.getElementById('score-d2').textContent = d2.total + '/25';
+  document.getElementById('score-d3').textContent = d3.total + '/25';
+  document.getElementById('score-d4').textContent = d4.total + '/25';
+
+  const resultsEl = document.getElementById('results-section');
+  resultsEl.classList.add('visible');
+  setTimeout(() => { resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+
+  // Submit to Apps Script
+  const payload = {
+    company: document.getElementById('f-company').value.trim(),
+    name: document.getElementById('f-name').value.trim(),
+    title: document.getElementById('f-title').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    city: document.getElementById('f-city').value.trim(),
+    state: document.getElementById('f-state').value.trim(),
+    d1: d1.total, d2: d2.total, d3: d3.total, d4: d4.total,
+    total: total,
+    band: band.label,
+    trigger: trigger,
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
