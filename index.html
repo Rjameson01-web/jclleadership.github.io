@@ -86,53 +86,16 @@
   .corner-bl { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 70px; height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2); border-left: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
 
   /* HERO */
-  .hero-bg {
-    position: relative;
-    background-image: url('hero.png');
-    background-size: cover;
-    background-position: center 40%;
-    border-bottom: 1px solid var(--rule);
-  }
-  .hero-bg::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(13,27,42,0.92) 0%, rgba(13,27,42,0.75) 60%, rgba(13,27,42,0.55) 100%);
-    z-index: 1;
-  }
   .hero {
     position: relative; z-index: 5;
     padding: 4rem 4rem 3rem;
     display: flex; align-items: center; gap: 4rem;
+    border-bottom: 1px solid var(--rule);
     animation: fadeUp 0.9s ease both;
     max-width: 1280px;
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
-  }
-
-  /* SECTION DIVIDER IMAGE */
-  .img-divider {
-    position: relative;
-    height: 360px;
-    background-image: url('divider.png');
-    background-size: cover;
-    background-position: center 55%;
-    margin: 0 0 3rem;
-    overflow: hidden;
-  }
-  .img-divider::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(13,27,42,0.6) 0%, rgba(13,27,42,0.3) 50%, rgba(13,27,42,0.6) 100%);
-  }
-  .img-divider.light::before {
-    background: linear-gradient(180deg, rgba(13,27,42,0.4) 0%, rgba(13,27,42,0.15) 50%, rgba(13,27,42,0.4) 100%);
-  }
-  .img-divider-label {
-    position: absolute;
-    bottom: 1.6rem; right: 2rem;
-    font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(201,168,76,0.6); font-weight: 500;
   }
 
   .hero-text { flex: 1; }
@@ -274,7 +237,6 @@
   /* CASES */
   .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
   .case-card { background: var(--navy-mid); padding: 2rem; border-top: 2px solid var(--gold); }
-  .case-card-body { padding: 0; }
   .case-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 1rem; line-height: 1.3; }
   .case-card p { font-size: 0.84rem; line-height: 1.65; color: var(--text-muted); font-weight: 300; margin-bottom: 0.45rem; }
   .case-card .impact { font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
@@ -289,18 +251,9 @@
 
   /* TESTIMONIALS */
   .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
-  .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid var(--gold); position: relative; }
-  .testimonial-card::before {
-    content: '\201C';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; font-weight: 300;
-    color: rgba(201,168,76,0.15);
-    position: absolute; top: 0.5rem; left: 1.4rem;
-    line-height: 1;
-    pointer-events: none;
-  }
-  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-bottom: 1.4rem; padding-top: 1.2rem; }
-  .testimonial-card cite { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-style: normal; font-weight: 500; display: block; padding-top: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+  .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid rgba(201,168,76,0.3); }
+  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem; }
+  .testimonial-card cite { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-style: normal; font-weight: 500; }
 
   /* ABOUT */
   .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
@@ -548,6 +501,7 @@
       <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
       <a href="insights.html" class="nav-btn">Commercial Drift Insights</a>
+      <a href="scorecard.html" class="nav-btn">Is Your Business Drifting?</a>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
@@ -559,6 +513,7 @@
       <button class="dd-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
       <button class="dd-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
       <a class="dd-item" href="insights.html" onclick="toggleMenu()">Commercial Drift Insights</a>
+      <a class="dd-item" href="scorecard.html" onclick="toggleMenu()">Is Your Business Drifting?</a>
       <button class="dd-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
       <div style="padding:1rem 1.5rem;border-top:1px solid var(--rule);">
         <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()" style="display:block;text-align:center;">Book a 30-Minute Call</a>
@@ -568,7 +523,7 @@
 </div></header>
 
 <!-- HERO -->
-<div id="hero" class="hero-bg"><div class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;position:relative;z-index:2;">
+<div id="hero" class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;">
   <div class="hero-text" style="flex:1;min-width:0;">
     <div class="hero-eyebrow">Fractional CRO &mdash; Maritime &amp; Logistics</div>
     <h1>The commercial problems that cost maritime and logistics operators the most are never the ones that arrive as <em>a crisis.</em></h1>
@@ -580,7 +535,7 @@
     <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No preparation required. No proposal. No obligation.</p>
   </div>
 
-</div></div></div></div>
+</div></div>
 
 <!-- HOME TAB -->
 <div id="tab-home" class="tab-content active">
@@ -593,8 +548,6 @@
     <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;">The instinct at that point is to add headcount. Another sales hire, a regional manager, someone to own the problem. But the problem does not have an owner yet because the structure has not defined one. More resource into an ungoverned commercial model does not restore control. It distributes the problem further.</p>
   </div>
 
-  <div class="img-divider" style="background-image:url('diagnosis.png');background-position:center 60%;"><div class="img-divider-label">The Cost of Diagnosis</div></div>
-
   <!-- Cost of Diagnosis -->
   <div class="block">
     <div class="label">The Cost of Diagnosis Without Authority</div>
@@ -603,15 +556,13 @@
   </div>
 
   <!-- JCL Distinction -->
-  <div class="block" style="margin-top:3rem;">
+  <div class="block">
     <div class="statement-bar" style="margin-bottom:1.5rem;">
       <p style="font-style:normal;font-size:1.3rem;font-weight:300;">JCL operates differently.</p>
     </div>
     <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:1.4rem;">The engagement is not advisory and it is not a consulting retainer. It is a mandate. A defined period of fractional commercial leadership with explicit decision rights, clear outcomes, and a structured exit that leaves permanent leadership with a commercial engine they can sustain without external support.</p>
     <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;">The distinction matters because the problem is structural, not analytical. Structural problems require someone with the authority to change them, not someone with the expertise to describe them.</p>
   </div>
-
-  <div class="img-divider" style="background-image:url('divider.png');"><div class="img-divider-label">Jameson Commercial Leadership</div></div>
 
   <!-- Randy Jameson -->
   <div class="block">
@@ -656,10 +607,6 @@
 <div id="tab-services" class="tab-content">
 
   <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
-
-  <div class="img-divider light" style="background-image:url('boardroom.png');background-position:center 40%;height:360px;margin-bottom:3rem;">
-    <div class="img-divider-label">What We Address</div>
-  </div>
 
   <h2 class="section-title">What We <em>Address</em></h2>
   <div class="section-rule"></div>
@@ -792,30 +739,21 @@
     <div class="label">Selected Mandate Outcomes</div>
     <div class="cases-grid">
       <div class="case-card">
-        <div class="case-card-body">
-        <div class="card-tag">West Africa</div>
         <h3>Global Liner Operator &mdash; West Africa</h3>
         <p>Containerized and MPV operations. Third-party representation replaced, customer ownership reclaimed, and pricing authority centralized.</p>
         <p>Cargo volume increased 234% over the full engagement.</p>
         <div class="impact">Revenue impact: $84M</div>
-        </div>
       </div>
       <div class="case-card">
-        <div class="case-card-body">
-        <div class="card-tag">India</div>
         <h3>Global Liner Operator &mdash; India</h3>
         <p>Decision rights reset across pricing, customer selection, and capacity allocation. Sales aligned to asset-backed demand.</p>
         <p>Pricing stabilized and growth became predictable once governance and connectivity were restored.</p>
         <div class="impact">Revenue impact: $60M</div>
-        </div>
       </div>
       <div class="case-card">
-        <div class="case-card-body">
-        <div class="card-tag">Americas</div>
         <h3>Global Marine Agency &mdash; Americas</h3>
         <p>Regional commercial leadership established with defined authority. Sales and operations unified under a single commercial system across multiple locations.</p>
         <div class="impact">Revenue impact: $32M P&amp;L delivered</div>
-        </div>
       </div>
     </div>
     <div style="background:var(--navy-mid);padding:2rem;border-top:2px solid var(--gold);">
@@ -966,15 +904,12 @@ function showTab(tab, btn) {
     });
   }
   var hero = document.getElementById('hero');
-  hero.style.display = (tab === 'home') ? 'block' : 'none';
+  hero.style.display = (tab === 'home') ? 'flex' : 'none';
   var tabs = ['home','services','engagement','about','contact'];
   tabs.forEach(function(t) {
     var el = document.getElementById('mm-' + t);
     if (el) el.classList.toggle('active', t === tab);
   });
-  window.scrollTo(0, 0);
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
 }
 
 function toggleMenu() {
