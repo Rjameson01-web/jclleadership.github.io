@@ -86,16 +86,53 @@
   .corner-bl { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 70px; height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2); border-left: 1px solid rgba(201,168,76,0.2); pointer-events: none; z-index: 2; }
 
   /* HERO */
+  .hero-bg {
+    position: relative;
+    background-image: url('hero.png');
+    background-size: cover;
+    background-position: center 40%;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(13,27,42,0.92) 0%, rgba(13,27,42,0.75) 60%, rgba(13,27,42,0.55) 100%);
+    z-index: 1;
+  }
   .hero {
     position: relative; z-index: 5;
     padding: 4rem 4rem 3rem;
     display: flex; align-items: center; gap: 4rem;
-    border-bottom: 1px solid var(--rule);
     animation: fadeUp 0.9s ease both;
     max-width: 1280px;
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
+  }
+
+  /* SECTION DIVIDER IMAGE */
+  .img-divider {
+    position: relative;
+    height: 360px;
+    background-image: url('divider.png');
+    background-size: cover;
+    background-position: center 55%;
+    margin: 0 0 3rem;
+    overflow: hidden;
+  }
+  .img-divider::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(13,27,42,0.6) 0%, rgba(13,27,42,0.3) 50%, rgba(13,27,42,0.6) 100%);
+  }
+  .img-divider.light::before {
+    background: linear-gradient(180deg, rgba(13,27,42,0.4) 0%, rgba(13,27,42,0.15) 50%, rgba(13,27,42,0.4) 100%);
+  }
+  .img-divider-label {
+    position: absolute;
+    bottom: 1.6rem; right: 2rem;
+    font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(201,168,76,0.6); font-weight: 500;
   }
 
   .hero-text { flex: 1; }
@@ -237,6 +274,7 @@
   /* CASES */
   .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
   .case-card { background: var(--navy-mid); padding: 2rem; border-top: 2px solid var(--gold); }
+  .case-card-body { padding: 0; }
   .case-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--off-white); margin-bottom: 1rem; line-height: 1.3; }
   .case-card p { font-size: 0.84rem; line-height: 1.65; color: var(--text-muted); font-weight: 300; margin-bottom: 0.45rem; }
   .case-card .impact { font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
@@ -251,9 +289,18 @@
 
   /* TESTIMONIALS */
   .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
-  .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid rgba(201,168,76,0.3); }
-  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem; }
-  .testimonial-card cite { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-style: normal; font-weight: 500; }
+  .testimonial-card { background: var(--navy-mid); padding: 2rem 2.2rem; border-top: 2px solid var(--gold); position: relative; }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300;
+    color: rgba(201,168,76,0.15);
+    position: absolute; top: 0.5rem; left: 1.4rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-bottom: 1.4rem; padding-top: 1.2rem; }
+  .testimonial-card cite { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-style: normal; font-weight: 500; display: block; padding-top: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
 
   /* ABOUT */
   .about-top { display: flex; gap: 3.5rem; align-items: flex-start; margin-bottom: 3rem; }
@@ -497,11 +544,10 @@
   <div class="dd-wrapper" style="display:flex;align-items:center;gap:1rem;">
     <nav>
       <button class="nav-btn active" onclick="showTab('home', this)">Home</button>
-      <button class="nav-btn" onclick="showTab('services', this)">What We Address</button>
+      <button class="nav-btn" onclick="showTab('services', this)">Situations &amp; Services</button>
       <button class="nav-btn" onclick="showTab('engagement', this)">How Engagements Work</button>
       <button class="nav-btn" onclick="showTab('about', this)">About</button>
       <a href="insights.html" class="nav-btn">Commercial Drift Insights</a>
-      <a href="scorecard.html" class="nav-btn">Is Your Business Drifting?</a>
       <button class="nav-btn" onclick="showTab('contact', this)">Contact</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
@@ -509,11 +555,10 @@
     </button>
     <div class="dropdown-menu" id="mobileMenu">
       <button class="dd-item" id="mm-home" onclick="showTab('home', null); toggleMenu()">Home</button>
-      <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">What We Address</button>
+      <button class="dd-item" id="mm-services" onclick="showTab('services', null); toggleMenu()">Situations &amp; Services</button>
       <button class="dd-item" id="mm-engagement" onclick="showTab('engagement', null); toggleMenu()">How Engagements Work</button>
       <button class="dd-item" id="mm-about" onclick="showTab('about', null); toggleMenu()">About</button>
       <a class="dd-item" href="insights.html" onclick="toggleMenu()">Commercial Drift Insights</a>
-      <a class="dd-item" href="scorecard.html" onclick="toggleMenu()">Is Your Business Drifting?</a>
       <button class="dd-item" id="mm-contact" onclick="showTab('contact', null); toggleMenu()">Contact</button>
       <div style="padding:1rem 1.5rem;border-top:1px solid var(--rule);">
         <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" onclick="toggleMenu()" style="display:block;text-align:center;">Book a 30-Minute Call</a>
@@ -523,11 +568,11 @@
 </div></header>
 
 <!-- HERO -->
-<div id="hero" class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;">
+<div id="hero" class="hero-bg"><div class="hero"><div class="page-wrap" style="display:flex;align-items:center;gap:4rem;width:100%;position:relative;z-index:2;">
   <div class="hero-text" style="flex:1;min-width:0;">
     <div class="hero-eyebrow">Fractional CRO &mdash; Maritime &amp; Logistics</div>
-    <h1>The commercial problems that cost maritime and logistics operators the most are never the ones that arrive as <em>a crisis.</em></h1>
-    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1.6rem;">They arrive gradually, through patterns that individually seem manageable. The margin is moving without clear explanation, forecasts are revised too late to act on, and sales prices to win the business rather than protect it. By the time the pattern has a name, it has already been expensive for months.</p>
+    <h1>The commercial risks that cost maritime and logistics operators the most emerge during <em>acquisitions, leadership shifts and periods of rapid growth</em> — not after them.</h1>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:580px;margin-bottom:1.6rem;">Growth, transition and change are where commercial drift begins. JCL steps in to establish the authority and structure to contain it before it becomes expensive.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
       <button class="btn-ghost" onclick="showTab('engagement', document.querySelectorAll('.nav-btn')[2])">See how the engagement works &rarr;</button>
@@ -535,7 +580,7 @@
     <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted);font-weight:300;margin-top:1rem;">No preparation required. No proposal. No obligation.</p>
   </div>
 
-</div></div>
+</div></div></div></div>
 
 <!-- HOME TAB -->
 <div id="tab-home" class="tab-content active">
@@ -556,7 +601,7 @@
   </div>
 
   <!-- JCL Distinction -->
-  <div class="block">
+  <div class="block" style="margin-top:3rem;">
     <div class="statement-bar" style="margin-bottom:1.5rem;">
       <p style="font-style:normal;font-size:1.3rem;font-weight:300;">JCL operates differently.</p>
     </div>
@@ -580,23 +625,53 @@
     </div>
   </div>
 
+  <!-- When Companies Call JCL -->
+  <div class="block">
+    <div class="label">When Companies Call JCL</div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:2rem;">Prospects identify with events, not symptoms. These are the situations that typically bring a JCL engagement into focus.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-tag">Transition</div>
+        <h3>Acquisition or Merger</h3>
+        <p>Commercial structures, customer ownership and forecasting rarely survive an acquisition intact. Integration lag creates execution risk that compounds quietly until it becomes visible in the numbers.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Transition</div>
+        <h3>New CEO or Commercial Leader</h3>
+        <p>Decision rights become unclear. Forecasts lose credibility. Customer ownership shifts. A leadership transition is one of the highest-risk periods for commercial execution.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Growth</div>
+        <h3>Rapid Growth or Geographic Expansion</h3>
+        <p>Growth exposes weaknesses that stable operations can hide. When the commercial model was designed for an earlier version of the business, scale creates structural gaps.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Governance</div>
+        <h3>PE Ownership or Post-Acquisition Integration</h3>
+        <p>Governance expectations rise faster than commercial structures adapt. Revenue quality, forecast reliability and commercial operating model alignment become non-negotiable.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Structure</div>
+        <h3>Organisational Restructuring</h3>
+        <p>Accountability becomes distributed. Authority gaps appear. What worked inside the previous structure stops working when the structure changes around it.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Performance</div>
+        <h3>Commercial Underperformance</h3>
+        <p>Margin eroding without clear explanation. Forecasts revised too late to act on. Pricing governed by relationship rather than structure. These are patterns, not isolated events.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- How It Starts -->
   <div class="block">
     <div class="label">How It Starts</div>
-    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:2rem;">There is no pitch deck and no proposal process. The first conversation is 30 minutes. You describe what you are seeing. Randy asks the questions that matter. By the end of the call you will know whether the situation calls for a JCL engagement and whether there is a fit worth exploring.</p>
-    <div style="background:var(--navy-mid);padding:2rem 2.4rem;border-top:2px solid var(--gold);max-width:620px;display:flex;gap:1.5rem;align-items:flex-start;">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:rgba(201,168,76,0.15);line-height:1;flex-shrink:0;">1</div>
-      <div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--off-white);margin-bottom:0.4rem;">A direct conversation</div>
-        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.65;font-weight:300;">30 minutes. No pitch, no preparation required on your side. You describe what you are seeing. Randy asks the questions that matter. By the end of the call you will know whether there is a fit worth exploring.</p>
-      </div>
-    </div>
+    <p style="font-size:0.95rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:740px;margin-bottom:2rem;">There is no pitch deck and no proposal process. The first conversation is 30 minutes. You describe what you are seeing. We ask the questions that matter. By the end of the call you will know whether the situation calls for a JCL engagement and whether there is a fit worth exploring.</p>
   </div>
 
   <!-- CTA -->
   <div class="block">
     <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--off-white);max-width:580px;margin-bottom:1.4rem;">If that is a conversation worth having, I would welcome 30 minutes at your convenience.</p>
-    <p style="font-size:0.85rem;color:var(--text-muted);font-weight:300;max-width:520px;margin-bottom:1.6rem;">No preparation required. No extended process. A frank exchange about what you are seeing and whether there is a fit.</p>
     <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
     <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;">Or reach Randy directly: <a href="#" onclick="window.location='mail'+'to:'+'randy'+'@'+'jclleadership.com'; return false;" style="color:var(--gold);text-decoration:none;">randy&#64;jclleadership&#46;com</a></p>
   </div>
@@ -606,9 +681,13 @@
 <!-- WHAT WE ADDRESS TAB -->
 <div id="tab-services" class="tab-content">
 
-  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
+  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a></div>
 
-  <h2 class="section-title">What We <em>Address</em></h2>
+  <div class="img-divider light" style="background-image:url('boardroom.png');background-position:center 40%;height:360px;margin-bottom:3rem;">
+    <div class="img-divider-label">Situations &amp; Services</div>
+  </div>
+
+  <h2 class="section-title">Situations &amp; <em>Services</em></h2>
   <div class="section-rule"></div>
 
   <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:3rem;">The situations below are not failures of effort or strategy. They are structural conditions that effort and strategy alone cannot resolve.</p>
@@ -652,6 +731,35 @@
     <p>If more than one of these describes your business right now, the commercial engine has already started to drift. The question is whether the situation calls for advice or authority.</p>
   </div>
 
+  <!-- Growth and Transition Mandates -->
+  <div class="block" style="margin-top:3rem;">
+    <div class="label">Growth &amp; Transition Mandates</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:680px;margin-bottom:3rem;">Not every engagement begins with a performance problem. These mandates address the commercial execution risk that emerges during periods of growth, change and transition.</p>
+
+    <ul class="services-list">
+      <li>
+        <div class="svc-name">Post-Acquisition Commercial Integration</div>
+        <div class="svc-desc">Aligning commercial structures, customer ownership, forecasting and accountability after an acquisition. The operational integration typically moves faster than the commercial one. That gap is where execution risk accumulates.</div>
+      </li>
+      <li>
+        <div class="svc-name">Leadership Transition Stabilisation</div>
+        <div class="svc-desc">Supporting new CEOs and incoming commercial leaders by establishing decision rights, performance visibility and execution discipline before the transition creates a structural gap that compounds.</div>
+      </li>
+      <li>
+        <div class="svc-name">Revenue Quality Review</div>
+        <div class="svc-desc">Assessing revenue concentration, customer dependency, margin exposure and commercial resilience. Particularly relevant ahead of PE investment, debt facilities or ownership change where revenue quality will be scrutinised.</div>
+      </li>
+      <li>
+        <div class="svc-name">Commercial Scalability Assessment</div>
+        <div class="svc-desc">Determining whether the commercial structure can support the next stage of growth. What works at current scale frequently does not survive geographic expansion, new service lines or significant volume increases.</div>
+      </li>
+      <li>
+        <div class="svc-name">Commercial Due Diligence Support</div>
+        <div class="svc-desc">Independent assessment of commercial risks, opportunities and integration readiness before an acquisition closes. Not legal or financial diligence. Commercial diligence — the part that most often determines whether synergies are realised.</div>
+      </li>
+    </ul>
+  </div>
+
 </div>
 
 <!-- HOW ENGAGEMENTS WORK TAB -->
@@ -659,7 +767,6 @@
 
   <div style="margin-bottom:3rem;">
     <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a>
-    <p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p>
   </div>
 
   <h2 class="section-title">How <em>Engagements Work</em></h2>
@@ -717,7 +824,7 @@
 <!-- ABOUT TAB -->
 <div id="tab-about" class="tab-content">
 
-  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a><p style="font-size:0.72rem;color:var(--text-muted);font-weight:300;margin-top:0.6rem;letter-spacing:0.05em;">No commitment. No proposal. Just a direct conversation about what you are seeing.</p></div>
+  <div style="margin-bottom:3rem;"><a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary">Book a 30-Minute Call</a></div>
 
   <div class="about-top">
     <div class="about-photo-wrap">
@@ -739,21 +846,30 @@
     <div class="label">Selected Mandate Outcomes</div>
     <div class="cases-grid">
       <div class="case-card">
+        <div class="case-card-body">
+        <div class="card-tag">West Africa</div>
         <h3>Global Liner Operator &mdash; West Africa</h3>
         <p>Containerized and MPV operations. Third-party representation replaced, customer ownership reclaimed, and pricing authority centralized.</p>
         <p>Cargo volume increased 234% over the full engagement.</p>
         <div class="impact">Revenue impact: $84M</div>
+        </div>
       </div>
       <div class="case-card">
+        <div class="case-card-body">
+        <div class="card-tag">India</div>
         <h3>Global Liner Operator &mdash; India</h3>
         <p>Decision rights reset across pricing, customer selection, and capacity allocation. Sales aligned to asset-backed demand.</p>
         <p>Pricing stabilized and growth became predictable once governance and connectivity were restored.</p>
         <div class="impact">Revenue impact: $60M</div>
+        </div>
       </div>
       <div class="case-card">
+        <div class="case-card-body">
+        <div class="card-tag">Americas</div>
         <h3>Global Marine Agency &mdash; Americas</h3>
         <p>Regional commercial leadership established with defined authority. Sales and operations unified under a single commercial system across multiple locations.</p>
         <div class="impact">Revenue impact: $32M P&amp;L delivered</div>
+        </div>
       </div>
     </div>
     <div style="background:var(--navy-mid);padding:2rem;border-top:2px solid var(--gold);">
@@ -904,12 +1020,15 @@ function showTab(tab, btn) {
     });
   }
   var hero = document.getElementById('hero');
-  hero.style.display = (tab === 'home') ? 'flex' : 'none';
+  hero.style.display = (tab === 'home') ? 'block' : 'none';
   var tabs = ['home','services','engagement','about','contact'];
   tabs.forEach(function(t) {
     var el = document.getElementById('mm-' + t);
     if (el) el.classList.toggle('active', t === tab);
   });
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 function toggleMenu() {
