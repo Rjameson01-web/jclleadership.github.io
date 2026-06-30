@@ -452,7 +452,7 @@
   .f-privacy { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; font-weight: 300; transition: color 0.2s; }
   .f-privacy:hover { color: var(--gold); }
 
-  /* RESPONSIVE */
+/* RESPONSIVE */
   @media (max-width: 960px) {
     header { padding: 1.2rem 2rem; }
     .intro, .contact-section, .diagnostic-section, .submit-section, .results-section { padding-left: 2rem; padding-right: 2rem; }
@@ -460,6 +460,10 @@
     .footer-bottom { padding: 1.2rem 2rem; }
     .breakdown-row { grid-template-columns: 160px 1fr 50px; }
   }
+
+  @media (min-width: 961px) and (max-width: 1400px) {
+    .nav-btn { padding: 0.5rem 0.9rem; font-size: 0.62rem; letter-spacing: 0.16em; }
+    }
 
   @media (max-width: 600px) {
     header { padding: 0.8rem 1.2rem; }
