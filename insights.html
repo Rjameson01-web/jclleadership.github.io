@@ -80,7 +80,7 @@
 
   /* HAMBURGER */
   .hamburger {
-    display: none; flex-direction: column; justify-content: space-between;
+    display: flex; flex-direction: column; justify-content: space-between;
     width: 28px; height: 20px; background: none; border: none; cursor: pointer; padding: 0;
   }
   .hamburger span {
@@ -367,11 +367,6 @@
     .article-title { font-size: 1.2rem; }
   }
 
-  /* Hide desktop nav on mobile, show hamburger */
-  @media (max-width: 860px) {
-    nav { display: none; }
-    .hamburger { display: flex; }
-  }
 </style>
 </head>
 <body>
@@ -390,7 +385,6 @@
         <a href="index.html#engagement" class="nav-btn" onclick="goTo('engagement')">How Engagements Work</a>
         <a href="index.html#about" class="nav-btn" onclick="goTo('about')">About</a>
         <a href="insights.html" class="nav-btn active">Commercial Drift Insights</a>
-        <a href="scorecard.html" class="nav-btn">Is Your Business Drifting?</a>
         <a href="index.html#contact" class="nav-btn" onclick="goTo('contact')">Contact</a>
       </nav>
       <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
@@ -402,7 +396,6 @@
         <a class="dd-item" href="index.html" onclick="toggleMenu()">How Engagements Work</a>
         <a class="dd-item" href="index.html" onclick="toggleMenu()">About</a>
         <a class="dd-item active" href="insights.html" onclick="toggleMenu()">Commercial Drift Insights</a>
-        <a class="dd-item" href="scorecard.html" onclick="toggleMenu()">Is Your Business Drifting?</a>
         <a class="dd-item" href="index.html" onclick="toggleMenu()">Contact</a>
         <div style="padding:1rem 1.5rem;border-top:1px solid var(--rule);">
           <a href="https://calendly.com/randy-jclleadership/30min" target="_blank" class="btn-primary" style="display:block;text-align:center;">Book a 30-Minute Call</a>
