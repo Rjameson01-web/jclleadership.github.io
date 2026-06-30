@@ -1049,6 +1049,13 @@ document.addEventListener('click', function(e) {
     btn.classList.remove('open');
   }
 });
-</script>
-</body>
+
+window.addEventListener('DOMContentLoaded', function() {
+  var hash = window.location.hash.replace('#', '');
+  var validTabs = ['home', 'services', 'engagement', 'about', 'contact'];
+  if (hash && validTabs.indexOf(hash) !== -1) {
+    showTab(hash, null);
+  }
+});
+</script></body>
 </html>
